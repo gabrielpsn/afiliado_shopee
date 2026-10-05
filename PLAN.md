@@ -237,7 +237,8 @@ quebrada.
 > build.
 
 ### Fase 1 — Domínio e catálogo ✅
-- [x] `site.js`, `categories.js` (18 categorias), `products.js` gerado
+- [x] `site.js` (URL real do worker), `categories.js` (18 categorias),
+      `products.js` gerado
 - [x] `scripts/check-links.js` com `validateCatalog()` testável + 19 testes
 - [x] `scripts/resolve-links.js` e `data/links-resolvidos.csv`
 - [x] `scripts/from-csv.js`: CSV → `products.js`, com detecção de `;`/`,`,
@@ -247,7 +248,9 @@ quebrada.
       classificando a categoria por nome
 - [x] **`data/produtos.csv` preenchido: 500 produtos ativos, nenhum pendente**
       (520 linhas em 6 lotes → 500 itens únicos, 20 duplicatas)
-- [ ] Definir `SITE.url` (canonical e sitemap dependem disso)
+- [x] `SITE.url` definido: `https://afiliado-shopee.gabrielpsn.workers.dev`
+- [x] Bloco `contato` removido de `site.js`: o site não coleta dado pessoal e
+      o e-mail de exemplo nunca foi renderizado
 
 > Os 90 links antigos foram substituídos: nenhum `itemId` coincide com os lotes
 > novos, e `data/links.txt` não é mais fonte do catálogo.
@@ -267,7 +270,7 @@ quebrada.
 - [x] `SiteHeader` com busca e navegação por categoria
 - [x] `SiteFooter` com links legais
 - [x] `AffiliateNotice` — barra fixa no mobile, selo no header, texto ao lado do CTA
-- [x] `ProductCard`, `ProductGrid`, `CategoryNav`
+- [x] `ProductCard`, `ProductGrid`, `CategoryNav`, `FotoAusente`
 - [x] Mobile-first; alvos de toque ≥ 44px; card com link interno para o produto
       e CTA externo para a Shopee
 - [ ] `PriceTag` e `FilterPanel` como componente próprio — hoje preço e filtro

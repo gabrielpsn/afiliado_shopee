@@ -6,17 +6,15 @@ export const SITE = {
 
   tagline: 'Produtos com preço de referência e links de afiliado da Shopee.',
 
-  // TODO: trocar pelo domínio real. Canonical e sitemap dependem deste valor;
-  // enquanto for o placeholder, o build emite um aviso.
-  url: 'https://exemplo.com.br',
+  // Canonical e sitemap saem daqui. Só o aviso do build depende deste valor:
+  // `isSiteUrlConfigurada()` reprova o placeholder, não a URL real.
+  url: 'https://afiliado-shopee.gabrielpsn.workers.dev',
 
   descricao:
     'Vitrine de produtos com preço de referência e links de afiliado da Shopee. Você paga o mesmo preço; nós recebemos uma comissão.',
 
-  contato: {
-    email: 'contato@exemplo.com.br',
-    whatsapp: '',
-  },
+  // Sem canal de contato: o site não coleta dado pessoal (a Política de
+  // Privacidade diz isso) e um e-mail de exemplo seria pior que nenhum.
 
   redes: {},
 

@@ -18,6 +18,7 @@ import { buildAffiliateLink, REL_AFILIADO, trackOutboundClick } from '../engine/
 import { getCategoria } from '../data/categories.js'
 import { formatBRL, isPriceStale } from '../engine/format.js'
 import { nomeCurto } from '../engine/busca.js'
+import FotoAusente from './FotoAusente.vue'
 
 const props = defineProps({
   produto: { type: Object, required: true },
@@ -48,18 +49,11 @@ const temFoto = computed(() => Boolean(props.produto.imagens?.length))
       />
 
       <!--
-        Sem foto: bloco honesto com o ícone da categoria. Não é imagem de erro
+        Sem foto: bloco honesto com a arte da categoria. Não é imagem de erro
         genérica — diz o que está faltando e mantém a proporção da foto, para o
         grid não dançar quando as fotos chegarem.
       -->
-      <div
-        v-else
-        class="flex aspect-square w-full flex-col items-center justify-center gap-2 bg-slate-800/60 p-4 text-center"
-        data-testid="produto-sem-foto"
-      >
-        <span class="text-4xl" aria-hidden="true">{{ categoria?.icone ?? '📦' }}</span>
-        <span class="text-xs font-medium text-slate-400">Foto na Shopee</span>
-      </div>
+      <FotoAusente v-else :produto="produto" />
 
       <div class="flex flex-1 flex-col gap-1 p-3">
         <p class="text-xs text-slate-500">{{ categoria?.nome }}</p>

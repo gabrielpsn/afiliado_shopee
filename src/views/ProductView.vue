@@ -9,6 +9,7 @@ import { computed, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 
 import ProductCard from '../components/ProductCard.vue'
+import FotoAusente from '../components/FotoAusente.vue'
 import { SITE } from '../data/site.js'
 import { getCategoria } from '../data/categories.js'
 import {
@@ -86,18 +87,7 @@ watchEffect(() => {
           :height="produto.altura"
           class="aspect-square w-full rounded-2xl object-cover"
         />
-        <div
-          v-else
-          class="flex aspect-square w-full flex-col items-center justify-center gap-2 rounded-2xl bg-slate-800/60 p-6 text-center"
-          data-testid="produto-sem-foto"
-        >
-          <span class="text-6xl" aria-hidden="true">{{ categoria?.icone ?? '📦' }}</span>
-          <p class="font-semibold text-slate-200">Foto do produto na Shopee</p>
-          <p class="max-w-xs text-sm text-slate-400">
-            Não conseguimos trazer a foto para cá. O botão abaixo abre o
-            anúncio com as imagens, o preço e as opções de tamanho.
-          </p>
-        </div>
+        <FotoAusente v-else :produto="produto" detalhado />
 
         <div class="flex flex-col">
           <p class="text-3xl font-extrabold text-emerald-400">
