@@ -1,45 +1,47 @@
 <script setup>
-import { SITE } from './data/site.js'
-import { getAllProducts, getActiveProducts } from './engine/catalog.js'
-import AffiliateNotice from './components/AffiliateNotice.vue'
+// Casca da aplicação: header, área de conteúdo e rodapé.
+//
+// A barra de afiliado é fixa no mobile e some depois do primeiro scroll. O
+// objetivo é ocupar o começo da tela (é requisito do CONAR) sem comer 60 px de
+// uma viewport de 844 px pelo resto da navegação.
+import { onMounted, onUnmounted, ref } from 'vue'
 
-const total = getAllProducts().length
-const ativos = getActiveProducts().length
-const pendentes = total - ativos
+import AffiliateNotice from './components/AffiliateNotice.vue'
+import SiteHeader from './components/SiteHeader.vue'
+import SiteFooter from './components/SiteFooter.vue'
+
+const rolou = ref(false)
+
+function aoRolar() {
+  rolou.value = window.scrollY > 120
+}
+
+onMounted(() => {
+  aoRolar()
+  window.addEventListener('scroll', aoRolar, { passive: true })
+})
+
+onUnmounted(() => window.removeEventListener('scroll', aoRolar))
 </script>
 
 <template>
-  <AffiliateNotice />
+  <a
+    href="#conteudo"
+    class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-orange-500 focus:px-4 focus:py-2 focus:font-bold focus:text-white"
+  >
+    Pular para o conteúdo
+  </a>
 
-  <main class="mx-auto w-full max-w-5xl px-4 py-12">
-    <h1 class="text-3xl font-extrabold">{{ SITE.nome }}</h1>
-    <p class="mt-2 text-slate-400">{{ SITE.tagline }}</p>
+  <SiteHeader />
 
-    <!--
-      Placeholder da Fase 0. A vitrine real (views e componentes) entra na
-      Fase 3 e Fase 4; aqui só precisamos provar que o build, o Tailwind e o
-      catálogo estão de pé.
-    -->
-    <section class="mt-8 rounded-2xl border border-slate-800 bg-slate-900/50 p-6">
-      <h2 class="text-lg font-bold">Estado do catálogo</h2>
-      <dl class="mt-4 grid grid-cols-3 gap-4 text-center">
-        <div class="rounded-xl bg-slate-950 p-4">
-          <dt class="text-xs uppercase tracking-wide text-slate-500">No catálogo</dt>
-          <dd class="mt-1 text-2xl font-extrabold">{{ total }}</dd>
-        </div>
-        <div class="rounded-xl bg-slate-950 p-4">
-          <dt class="text-xs uppercase tracking-wide text-slate-500">Publicados</dt>
-          <dd class="mt-1 text-2xl font-extrabold text-emerald-400">{{ ativos }}</dd>
-        </div>
-        <div class="rounded-xl bg-slate-950 p-4">
-          <dt class="text-xs uppercase tracking-wide text-slate-500">Pendentes</dt>
-          <dd class="mt-1 text-2xl font-extrabold text-amber-400">{{ pendentes }}</dd>
-        </div>
-      </dl>
-      <p class="mt-4 text-sm text-slate-400">
-        Preencha <code class="text-slate-200">data/produtos.csv</code> e rode
-        <code class="text-slate-200">npm run catalog:sync</code> para publicar.
-      </p>
-    </section>
-  </main>
+  <!-- some ao rolar para devolver altura, mas volta se a pessoa subir -->
+  <div :class="rolou ? 'hidden' : 'block'">
+    <AffiliateNotice />
+  </div>
+
+  <div id="conteudo">
+    <RouterView />
+  </div>
+
+  <SiteFooter />
 </template>

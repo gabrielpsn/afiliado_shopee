@@ -121,9 +121,14 @@ distintas, o que torna um componente raiz único inviável.
 
 `scripts/check-links.js` roda no build e falha se: `slug` duplicado, categoria
 inexistente, `linkAfiliado` fora do domínio permitido (`shopee.com.br`,
-`s.shopee.com.br`), preço não numérico, produto sem imagem, ou `atualizadoEm`
-com mais de N dias. Erro de catálogo é erro de build — nunca um produto
-quebrado em produção.
+`s.shopee.com.br`), preço não numérico ou `atualizadoEm` com mais de N dias.
+Erro de catálogo é erro de build — nunca um produto quebrado em produção.
+
+**Foto ausente é aviso, não erro.** A exportação de afiliado não traz imagem e não
+há como obtê-la sem furar os termos da Shopee; reprovar por isso deixaria a
+vitrine fora do ar. O produto entra com `semFoto: true`, o card e a página de
+produto mostram "Foto na Shopee", e o validador reporta o total em uma linha de
+aviso. Nome, preço e categoria continuam obrigatórios.
 
 ---
 
@@ -212,43 +217,68 @@ quebrada.
 
 ## Fases
 
-### Fase 0 — Fundação
-- [ ] `git init`, `.gitignore` (mesmo do `treino`)
-- [ ] `package.json` com os scripts do `treino` + `build` composto
-- [ ] `vite.config.js` (Tailwind v4, `base: '/'`), `vitest.config.js`, `playwright.config.js`
-- [ ] `index.html` com meta base, Open Graph default, fontes
-- [ ] `src/style.css` com base Tailwind v4, foco visível, scrollbar
-- [ ] `AGENTS.md` com as convenções herdadas do `treino` (pt-BR, sem comentários
+### Fase 0 — Fundação ✅
+- [x] `git init`, `.gitignore` (mesmo do `treino`)
+- [x] `package.json` com os scripts do `treino` + `catalog:sync`/`validate:catalog`
+- [x] `vite.config.js` (Tailwind v4, `base: '/'`), `vitest.config.js`, `playwright.config.js`
+- [x] `index.html` com meta base, Open Graph default, fontes
+- [x] `src/style.css` com base Tailwind v4, foco visível, scrollbar
+- [x] `AGENTS.md` com as convenções herdadas do `treino` (pt-BR, sem comentários
       redundantes, `engine/` puro, verificação antes de concluir)
-- [ ] `npm run verify` verde com o esqueleto vazio
+- [x] `npm run test` verde e `vite build` gerando `dist/`
+- [x] `.github/workflows/verify.yml` só com o gate de verificação — o job de deploy
+      foi **deixado de fora de propósito**: sem Worker registrado, ele dispararia
+      no push e falharia
+- [x] PWA **adiado**: service worker conflita com HTML prerenderizado. Entra na
+      Fase 2.1, se fazer sentido
 
-### Fase 1 — Domínio e catálogo
-- [ ] `site.js`, `categories.js`, `products.js` com 15–20 produtos seed
-- [ ] `scripts/check-links.js` + testes do validador
-- [ ] Preencher as variáveis `SITE_URL`, nome e redes em `site.js`
+> Na época desta fase o gate falhava porque `validate:catalog` reprovava os 90
+> produtos pendentes. Hoje `npm run verify` passa: catálogo real, 168 testes e
+> build.
 
-### Fase 2 — Engine
-- [ ] `format.js` e `catalog.js` com testes unitários de borda (preço 0,
-      string vazia, acento, slug duplicado, produto inativo)
-- [ ] `links.js` e `seo.js` com testes
+### Fase 1 — Domínio e catálogo ✅
+- [x] `site.js`, `categories.js` (18 categorias), `products.js` gerado
+- [x] `scripts/check-links.js` com `validateCatalog()` testável + 19 testes
+- [x] `scripts/resolve-links.js` e `data/links-resolvidos.csv`
+- [x] `scripts/from-csv.js`: CSV → `products.js`, com detecção de `;`/`,`,
+      BOM/CRLF, aspas escapadas e número pt-BR
+- [x] `scripts/importar-batch.js`: `data/batch/*.csv` → `data/produtos.csv`,
+      deduplicando por `itemId` (maior comissão, desempate alfabético) e
+      classificando a categoria por nome
+- [x] **`data/produtos.csv` preenchido: 500 produtos ativos, nenhum pendente**
+      (520 linhas em 6 lotes → 500 itens únicos, 20 duplicatas)
+- [ ] Definir `SITE.url` (canonical e sitemap dependem disso)
+
+> Os 90 links antigos foram substituídos: nenhum `itemId` coincide com os lotes
+> novos, e `data/links.txt` não é mais fonte do catálogo.
+
+### Fase 2 — Engine ✅
+- [x] `format.js` e `catalog.js` com testes de borda (preço 0, string vazia,
+      acento, slug duplicado, produto inativo)
+- [x] `links.js` com testes; `seo.js` entra na Fase 5
+- [x] `busca.js` (`filtrarProdutos`, `ordenarProdutos`, `pontuarBusca`,
+      `nomeCurto`) com 22 testes
+- [x] `categorizar.js` com 13 testes, incluindo os casos que já custaram
+      produto na prateleira errada
 - [ ] `offers.js` com testes de janela de tempo (usar data fixa, nunca `now()`
-      solto no teste)
+      solto no teste) — sem cupom até a Shopee fornecer
 
-### Fase 3 — Layout e componentes
-- [ ] `SiteHeader` com busca instantânea e navegação por categoria
-- [ ] `SiteFooter` com links legais
-- [ ] `AffiliateNotice` — barra fixa no mobile, selo no header, texto ao lado do CTA
-- [ ] `ProductCard`, `ProductGrid`, `PriceTag`, `FilterPanel`
-- [ ] Mobile-first; alvos de toque ≥ 44px; card inteiro clicável
+### Fase 3 — Layout e componentes ✅
+- [x] `SiteHeader` com busca e navegação por categoria
+- [x] `SiteFooter` com links legais
+- [x] `AffiliateNotice` — barra fixa no mobile, selo no header, texto ao lado do CTA
+- [x] `ProductCard`, `ProductGrid`, `CategoryNav`
+- [x] Mobile-first; alvos de toque ≥ 44px; card com link interno para o produto
+      e CTA externo para a Shopee
+- [ ] `PriceTag` e `FilterPanel` como componente próprio — hoje preço e filtro
+      são resolvidos dentro do card e da view
 
-### Fase 4 — Views
-- [ ] `HomeView`: hero, categorias, ofertas do dia, destaques
-- [ ] `CategoryView`: filtro + ordenação + paginação por "ver mais"
-- [ ] `SearchView`: busca por nome, tag e categoria, com estado vazio e
-      sugestão quando não há resultado
-- [ ] `ProductView`: galeria, preço, descrição, destaques, cupons, relacionados,
-      CTA "Ver na Shopee", aviso de afiliado ao lado do botão, compartilhar
-- [ ] Páginas legais e 404
+### Fase 4 — Views ✅ (busca em `/` por query)
+- [x] `HomeView`: hero, categorias, grid, busca por `?q=`
+- [x] `CategoryView`: ordenação + "ver mais"
+- [x] `ProductView`: preço, aviso de afiliado ao lado do CTA, relacionados
+- [x] 404 e páginas legais
+- [ ] `SearchView` dedicada — hoje a busca vive na home via `?q=`
 
 ### Fase 5 — SEO técnico
 - [ ] `buildPageMeta` aplicado por rota via `router.afterEach`
@@ -260,6 +290,8 @@ quebrada.
 - [ ] HTML semântico: um `<h1>` por página, hierarquia sem pular nível
 
 ### Fase 6 — Prerender
+> O build atual é SPA: as 500 páginas de produto não existem como HTML. Isso é o
+> maior item aberto, e não bloqueia a vitrine funcionar.
 - [ ] `scripts/prerender.js` funcional
 - [ ] `data-prerender-ready` em todas as views que dependem de dados
 - [ ] Teste Playwright que abre `dist/produto/<slug>/index.html` **pelo

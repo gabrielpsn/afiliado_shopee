@@ -2,10 +2,15 @@
 // Validação do catálogo. Roda no build e reprova a publicação.
 //
 // A regra que importa: enquanto existir produto com `pendente: true`, o build
-// falha. Nome, preço e imagem não podem ser inventados — num site de afiliado,
+// falha. Nome, categoria e preço não podem ser inventados — num site de afiliado,
 // um produto com dados errados significa o visitante clicar achando que está
 // comprando X e receber Y, além de exibir preço diferente do real (CDC, art.
 // 6º, III).
+//
+// Foto não entra nessa regra: a Shopee bloqueia leitura automatizada, então
+// ausência de foto é estado legítimo, não erro. Ela vira aviso agregado — o
+// build passa e diz quantas faltam. O card mostra placeholder em vez de uma
+// imagem inventada.
 
 import { PRODUCTS } from '../src/data/products.js'
 import { CATEGORIAS } from '../src/data/categories.js'
@@ -39,6 +44,9 @@ export function validateCatalog({
 
   const slugs = new Set()
   const idsCategorias = new Set()
+  const semFoto = []
+  const nomesLongos = []
+  const precosAntigos = []
 
   for (const c of categorias) {
     if (idsCategorias.has(c.id)) erros.push(`categories.js: id duplicado "${c.id}"`)
@@ -63,11 +71,7 @@ export function validateCatalog({
       continue
     }
 
-    if (p.nome.length > MAX_NOME) {
-      avisos.push(
-        `${ref}: nome com ${p.nome.length} caracteres (corta no Google acima de ~70)`
-      )
-    }
+    if (p.nome.length > MAX_NOME) nomesLongos.push(`${ref} (${p.nome.length})`)
 
     if (!categoriasValidas.has(p.categoria)) {
       erros.push(`${ref}: categoria "${p.categoria}" não existe em src/data/categories.js`)
@@ -92,7 +96,7 @@ export function validateCatalog({
     }
 
     if (!p.imagens?.length) {
-      erros.push(`${ref}: sem imagem`)
+      semFoto.push(ref)
     } else {
       for (const img of p.imagens) {
         const ehUrl = /^https:\/\//.test(img)
@@ -114,7 +118,7 @@ export function validateCatalog({
           'Reconfirme na Shopee e atualize a coluna atualizadoEm.'
       )
     } else if (idade > site.diasParaPrecoAntigo) {
-      avisos.push(`${ref}: preço confirmado há ${idade} dias`)
+      precosAntigos.push(`${ref} (há ${idade} dias)`)
     }
   }
 
@@ -124,14 +128,37 @@ export function validateCatalog({
     avisos.push('Nenhum produto ativo: a vitrine vai abrir vazia.')
   }
 
-  if (ativos.length && !ativos.some((p) => p.imagens?.some((i) => i.startsWith('http')))) {
-    avisos.push('Nenhum produto ativo usa imagem hospedada fora do projeto.')
+  // A partir de algumas centenas de produto, avisar por produto vira 500 linhas
+  // de ruído e ninguém lê. O que importa é a contagem e um exemplo para caçar.
+  if (semFoto.length) {
+    avisos.push(
+      `${semFoto.length} produto(s) sem foto — o card mostra placeholder e ` +
+        `remete para a Shopee. Preenchimento: ${semFoto.slice(0, 3).join(', ')}` +
+        `${semFoto.length > 3 ? ', ...' : ''}`
+    )
   }
 
-  return { erros, avisos, ativos }
+  if (nomesLongos.length) {
+    avisos.push(
+      `${nomesLongos.length} nome(s) com mais de ${MAX_NOME} caracteres, que o ` +
+        `Google corta por volta de 70. Encurte em data/produtos.csv: ` +
+        nomesLongos.slice(0, 3).join(', ') +
+        `${nomesLongos.length > 3 ? ', ...' : ''}`
+    )
+  }
+
+  if (precosAntigos.length) {
+    avisos.push(
+      `${precosAntigos.length} preço(s) sem confirmação há mais de ` +
+        `${site.diasParaPrecoAntigo} dias: ${precosAntigos.slice(0, 3).join(', ')}` +
+        `${precosAntigos.length > 3 ? ', ...' : ''}`
+    )
+  }
+
+  return { erros, avisos, ativos, total: produtos.length, semFoto: semFoto.length }
 }
 
-function imprimir({ erros, avisos, ativos }) {
+function imprimir({ erros, avisos, ativos, total = 0, semFoto = 0 }) {
   if (avisos.length) {
     console.log(`avisos (${avisos.length}):`)
     for (const a of avisos) console.log(`  ~ ${a}`)
@@ -147,8 +174,9 @@ function imprimir({ erros, avisos, ativos }) {
   }
 
   console.log(
-    `catálogo ok: ${ativos.length} produto(s) no ar de ${produtos.length}, ` +
-      `${CATEGORIAS.length} categoria(s)`
+    `catálogo ok: ${ativos.length} produto(s) no ar de ${total}, ` +
+      `${CATEGORIAS.length} categoria(s)` +
+      (semFoto ? `, ${semFoto} sem foto` : '')
   )
   return 0
 }

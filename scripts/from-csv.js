@@ -125,6 +125,29 @@ export function parseNumero(valor) {
   return Number.isFinite(n) ? n : null
 }
 
+/**
+ * Escapa um campo para escrita em CSV.
+ *
+ * Nome de produto da Shopee vem com aspa e pipe; pipe não atrapalha (só `tags` e
+ * `destaques` usam pipe como separador), mas aspa e o próprio separador sim.
+ * Sem isto, um nome com aspa faria o parser ler a coluna errada — e o sintoma
+ * apareceria como produto com nome cortado, não como erro de CSV.
+ */
+export function escaparCampoCsv(valor, separador = ';') {
+  const texto = String(valor ?? '')
+  const precisaAspas =
+    texto.includes(separador) || texto.includes('"') || /[\r\n]/.test(texto)
+
+  if (!precisaAspas) return texto
+
+  return `"${texto.replace(/"/g, '""')}"`
+}
+
+/** Monta uma linha de CSV a partir de um registro e uma lista de colunas. */
+export function formatarLinhaCsv(valores, colunas, separador = ';') {
+  return colunas.map((c) => escaparCampoCsv(valores[c], separador)).join(separador)
+}
+
 /** Tags e destaques são separados por `|` para não brigar com a vírgula do CSV. */
 export function parseLista(valor) {
   return String(valor ?? '')
@@ -134,9 +157,19 @@ export function parseLista(valor) {
 }
 
 /**
- * Um produto está pronto para a vitrine quando tem nome, categoria, preço e ao
- * menos uma imagem. Faltando qualquer um deles, `pendente` é verdadeiro e o
- * produto não aparece na loja nem passa no build.
+ * Um produto só pode ir ao ar com nome, categoria e preço.
+ *
+ * Foto é caso diferente, e a diferença é o ponto todo: nome, categoria e preço
+ * descrevem o que o visitante vai comprar, e um valor errado nisso é problema
+ * de consumidor (CDC, art. 6º III) — não entra sem eles. Foto é apresentação. A
+ * Shopee bloqueia leitura automatizada (captcha na página, 403 na API) e a
+ * exportação de afiliado não traz imagem, então exigir foto significava uma
+ * vitrine permanentemente vazia ou um produto com foto errada. Sem foto o card
+ * mostra um placeholder que diz "ver na foto na Shopee" — honesto e inofensivo —
+ * e `semFoto` alimenta o aviso do validador com a conta do que falta.
+ *
+ * Consequência aceita: o build passa com 100% dos produtos sem foto. O que ele
+ * não faz é fingir que isso está pronto — o número sai no relatório.
  */
 export function avaliarLinha(linha, hoje) {
   const nome = linha.nome || ''
@@ -148,7 +181,6 @@ export function avaliarLinha(linha, hoje) {
   if (!nome) faltando.push('nome')
   if (!categoria) faltando.push('categoria')
   if (preco === null) faltando.push('preco')
-  if (!imagens.length) faltando.push('imagens')
 
   return {
     nome,
@@ -156,6 +188,7 @@ export function avaliarLinha(linha, hoje) {
     preco,
     imagens,
     faltando,
+    semFoto: imagens.length === 0,
     pendente: faltando.length > 0,
     atualizadoEm: linha.atualizadoEm || hoje,
   }
@@ -175,6 +208,8 @@ export const COLUNAS_CATALOGO = [
   'numAvaliacoes',
   'destaque',
   'promocao',
+  'loja',
+  'vendas',
   'ativo',
   'atualizadoEm',
 ]
@@ -240,6 +275,9 @@ function gerarJs(produtos) {
         'numAvaliacoes',
         'destaque',
         'promocao',
+        'loja',
+        'vendas',
+        'semFoto',
         'ordem',
         'ativo',
         'pendente',
@@ -337,6 +375,9 @@ export function buildProducts({
       numAvaliacoes: parseNumero(linha.numAvaliacoes),
       destaque: parseBooleano(linha.destaque),
       promocao: parseBooleano(linha.promocao),
+      loja: linha.loja || '',
+      vendas: linha.vendas || '',
+      semFoto: info.semFoto,
       ordem: parseNumero(linha.ordem) ?? indice,
       // Sem `ativo` explícito no CSV, o produto entra no ar assim que fica
       // completo. Quem quiser rascunho escreve `nao` na coluna.
@@ -352,15 +393,39 @@ export function buildProducts({
     produtos.push(produto)
   })
 
-  // Duas páginas com o mesmo slug colidiriam na URL. O sufixo mantém o
-  // catálogo importável mesmo com nomes repetidos entre vendedores.
-  const contagem = new Map()
+  // Duas páginas com o mesmo slug colidiriam na URL. O itemId desempata: ele é
+  // único e estável, enquanto um contador `-2` depende da ordem de leitura do
+  // CSV e muda o link de um produto que nada teve a ver.
+  const porSlug = new Map()
   for (const p of produtos) {
-    const n = (contagem.get(p.slug) ?? 0) + 1
-    contagem.set(p.slug, n)
-    if (n > 1) {
-      avisos.push({ linkCurto: p.itemId, motivo: `slug duplicado "${p.slug}"` })
-      p.slug = `${p.slug}-${n}`
+    const grupo = porSlug.get(p.slug)
+    if (!grupo) {
+      porSlug.set(p.slug, [p])
+      continue
+    }
+    grupo.push(p)
+  }
+
+  const usados = new Set()
+
+  for (const [slug, grupo] of porSlug) {
+    if (grupo.length === 1) {
+      usados.add(slug)
+      continue
+    }
+
+    for (const p of grupo) {
+      avisos.push({
+        linkCurto: p.itemId,
+        motivo: `slug duplicado "${slug}" — desempate pelo itemId ${p.itemId}`,
+      })
+
+      let candidato = `${slug}-${p.itemId}`
+      let n = 1
+      while (usados.has(candidato)) candidato = `${slug}-${p.itemId}-${++n}`
+
+      usados.add(candidato)
+      p.slug = candidato
     }
   }
 

@@ -88,7 +88,7 @@ describe('validateCatalog — preço desatualizado', () => {
   it('avisa, mas não reprova, entre 30 e 180 dias', () => {
     const r = valida([produto({ atualizadoEm: '2026-08-01' })])
     expect(r.erros).toEqual([])
-    expect(r.avisos.join()).toMatch(/confirmado há/)
+    expect(r.avisos.join()).toMatch(/sem confirmação há/)
   })
 
   it('reprova atualizadoEm ausente', () => {

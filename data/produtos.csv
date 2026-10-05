@@ -1,91 +1,501 @@
-linkCurto;nome;categoria;preco;precoAntes;tags;imagens;destaques;descricao;avaliacao;numAvaliacoes;destaque;promocao;ativo;atualizadoEm
-1gJ4vKhJO2;;;;;;;;;;;;;;
-30oSW0Aa8F;;;;;;;;;;;;;;
-9V1wFxcZ3w;;;;;;;;;;;;;;
-6AlUHqkS0J;;;;;;;;;;;;;;
-4B0PuBirTo;;;;;;;;;;;;;;
-2VsBv8g4VG;;;;;;;;;;;;;;
-9KiW3iK7eB;;;;;;;;;;;;;;
-3LRIuhgd2y;;;;;;;;;;;;;;
-2qV2JnqrJs;;;;;;;;;;;;;;
-3B7siQgSFU;;;;;;;;;;;;;;
-1qcV7zXvZ5;;;;;;;;;;;;;;
-2BFLWcEaTR;;;;;;;;;;;;;;
-7faI4kAm8L;;;;;;;;;;;;;;
-905ffCnhG1;;;;;;;;;;;;;;
-2VsBvGuRFM;;;;;;;;;;;;;;
-AKb3FghoR8;;;;;;;;;;;;;;
-9fLMSTJcN6;;;;;;;;;;;;;;
-6VOKgfQneQ;;;;;;;;;;;;;;
-70KbHbBQlw;;;;;;;;;;;;;;
-9zyCr7zXN9;;;;;;;;;;;;;;
-3Vkj7CAkSp;;;;;;;;;;;;;;
-9fLMSXMTCJ;;;;;;;;;;;;;;
-7Ae1Tx9NXD;;;;;;;;;;;;;;
-20vvKT6e2n;;;;;;;;;;;;;;
-5VVnUufmr2;;;;;;;;;;;;;;
-qjxwLjwtv;;;;;;;;;;;;;;
-8fSpGktenh;;;;;;;;;;;;;;
-3B7sienzyZ;;;;;;;;;;;;;;
-2gBc7kTV4c;;;;;;;;;;;;;;
-3LRIuzDI1t;;;;;;;;;;;;;;
-3qNZVv6aEU;;;;;;;;;;;;;;
-8V9P4VO13Y;;;;;;;;;;;;;;
-1BMoL2Tb9k;;;;;;;;;;;;;;
-9V1wGMbGXc;;;;;;;;;;;;;;
-1LgEXMbMKu;;;;;;;;;;;;;;
-AKb3FupQRq;;;;;;;;;;;;;;
-BUH9FESQD;;;;;;;;;;;;;;
-3B7simFy9F;;;;;;;;;;;;;;
-AUuTSGedrI;;;;;;;;;;;;;;
-1LgEXQzw5Z;;;;;;;;;;;;;;
-50ZWuCGRLy;;;;;;;;;;;;;;
-113O8r9P0K;;;;;;;;;;;;;;
-2gBc7vXica;;;;;;;;;;;;;;
-4qG6hv34II;;;;;;;;;;;;;;
-2gBc7wg2sf;;;;;;;;;;;;;;
-50ZWuwJmuh;;;;;;;;;;;;;;
-6AlUJ5swc1;;;;;;;;;;;;;;
-5LCNJaHqhq;;;;;;;;;;;;;;
-AUuTT5gFH6;;;;;;;;;;;;;;
-2VsBwSmc72;;;;;;;;;;;;;;
-8KpytCCjcW;;;;;;;;;;;;;;
-2gBc8nGNDz;;;;;;;;;;;;;;
-6L4uVXxgE6;;;;;;;;;;;;;;
-6VOKhrWArX;;;;;;;;;;;;;;
-50ZWv7SkYU;;;;;;;;;;;;;;
-9KiW55gz0j;;;;;;;;;;;;;;
-3LRIw4hLx0;;;;;;;;;;;;;;
-60S46zAjMb;;;;;;;;;;;;;;
-5LCNJlqvxh;;;;;;;;;;;;;;
-9pemg34jrb;;;;;;;;;;;;;;
-40gzjLM4cg;;;;;;;;;;;;;;
-2gBc8uI0x5;;;;;;;;;;;;;;
-3qNZX4D21B;;;;;;;;;;;;;;
-3B7sjqou97;;;;;;;;;;;;;;
-9KiW5CI9m4;;;;;;;;;;;;;;
-2qV2LGOlF2;;;;;;;;;;;;;;
-2BFLY34thS;;;;;;;;;;;;;;
-30oSXaWagg;;;;;;;;;;;;;;
-20vvLl5GVB;;;;;;;;;;;;;;
-1gJ4x9snDh;;;;;;;;;;;;;;
-5VVnWDqzjs;;;;;;;;;;;;;;
-1Aqy7yOlt;;;;;;;;;;;;;;
-2BFLY7TgHi;;;;;;;;;;;;;;
-7ptiIY3Iqj;;;;;;;;;;;;;;
-5LCNJxm9hL;;;;;;;;;;;;;;
-9pemgFD5dt;;;;;;;;;;;;;;
-7KxRheiOv8;;;;;;;;;;;;;;
-5q8duuEZsp;;;;;;;;;;;;;;
-8KpytW0G04;;;;;;;;;;;;;;
-1LgEYfzleg;;;;;;;;;;;;;;
-5LCNK2WndJ;;;;;;;;;;;;;;
-80D8UwraEX;;;;;;;;;;;;;;
-5Asx7kX6DN;;;;;;;;;;;;;;
-6q1B6pHY9k;;;;;;;;;;;;;;
-1Vzel2FWHU;;;;;;;;;;;;;;
-113OA7m9XH;;;;;;;;;;;;;;
-9pemgMnedF;;;;;;;;;;;;;;
-3qNZXLshOH;;;;;;;;;;;;;;
-60S47LJa1p;;;;;;;;;;;;;;
-50ZWvVwW3L;;;;;;;;;;;;;;
+linkCurto;nome;categoria;preco;precoAntes;tags;imagens;destaques;descricao;avaliacao;numAvaliacoes;destaque;promocao;loja;vendas;ativo;atualizadoEm
+4LJq9V3xJ2;Capa Colchão Impermeável Antialérgica Protetor Material Hospitalar Segura Xixi Solteiro Casal Berço;casa-e-decoracao;34.81;;;;;;;;nao;nao;Ebenézer ShopCapas;60mil+;sim;2026-10-05
+7VGrvOpoP5;Kit Calcinhas Modeladora Cós Alto Fio Duplo Lingerie Cintas Levanta Bumbum Não Marca Roupa;moda-feminina;27.9;;;;;;;;nao;nao;Auvo Moda;90mil+;sim;2026-10-05
+9pemhggvem;Liquidificador Mondial L‑99 Turbo 550 W 3 Velocidades;eletrodomesticos;108.99;;;;;;;;nao;nao;LOI BRASIL;200mil+;sim;2026-10-05
+8pmFVqkjgg;Kit 3 Camisetas Masculinas Segunda Pele Proteção UV Térmica;casa-e-cozinha;49.9;;;;;;;;nao;nao;Chapelaria Vintage;30mil+;sim;2026-10-05
+40gzl2EmvU;Creatina Suplemento Monohidratada em Pó 100% Pura Importada - Soldiers Nutrition;beleza;33.9;;;;;;;;nao;nao;Soldiers Nutrition;200mil+;sim;2026-10-05
+9KiW6puU60;Hidratante Creme Facial Pele De Porcelana Kokeshi 30g Milagre do Arroz;beleza;25.09;;;;;;;;nao;nao;KOKESHI OFICIAL;100mil+;sim;2026-10-05
+2qV2MtJEH8;Purificador de Água Consul Refrigerado CPB34AFVNA Cinza Bivolt;eletrodomesticos;564.99;;;;;;;;nao;nao;BUMPER MAGAZINE;10mil+;sim;2026-10-05
+3Vkj9y7807;Impressora Multifuncional HP 2975, Bivolt, Wifi, Bluetooth, colorida, fotográfica, preta, lançamento;eletronicos;620;;;;;;;;nao;nao;Imprinet Soluções em Impressoras;3mil+;sim;2026-10-05
+50ZWwnzKTI;Creatina Max Titanium 300g Pura;fitness;46.2;;;;;;;;nao;nao;Hard Extreme;40mil+;sim;2026-10-05
+8KpyuqojCS;Kit Relação Tração Transmissão Cg Titan Fan 150 2004 2005 2006 2007 2008 2009 A 2015 Original Riffel;automotivo;78.02;;;;;;;;nao;nao;GOLD SPEED;10mil+;sim;2026-10-05
+5VVnXkwcM3;DISCO FLAP 4.1/2 Kit C/10pçs GRÃO 40 - 60 - 80 - 120;ferramentas;37.9;;;;;;;;nao;nao;TNT FERRAMENTAS;10mil+;sim;2026-10-05
+9V1wJ8tql3;Kit 6 Tampas Silicone Reutilizável Elástica Tapoer Panela - Envio Imediato;casa-e-cozinha;13.99;;;;;;;;nao;nao;mrecearia;10mil+;sim;2026-10-05
+BUHBvHjGI;Cinta Modeladora Espartilho De Emagrecimento-ENVIO IMEDIATO --8888;moda-feminina;23.8;;;;;;;;nao;nao;cheng328;100mil+;sim;2026-10-05
+70KbKR67wG;Reparador de Pneu Spray MP10 Mundial Prime 400ml Selante Emergencial Carro Moto Bicicleta;automotivo;21.95;;;;;;;;nao;nao;VITHAU PARAFUSOS E FERRAMENTAS;10mil+;sim;2026-10-05
+4qG6kSENLA;Amplificador De Imagem Da Tela Do Celular Ampliada Lupa 3d Tela;eletronicos;19.89;;;;;;;;nao;nao;MAX MO (Atacado & Varejo);70mil+;sim;2026-10-05
+2qV2MmLzOa;Garrafa Térmica Inox Com Copo 500ml Água Café Chá Caneca Frio Quente Com duas Xicaras;casa-e-cozinha;28.99;;;;;;;;nao;nao;XQW - ELETRÔNICOS E VARIEDADES;8mil+;sim;2026-10-05
+6L4uXAwLGO;Cinta modeladora abdominal alta compressão sinta abdominal feminina modeladora Cinta abdominal ajustável cinta emagrece;moda-feminina;29.7;;;;;;;;nao;nao;EusouMiguel;40mil+;sim;2026-10-05
+4B0PxEGugy;Jogo de Xícaras de Café com Pires de Madeira Coração Cantinho do Café Kit Presente Feminino;moda-feminina;46;;;;;;;;nao;nao;Requinte Artefatos de Madeira;7mil+;sim;2026-10-05
+4LJq9a1rpE;Jogo de Lençol 400 Fios Micropercal Com Fronha em Ponto Palito;casa-e-decoracao;12.9;;;;;;;;nao;nao;Casa_Completa_Enxovais;2mi+;sim;2026-10-05
+1VzemIEk3n;Kit 5pçs Toalhas de Rosto de 45x60cm 100% Algodão - Coleção Jade;casa-e-decoracao;38.99;;;;;;;;nao;nao;Malu Toalhas e Camisetas;20mil+;sim;2026-10-05
+8fSpJSnSWc;Pistola de Massagem Muscular Portátil Elétrica Profissional Recarregável USB com Múltiplas Ponteiras para Relaxamento;saude;29;;;;;;;;nao;nao;ANJ.GG store;100mil+;sim;2026-10-05
+60S48YxbvL;Kit com 10 Lâmpadas Led 9W Bivolt Branco Frio 6500K Avant;eletronicos;30.5;;;;;;;;nao;nao;QueroObra;8mil+;sim;2026-10-05
+5VVnXn94rt;Kit 2 Bíblias Sagradas Feminina Masculina Harpa Cristã Letras MÉDIAS Personalizada Vermelho Roxa Fé;moda-feminina;92.81;;;;;;;;nao;nao;Tesouros da Fé;1mil+;sim;2026-10-05
+6AlUL16XWy;Kits para Banheiro Premium Minimalista| Lixeira, Dispenser, Porta-escova, Copo, + Escova/Saboneteira;casa-e-cozinha;121.98;;;;;;;;nao;nao;loja virtual popular;5;sim;2026-10-05
+50ZWwsAysb;Conjunto Feminino Casual Sofisticado De Blusa Calça em Linho De Algodão Cores Verão 2023 Roupa Feminina Festa Uniforme Barata Promoção Oferta Exclusiva;moda-feminina;61.72;;;;;;;;nao;nao;Mabilly Oficial;40mil+;sim;2026-10-05
+2LYllYrdLl;Chaleira Elétrica Inox 1,8L Agratto 127v e 220v;eletrodomesticos;62.89;;;;;;;;nao;nao;QueroObra;8mil+;sim;2026-10-05
+3LRIxm4rko;Kit 1200 Lenço Umedecido Baby Club Aloe Vera Caixa C/12 Pack;casa-e-decoracao;45.9;;;;;;;;nao;nao;DINKO;100;sim;2026-10-05
+6q1B85uRFL;Casinha Plástica Cachorro N5 e N6 Porte Pequeno Médio Com Colchonete;pet;54.9;;;;;;;;nao;nao;ModuaDistribuidora_;6mil+;sim;2026-10-05
+30oSZ86wW5;Esfregão Giratório 360° Lava e Seca com Torção, Microfibra Multiuso + Refil p/ Piso e Cozinha;eletrodomesticos;24.99;;;;;;;;nao;nao;ZSZ_brasil;2mil+;sim;2026-10-05
+BUHBzTNgM;Kit 3un Downy amaciante concentrado fragrância brisa de verão 500mL;casa-e-cozinha;49.89;;;;;;;;nao;nao;Supermercado do Chico;2mil+;sim;2026-10-05
+W77aXGSbN;Carregador Sem Fio 5000/10000mAh iPhone;eletronicos;28.88;;;;;;;;nao;nao;JX VERDE;40mil+;sim;2026-10-05
+1gJ4yiBD8e;Brinquedo Pet 3x1 Mordedor Osso Massageador Gengiva Removedor Tártaros Escova de Dente Para Pets;pet;25.9;;;;;;;;nao;nao;MONImar;4mil+;sim;2026-10-05
+5q8dwFyFGC;Mochila Térmica Grande Capacidade Cooler Portátil Piquenique Quente Frio Não colocar gelo ou água;casa-e-cozinha;36.95;;;;;;;;nao;nao;DeinShop;10mil+;sim;2026-10-05
+1BMoNiSKlZ;Conjunto Chuva Motoqueiro Blusão E Calça + Bota Pvc Solado Amarelo Motociclista Motoboy Impermeável;automotivo;145.81;;;;;;;;nao;nao;Tubarão Epis;2mil+;sim;2026-10-05
+6AlUKyu518;Conjunto de 108 ou 53 Peças de Ferramentas Soquete Sextavado Catraca Chave Maleta Multi-função Profissional;ferramentas;59.89;;;;;;;;nao;nao;SKY MALL;3mil+;sim;2026-10-05
+3qNZYcIBLp;ZERO FRIZZ Kit Noite Pefeita | 1 Touca dupla face + 1 Fronha + 2 xuxinhas, escolha sua cor preferida;beleza;30;;;;;;;;nao;nao;Zero Frizz;197;sim;2026-10-05
+113OBSEYZN;Creatina Monohidratada Pura 300g Dark Lab - 100% Pura;fitness;39.9;;;;;;;;nao;nao;Dark Lab Oficial;100mil+;sim;2026-10-05
+9pemhig7ZU;Escova Secadora Eleganza Plus Ceramic Ion Gama 1300W Bivolt;beleza;169.99;;;;;;;;nao;nao;Liss Fashion Variedades;109;sim;2026-10-05
+3g49MJIohr;Body Collant  Feminino Regata Blusa Decote Quadrado Com Forro  Estilo Blogueira;moda-feminina;27;;;;;;;;nao;nao;Infinity Variedades10;70mil+;sim;2026-10-05
+1AqzcIMcI;CAPACETE NORISK RAZOR FEMININO MASCULINO ESPORTIVO NARIGUEIRA ALTA SPEEDMAX FULL GHOST EDITION;moda-feminina;596.99;;;;;;;;nao;nao;Motors Race;55;sim;2026-10-05
+AAHd6Fu4Vj;Mini Processador Triturador Sem Fio Elétrico 250ML De Alimentos Para Legumes Alho Gengibre;eletrodomesticos;23.88;;;;;;;;nao;nao;RISESHOP_brasil;100mil+;sim;2026-10-05
+4VdGLxCstY;Mini Processador Triturador Sem Fio Elétrico 250ML De Alimentos Para Legumes Alho Gengibre Espremedor De Alho;eletrodomesticos;23.88;;;;;;;;nao;nao;INFINITY COMERCIO DE VARIEDADES;30mil+;sim;2026-10-05
+7ptiJy2xES;Kit Fitness 6 em 1 Roda Abdominal Flexão Corda Elástico Hand Grip Tapete Treino em Casa;casa-e-decoracao;56.99;;;;;;;;nao;nao;MULTIORIENTAL;4mil+;sim;2026-10-05
+5LCNLU9iDt;Guarda-Roupa Casal Bergamo 6 Portas 9 Gavetas;casa-e-decoracao;670.05;;;;;;;;nao;nao;Panorama Móveis;2mil+;sim;2026-10-05
+6fhkvrsz4x;Suporte de peito ajustável para telefones celulares e câmeras GoPro para peito de motocicleta e bicicleta;automotivo;23.9;;;;;;;;nao;nao;JUNGE TECH LTDA;30mil+;sim;2026-10-05
+1qcVB3N2Im;Fritadeira Sem Óleo Elétrica Air Fryer Asus 3,5 Litros 1400w Airfryer;eletrodomesticos;379.9;;;;;;;;nao;nao;QueroObra;313;sim;2026-10-05
+2qV2Mr6lln;Jogo Toalha de Banho 4 Peças 100% Algodão Grossa Felpuda Super Macia Excelente Absorção New Premier Habitat;casa-e-decoracao;85.41;;;;;;;;nao;nao;MG Enxovais;70mil+;sim;2026-10-05
+3LRIxoHKHA;Kit Lencol Jogo de Cama Berço Solteiro Casal Queen King 400 fios Toque Macio com Ponto Palito;casa-e-decoracao;12.9;;;;;;;;nao;nao;Casa_Completa_Enxovais;300mil+;sim;2026-10-05
+9AP5uWv7Qp;Mini Compressor De Ar Portátil Recarregável Digital USB Calibrador De Pneus Carro Moto Bicicleta Infláveis Automático;automotivo;68.99;;;;;;;;nao;nao;JIMMY.STORE;90mil+;sim;2026-10-05
+4LJq9a1roD;Kit Cabeceira Estofada Nuvem 60x20cm Cama Casal 7 Peças Decoração Quarto;casa-e-decoracao;54.98;;;;;;;;nao;nao;STUDIO DECOR;154;sim;2026-10-05
+2BFLZd9J7j;Kit 10 Potes Marmita Fit 400ML Retangular Com Tampa 4 Travas Jogo de Potes Livres de BPA;casa-e-cozinha;32.9;;;;;;;;nao;nao;AuraShop Cuidado que a casa merece;10mil+;sim;2026-10-05
+AUuTUpgTmm;Escova Elétrica de Limpeza 5 em 1 Sem Fio Recarregável Multiuso para Cozinha Banheiro Azulejo;eletrodomesticos;31.6;;;;;;;;nao;nao;LAR LEVE SHOP;4mil+;sim;2026-10-05
+6VOKjasoK9;Camisola Sexy sem Bojo Sensual Costas Abertas Com Calcinha Regulável;moda-feminina;28.11;;;;;;;;nao;nao;Lisbela Modas;70mil+;sim;2026-10-05
+8KpyuxlpbI;Progressiva Pink Plus 5D Profissional -  Liso 100% Perfeito, Brilho Espelhado & Sem Frizz;beleza;26.9;;;;;;;;nao;nao;CHICABONITA_1;2mil+;sim;2026-10-05
+1LgEa4DHtP;kit calças jeans masculina skinny com LYCRA elastano original promoção NF;moda-masculina;59.99;;;;;;;;nao;nao;Omg Denim;5mil+;sim;2026-10-05
+30oSZCIaw9;Fone de Ouvido Sem Fio Com Cancelamento De Ruído Bluetooth Pop-Up;eletronicos;42.89;;;;;;;;nao;nao;JX VERDE;100mil+;sim;2026-10-05
+7faI7joMyH;Conjunto Fitness Top Suplex Texturizado Legging Cintura Alta Confort Casual Versátil Academia Oferta;moda-feminina;77.9;;;;;;;;nao;nao;Carioca Fit;21;sim;2026-10-05
+W77aUUs7N;Macaquinho Short Manga Longa C/Ziper Moda Gringa Feminino;moda-feminina;58;;;;;;;;nao;nao;Tangerina Moda Fitness;797;sim;2026-10-05
+60S48i7Aqu;Kit 6 Peças Conjunto de Faca Carne Cutelo Legumes Aço Carbono Descascador Tesoura Profissional;casa-e-cozinha;15.78;;;;;;;;nao;nao;SUPERTOFU SHOP;100mil+;sim;2026-10-05
+3g49MJIogm;Pipoqueira Elétrica Máquina de  Fazer Pipoca Sem Óleo 110v e 220v;eletrodomesticos;79.9;;;;;;;;nao;nao;RIO SUCESSO;413;sim;2026-10-05
+7ptiJvqdCW;Maquina De Barbear e Aparador Pelos Elétrico 3 Em 1;beleza;48.47;;;;;;;;nao;nao;Isabela Top;100mil+;sim;2026-10-05
+2LYllu9TsW;Máquina de Cortar  Cabelo e Barba Masculina, Barbeador Elétrico e Aparador Profissional;beleza;15.89;;;;;;;;nao;nao;ZSZ_brasil;400mil+;sim;2026-10-05
+2BFLZbA7DX;Gancho De Parede Para Pendurar Capacete E Acessórios (escolha a quantidade);casa-e-decoracao;10.19;;;;;;;;nao;nao;KL vendas Online;20mil+;sim;2026-10-05
+30oSZ86wX6;Kit 20 Itens Treino em Casa: Elásticos Extensor + Mini Band + Thera Band + Corda De Pular + Guia de Exercícios Exclusivo;fitness;54.5;;;;;;;;nao;nao;CeFEO - Fisioterapia e Saúde;20mil+;sim;2026-10-05
+9fLMVIjeTZ;Monitor De Pressão Arterial De Pulso Recarregável Alta XYY-2551;eletronicos;39.89;;;;;;;;nao;nao;Isabela Top;30mil+;sim;2026-10-05
+LnhOEH5vJ;Espremedor Elétrico Laranja Limão Frutas Fazer Sucos Recarregável usb;eletronicos;61.99;;;;;;;;nao;nao;NEW WORD MAGAZINE;6mil+;sim;2026-10-05
+6AlUKyu507;{ORIGINAL} KIT Carregador Cabo E Fonte Tipo C Lightning XR,11,12,13,14 LACRADO;eletronicos;67.12;;;;;;;;nao;nao;SYANG Sua loja;70mil+;sim;2026-10-05
+1qcVAwPnQo;Esfregador Giratório Elétrico Escova Limpeza Elétrica 360 Graus 25W;eletrodomesticos;78.99;;;;;;;;nao;nao;SHR STORE;461;sim;2026-10-05
+3LRIxhK5Nl;Creatina Ultra Pote 300g - FTW;casa-e-cozinha;29.9;;;;;;;;nao;nao;Loja Oficial FTW;80mil+;sim;2026-10-05
+4B0PxEGufz;Churrasqueira Portátil 50x40 com Grelha Ajustável, Acampamento e Churrasco;camping-viagem;118;;;;;;;;nao;nao;mrchurrasqueira;906;sim;2026-10-05
+7KxRj7pdeF;Churrasqueira a Bafo Portátil para Pescaria Viagens Camping Material Resistente;camping-viagem;79.99;;;;;;;;nao;nao;Shoon Kids Plus;10mil+;sim;2026-10-05
+3qNZYcIBMs;Kit 2 unidades Abajur La Finesse Cupula - Luminária Para Decoração Quarto e Sala;eletronicos;56.8;;;;;;;;nao;nao;Haute Decor;40mil+;sim;2026-10-05
+8fSpJZkYvK;Mop Girátorio Cleaner Profissional – Balde com Centrífuga 14L + Refil Duplo e Cabo Reforçado - MN;eletronicos;69.9;;;;;;;;nao;nao;MANIA UTILIDADES E AFINS LTDA;100mil+;sim;2026-10-05
+6L4uXFuFkv;Vestido longo moda cristã feminino em Viscose/Viscolinho casual de alça Muito Lindo com elástico.;moda-feminina;59;;;;;;;;nao;nao;MAGIC MODA;1mil+;sim;2026-10-05
+9V1wIzkHpb;Kit 3 Garrafa Copo Agua Squeeze C/ Adesivos Lembretes beber Agua Tendencia NOVA;casa-e-cozinha;29.99;;;;;;;;nao;nao;S.X.Z.SHOP.BRAZIL;60mil+;sim;2026-10-05
+6VOKjW81x7;Termômetro De Testa Infravermelha Digital;eletronicos;26.89;;;;;;;;nao;nao;HappyShop_;60mil+;sim;2026-10-05
+6AlUL16XVx;kit Coala Home Chá Branco;casa-e-cozinha;72.9;;;;;;;;nao;nao;Coala Essências Oficial;200mil+;sim;2026-10-05
+1gJ4yKuAhh;Furadeira/Parafusadeira 26V/48V Dual Baterias, Conjunto com Estuche e Ferramentas Inclusas;ferramentas;60.82;;;;;;;;nao;nao;MAIS LEGAL SHOP;1mil+;sim;2026-10-05
+7faI7f3aZR;Vestido Feminino Curto Rodado Camponesa Alcinha Estampado com  Bojo e Forro  Regulável;moda-feminina;73.99;;;;;;;;nao;nao;Yudis Modas;2mil+;sim;2026-10-05
+50ZWwlDjzA;Clareador de Virilha e Axila Creme Clareador Partes Intimas - Clear Beauty Original;beleza;24.99;;;;;;;;nao;nao;Corpus;90mil+;sim;2026-10-05
+AAHd6DhkTn;46 Peças Verde Kit Chaves Jogo Catraca Reversível Soquetes Maleta Promoção;ferramentas;28.99;;;;;;;;nao;nao;INFINITY COMERCIO DE VARIEDADES;10mil+;sim;2026-10-05
+2qV2MmLzNb;Blusa Academia feminina Oval ) Regata Veste Legging Camisão Tapa Bumbum Camiseta Tule Roupas de Academia Dry Fit Treino;moda-feminina;22.91;;;;;;;;nao;nao;ATITUDE ÚNICA MODA FEMININA;20mil+;sim;2026-10-05
+7ptiJvqdDZ;Kit Calcinhas Feminina Algodao Adulto Microfibra Conforto Calcinha Tanga;moda-feminina;31.99;;;;;;;;nao;nao;Ventura_Imports_;50mil+;sim;2026-10-05
+6q1B8F40AH;Cadeira Gamer Profissional Escritório Ergonômica Reclinável Confortável Com Rodinha E Apoio Para Pés;casa-e-decoracao;390.79;;;;;;;;nao;nao;Led Tools Oficial;10mil+;sim;2026-10-05
+2LYllyL8Hp;Kit 4 ou 2 Vestidos Midi Feminino 100% Algodão Premium Confortável com Fenda  P ao GG;moda-feminina;79.9;;;;;;;;nao;nao;Nenfa;2mil+;sim;2026-10-05
+4VdGLqFe01;SHORTS LEGGING BERMUDA FITNESS FEMININA;moda-feminina;35;;;;;;;;nao;nao;MAURICIO VARIEDADES;0;sim;2026-10-05
+4qG6kZBcEb;Tapete de Banheiro Antiderrapante Bolinha Macarrão Várias Cores;casa-e-decoracao;16.89;;;;;;;;nao;nao;MG Enxovais;100mil+;sim;2026-10-05
+7KxRj0sXEU;Cozedor de Ovos Portátil Elétrico Cozinha à Vapor Egg Cooker 110v;eletrodomesticos;29.9;;;;;;;;nao;nao;Martin's Store;6mil+;sim;2026-10-05
+5fpDk3vz25;Varal De Chão Roupa Calcinha Grade 3 Andares Dobrável Portátil;casa-e-decoracao;99.9;;;;;;;;nao;nao;Na Web Group De Marcas;200mil+;sim;2026-10-05
+AUuTUyq2jD;Fone de Ouvido Bluetooth Sem Fio Digital Alta Qualidade Intra Auricular-B4;eletronicos;49.99;;;;;;;;nao;nao;Brasil Mart;50mil+;sim;2026-10-05
+8KpyuzyI7i;Fone De Ouvido Sem Fio E6s Bluetooth 5.0 Tws Com Tela LED Digital;eletronicos;21.99;;;;;;;;nao;nao;SUPER CHETO;100mil+;sim;2026-10-05
+3qNZYh2xjt;Calça Wid Leg Jeans Feminina Cintura Alta 100% Algodão Premium;moda-feminina;59.9;;;;;;;;nao;nao;TAURUS JEANS;20mil+;sim;2026-10-05
+9fLMVPgktQ;Campainha Com Câmera Vídeo Porteiro Sem Fio Wi-Fi HD Inteligente Smart Home Vê Pelo Celular Recarregável;eletronicos;48.89;;;;;;;;nao;nao;zapshop2;5mil+;sim;2026-10-05
+1qcVB1AZnh;Nicho Porta Tempero com Gancho Para Cozinha Prateleira(13);casa-e-decoracao;99.99;;;;;;;;nao;nao;Casas e Parafusos;985;sim;2026-10-05
+1LgEa4DHuQ;Amolador De Cozinha E Afiador de Facas 3 Fases Para Afiar Profissional;casa-e-cozinha;13.99;;;;;;;;nao;nao;INFINITY COMERCIO DE VARIEDADES;2mil+;sim;2026-10-05
+8Kpyuvmdhd;6 Jogo Americano Juta Vermelho - Impermeável Limpa Facil Pvc;casa-e-decoracao;31.92;;;;;;;;nao;nao;marcela_12;2mil+;sim;2026-10-05
+BUHBzTNhN;Z&D Lingerie Cinta Elastique Modeladora De Alta Compressão Redutor Afina Cintura 890;moda-feminina;34.99;;;;;;;;nao;nao;ZD Lingerie Oficial;70mil+;sim;2026-10-05
+113OBUDkUa;Mini Umidificador Difusor Aromatizador Egg Portátil Usb Led Aromatizador De Ambiente Purificador De Ar Casa Escritório;eletronicos;16.98;;;;;;;;nao;nao;Vida Criativa;400mil+;sim;2026-10-05
+LnhOEH5wK;Kit Calcinhas Sem costura Tanga corte a Laser Não Marca na Roupa Invisível Academia Justo Conforto;moda-feminina;16.49;;;;;;;;nao;nao;Amanhecer;100mil+;sim;2026-10-05
+3B7slM8Ofx;Mop C/ cabo de 140 cm + 2 Refis - Rodinhas e Cesto Em Inox - Balde Centrífuga - CH;eletronicos;59.9;;;;;;;;nao;nao;Chaicommerce;50mil+;sim;2026-10-05
+4VdGLt1EUH;KIT 3 Escova Secadora + Secador de Cabelo Portátil + Modelador de Cachos + Chapinha Profissional Rosa Potente Qualidade;casa-e-cozinha;98.9;;;;;;;;nao;nao;VINIMARKET COMPRA SEGURA;42;sim;2026-10-05
+3VkjA352WB;Mop Giratório Cabo de 140 cm + 2 Refis - 8 Litros Cesto Em Inox - Balde Centrífuga Esfregão;eletronicos;59.9;;;;;;;;nao;nao;baruchcommerce;2mil+;sim;2026-10-05
+60S48dvWQt;Conjunto Camiseta + Short Moletom Estampado Milano Itália Street Camiseta Malha Linha Premium + Short Mauricinho;moda-feminina;64.9;;;;;;;;nao;nao;CS_Variedades;10mil+;sim;2026-10-05
+LnhOBVVSK;Clareador De Axilas, Virilhas, Corporal e Íntimo - Clear Beauty;beleza;23.99;;;;;;;;nao;nao;Vision Express;30mil+;sim;2026-10-05
+9zyCu1fUEV;Clareador De Axilas e Virilhas Creme Clareador Partes Intimas Clear Beauty - Envio Rápido;beleza;23.9;;;;;;;;nao;nao;Vision Express;10mil+;sim;2026-10-05
+8fSpJbx1Rg;Camiseta T-Shirt Masculina Street Wear Jesus Vive Manfinity Camisa 100% Algodão;moda-feminina;39.79;;;;;;;;nao;nao;OsloCloset;781;sim;2026-10-05
+40gzky38UB;Attracione Men (Perfume Masculino com Feromônios Ativados);beleza;57;;;;;;;;nao;nao;Attracione Men & Attracione;60mil+;sim;2026-10-05
+5LCNLRxFh0;Organizador Multifuncional de Maquiagem Giratório 3 Andares para Pincéis e Joias;casa-e-cozinha;19.99;;;;;;;;nao;nao;Casa & Joias;2mil+;sim;2026-10-05
+gQXmuRTgO;Guarda-Roupa Casal Odisseia 6 Portas 2 Gavetas com Espelho;casa-e-decoracao;875.98;;;;;;;;nao;nao;Panorama Móveis;1mil+;sim;2026-10-05
+4B0PxJ1h4w;Creatina Monohidratada Pura 1kg, 500g, 600, 300g e 150g - Dark Lab;fitness;29.9;;;;;;;;nao;nao;Dark Lab Oficial;200mil+;sim;2026-10-05
+7KxRj5qRj1;2026 Nova Série 8 Relógio T800 Ultra Smart Watch Esportivo Sem Fio À Prova D'água T800 Ultra2 MAX;eletronicos;45.99;;;;;;;;nao;nao;-BML-;100mil+;sim;2026-10-05
+AAHd6KeqtW;Kit de Conjunto Facas Coloridas/Pretos Tesoura Descascador Cozinha Gourmet 6 Peças;casa-e-cozinha;23.9;;;;;;;;nao;nao;M Flowerr;80mil+;sim;2026-10-05
+1Vzem1uo2g;Par Intercomunicador Capacete Comunicador Moto V6 Bluetooth;automotivo;108.99;;;;;;;;nao;nao;K7mart;3mil+;sim;2026-10-05
+5fpDk1wn6r;Blazer Feminino Casaquinho Alfaiataria Casaco Social Com Botão Lindo Super Envio;calcados;49.99;;;;;;;;nao;nao;Y & Y  STORE;1mil+;sim;2026-10-05
+20vvNMMOym;Calça Pantalona Alfaiataria Premium Com Bolso PROMOÇÃO ENVIO ENVIO IMEDIATO;moda-feminina;19.9;;;;;;;;nao;nao;Salto Fino Moda´s;4mil+;sim;2026-10-05
+W77aZFeVZ;Macaquinho Fitness Alcinha Costas Abertas Zero Transparencia;fitness;29.99;;;;;;;;nao;nao;kaizen Fitness;9mil+;sim;2026-10-05
+7ptiK0oXj7;Lâmpada Elétrica Mata-Mosquitos Com Luz UV Usb Armadilha Para Insetos;eletronicos;32;;;;;;;;nao;nao;Kluvon;140;sim;2026-10-05
+1qcVB3N2Jr;Fatiador Ralador 16 em 1 Profissional de Cozinha em Aço Inoxidável Multifuncional para Legumes Frutas e Verduras;casa-e-cozinha;35.98;;;;;;;;nao;nao;MANGO-SHOP;30mil+;sim;2026-10-05
+30oSZ5LM3f;Kit Produto para Lavar Moto Cera Shampoo Desengraxante Pretinho Limpador de Corrente Vonixx;automotivo;124.9;;;;;;;;nao;nao;Patron - Distribuidora;2mil+;sim;2026-10-05
+8pmFVuwO6j;Aspirador De Pó Vertical Wap High Speed Plus 3 Em 1 127V;eletrodomesticos;178.2;;;;;;;;nao;nao;GOTAGUA;1mil+;sim;2026-10-05
+6L4uXD8fI4;Chinelo Bandeirinha Original Sandalia De Dedo Unissex Verão. Presente para o Dia dos Pais;calcados;19.9;;;;;;;;nao;nao;Ferrari_Shopping;100mil+;sim;2026-10-05
+1AqzZWm9J;Bola Brinquedos De Rolamento Automático Cauda Do Falso Recarregável Bola Inteligente Gato Interativo;pet;13.99;;;;;;;;nao;nao;JUNGE TECH LTDA;20mil+;sim;2026-10-05
+5VVnXkwcN4;Venda Quente Disco De Corte Para Vidro Espelho Cerâmica E Porcelanato Ferramenta Ideal Para Reforma E Trabalhos Diversos;ferramentas;9.66;;;;;;;;nao;nao;Capiforte Tools.BR;1mil+;sim;2026-10-05
+5LCNLNCTJq;Kit 10 Marmitas Potes 800ml Travas Laterais hermeticas - Livres de BPA Alimentos organiza congelador - KAZIVA;casa-e-cozinha;29.9;;;;;;;;nao;nao;Unipack;148;sim;2026-10-05
+8KpyuxlpcL;Faca Para Churrasco Profissional Luxo Personalizado Seu time;casa-e-cozinha;58.88;;;;;;;;nao;nao;Kumiori shopping;8mil+;sim;2026-10-05
+7ptiK2njdI;Capa de Cobrir Moto em Couro Forrada Impermeável Anti-Uv Protetora Anti-Risco;automotivo;40.9;;;;;;;;nao;nao;MAR.KIO ECOMMERCE;100mil+;sim;2026-10-05
+80D8WEpzsQ;Camiseta Jesus Vive Deus Prioridade Moda Evangélica Camisa 100% Algodão Blessed;moda-feminina;27.9;;;;;;;;nao;nao;OsloCloset;5mil+;sim;2026-10-05
+8V9P7GlCHM;Calcinha de Emagrecimento / Cinta Modeladora / Roupa Íntima / Afina a Barriga Leggings Calça Feminina 2024;moda-feminina;27.99;;;;;;;;nao;nao;PANDA  BOUTIQUE;60mil+;sim;2026-10-05
+1BMoNgG0iq;Eudora Siàge Liso Intenso kit;beleza;64.99;;;;;;;;nao;nao;kellyperfumaria000;21;sim;2026-10-05
+5Asx94D6eD;Kit com 10 Cuecas Boxer Masculina Microfibra com Forro 100% Algodão ou 5 Cueca Masculino;moda-masculina;28.9;;;;;;;;nao;nao;Lojas_Zilck;10mil+;sim;2026-10-05
+7VGrvQp0IF;Kit Conjunto 19 Pçs De Utensílios Facas Silicone e Plástico Cozinha Jogo Completo Batedeira Colher Pegador;eletrodomesticos;55.97;;;;;;;;nao;nao;Stephany Top;90mil+;sim;2026-10-05
+80D8WH2Ju6;Kit com 10 Cuecas Boxer Masculina Microfibra Adulto Forro 100% Algodão Cueca Box Masculino Roupa Íntima Coeca;moda-masculina;48.9;;;;;;;;nao;nao;Lojas_Zilck;20mil+;sim;2026-10-05
+9zyCtzgIJn;Prateleira para Banheiro de Metal Adesiva sem Furo, Rack de Parede Porta Shampoo e Sabonete, Organizador Box 1 a 4 Pçs;casa-e-cozinha;10.99;;;;;;;;nao;nao;MANGO-SHOP;100mil+;sim;2026-10-05
+5q8dwP7oD0;Eudora Siàge Hair-Plastia;beleza;64.99;;;;;;;;nao;nao;kellyperfumaria000;7;sim;2026-10-05
+1LgEa6CToc;Mesa Dobrável Metal Portátil Camping Praia Multiuso Piquenique Alumínio 50x53 Bolsa Bege;casa-e-decoracao;79.89;;;;;;;;nao;nao;MTEFULL;478;sim;2026-10-05
+8fSpJXlN1f;Massageador de Pescoço e Ombros Portátil 3D Com Calor Relaxante Massagem Profunda;saude;103.99;;;;;;;;nao;nao;SHR STORE;41;sim;2026-10-05
+3B7slOKihd;Esponja Com Pegador 22X10,5X5,5CM Para Carros Luva Microfibra Para Lavar Limpeza Acessorio Altomotivo Top Estilo;casa-e-cozinha;21.57;;;;;;;;nao;nao;TICK TACK;8mil+;sim;2026-10-05
+7Ae1Wk5UbJ;Kit calças jeans masculina skinny com elastano original direto da fabrica NF;moda-masculina;115.99;;;;;;;;nao;nao;Omg Denim;5mil+;sim;2026-10-05
+4VdGLo3Jy5;Vestido Longo Com FORO e BOJO, Feminino Com manga Variados super confortáveis e leves qualidade e durabilidade;moda-feminina;85.99;;;;;;;;nao;nao;villcamodaoficial;1mil+;sim;2026-10-05
+905fi9k6Lh;Kit 5 Tigelas de Vidro RedondasTampas Herméticas Potes Cozinha e Armazenamento;casa-e-cozinha;23.66;;;;;;;;nao;nao;Bhz Store ltda;824;sim;2026-10-05
+BUHBxGvBX;Calça Legging Levanta Bumbum Feminina Cós Alto Academia Fitness Modeladora Confortável Praia Hot;moda-feminina;42.38;;;;;;;;nao;nao;Toque_De_CharmeStore;9mil+;sim;2026-10-05
+5VVnXixQRq;Varal Alumínio Reforçado Retrátil  De Parede Para Roupas Suporta Até 80kg;casa-e-decoracao;56.9;;;;;;;;nao;nao;CASAS ROMEIRO;189;sim;2026-10-05
+1LgEZivRNf;Conjunto Suplex Feminino Top e Short Cintura Alta - Cinza e Preto Treino e Academia;moda-feminina;79.9;;;;;;;;nao;nao;LS FITNESS;154;sim;2026-10-05
+4qG6kWz9j0;kit com 10 Calcinha infantil Kids;infantil;22.9;;;;;;;;nao;nao;Dejuule Modas;90mil+;sim;2026-10-05
+8pmFVnz9DL;Jogo Taças Vidro 340Ml Diamond Bico Jaca Abacaxi Conjunto Taça Para Água Vinho Tinto Suco Diamante;casa-e-cozinha;19.89;;;;;;;;nao;nao;Larsul;6mil+;sim;2026-10-05
+1gJ4ybE6im;Batedor Misturador Mixer Elétrico para Bebidas Leite Café Clara de Ovo 2 em 1;eletrodomesticos;18.99;;;;;;;;nao;nao;Isabela Top;200mil+;sim;2026-10-05
+5LCNLU9iCq;Panela Pipoqueira Alumínio Color N°20 4 Litros Com Tampa de Vidro (pipoqueira panela);eletrodomesticos;55.99;;;;;;;;nao;nao;Alumínio AMJ;4mil+;sim;2026-10-05
+5Asx98xt21;Jogo De Frigideira Rotoprint Antiaderente 3 Peças;casa-e-cozinha;50.6;;;;;;;;nao;nao;Casa Nova Alumínios;30mil+;sim;2026-10-05
+gQXmqFpGM;Espuma Spray Zip Clean 300ml Limpa a Seco Sofá, Estofado, Banco de Carro Limpeza Profunda;automotivo;17.19;;;;;;;;nao;nao;evolutecommerce;90mil+;sim;2026-10-05
+6fhkvw4dVE;Escorredor Louça 13 Pratos Dois Andares Porta Talheres Copos;casa-e-cozinha;43.9;;;;;;;;nao;nao;Sophia.Shops;7mil+;sim;2026-10-05
+7ptiK50C8R;Lixa Esfoliadora Elétrica de Pés Tira Calos Portátil USB Pedicure Rápido Indolor Para Pés Lisos;eletronicos;19;;;;;;;;nao;nao;Ultralar Shop;1mil+;sim;2026-10-05
+8V9P7Em0Me;Massageador De Pele Firmeza Pescoço Led Massageador Portátil Beleza para Rosto e Pescoço;saude;27.99;;;;;;;;nao;nao;SLX OFFICIAL STORE;8mil+;sim;2026-10-05
+3g49MQG3bG;Kit 2 Em 1 Esmerilhadeira portátil 21V Chave de Impacto + Parafusadeira Impacto Angular e caixa 2 baterias;ferramentas;459;;;;;;;;nao;nao;MITU COMERCIO;51;sim;2026-10-05
+2qV2Mp7Zr4;Manta Cobertor Microfibra Casal Queen Super Quentinha Toque Macio Cereja Habitat;casa-e-decoracao;54.89;;;;;;;;nao;nao;Fonte Boa Casa;5mil+;sim;2026-10-05
+80D8WLn6HG;DESINFETANTE HERBAL PET CONCENTRADO 1L ELIMINA ODOR XIXI BACTERICIDA;pet;27.99;;;;;;;;nao;nao;MANIAPLAST;30mil+;sim;2026-10-05
+4B0PxJ1h3v;ZERO FRIZZ | Kit Rotina Diária | 2 Toucas dupla face + 3 xuxinhas > escolha sua cor preferida;beleza;39.99;;;;;;;;nao;nao;Zero Frizz;47;sim;2026-10-05
+80D8WLn6IJ;Ração para Cachorro Filhote Energy Dog Premium Mix 10,1kg Todas as Raças;pet;75.89;;;;;;;;nao;nao;CenterNutriPet;2mil+;sim;2026-10-05
+4fwgY72gdC;Kit 4 Toalhas - Banho Felpudas Ultra Macias 100% Algodão Puro 1,30x65cm Conforto e Qualidade;casa-e-decoracao;97.9;;;;;;;;nao;nao;DkxHome;2mil+;sim;2026-10-05
+905fiBjIFM;Fone Bluetooth Sem Fio De Ouvido  P9 TWS Macaron Headphone Fone de Ouvido  Envio Imediato;eletronicos;22.99;;;;;;;;nao;nao;lojamegas;100mil+;sim;2026-10-05
+9KiW6ixFCU;Novo Guarda Chuva Automático Alta Resistência a Chuvas e Vento Forte Com Proteção UV;camping-viagem;26.49;;;;;;;;nao;nao;FELIZ SHOP;100mil+;sim;2026-10-05
+LnhOGGHqW;SHORT CINTA MODELADOR ORIGINAL 4 Barbatanas Alta Compressão Não Enrola Empina Bumbum Plus Size;moda-feminina;38;;;;;;;;nao;nao;AKAPE CLOTHING;70mil+;sim;2026-10-05
+4fwgYGCFYZ;Revestimento Ripado Autocolante de EVA Flexivel Rolo;casa-e-decoracao;35.9;;;;;;;;nao;nao;RS Smart Home;100mil+;sim;2026-10-05
+6AlUKrwyaM;Fogão Elétrico Cooktop 2 bocas Indução Portátil 127v 220v Fogareiro Camping Linha Premium;eletrodomesticos;53.47;;;;;;;;nao;nao;UtiliMais Store;2mil+;sim;2026-10-05
+7KxRj7pddC;Percarbonato de Sódio 100% Puro Limpeza Em Geral Tira Manchas Roupas Brancas 500g/1kg /2kg;casa-e-cozinha;10;;;;;;;;nao;nao;Encanto de Beleza;400mil+;sim;2026-10-05
+4qG6kWz9hz;Kit Facial Kokeshi Completo 3 Passos Hidratação e Colágeno;beleza;59.9;;;;;;;;nao;nao;KOKESHI OFICIAL;50mil+;sim;2026-10-05
+qjxzDQqLR;Camiseta Masculina Leão Cristão Gospel Casual Estampa Cruz Algodão Premium;moda-feminina;26.9;;;;;;;;nao;nao;EvolutUrban®;2mil+;sim;2026-10-05
+4fwgY9F0f8;Mesa Portátil para Notebook Home Office;eletronicos;39.98;;;;;;;;nao;nao;CASA FULL;40mil+;sim;2026-10-05
+2gBcAW8DC3;Vestido Feminino Longo Evangélico Luxo Elegante No Canelado;moda-feminina;54;;;;;;;;nao;nao;ISA BASSI MODAS;10mil+;sim;2026-10-05
+40gzky38VC;Máquina Para Fazer Redonda/Coração/Donuts Waffles Em Forma Rosquinhas Pequena Portátil 350w Mini Elétrico110V e 220V;casa-e-cozinha;49;;;;;;;;nao;nao;Rio Shop Bazar;1mil+;sim;2026-10-05
+4fwgYC0b8F;Carregador Portátil Mini Power Bank 10000mAh Com 02 Saídas Tipo-C / Lightning;eletronicos;31.99;;;;;;;;nao;nao;XQW - ELETRÔNICOS E VARIEDADES;20mil+;sim;2026-10-05
+LnhO9JBPd;Carregador Portátil Mini Power Bank 10000mAh Com 02 Saídas Tipo-C / Lightning;eletronicos;31.99;;;;;;;;nao;nao;SHR ELETRONICOS;10mil+;sim;2026-10-05
+1LgEa8OwKi;Calça Feminina Pantalona Wide Leg Duna com Botão | TAMANHO: P / M / G / GG;calcados;39.9;;;;;;;;nao;nao;Alestylemodas;70mil+;sim;2026-10-05
+2VsByHKUwq;Chaleira Elétrica Jarra Café Chá Inox 110v;eletrodomesticos;44.9;;;;;;;;nao;nao;SELLNEEDS;100mil+;sim;2026-10-05
+4fwgYC0b9G;Tapete Passadeira Corredor Quarto Sala Felpudo Várias Cores E Tamanhos;casa-e-decoracao;12.9;;;;;;;;nao;nao;STYLLO CASA ENXOVAIS;40mil+;sim;2026-10-05
+4LJq9XGHKy;Kit de Ferramentas 46 Peças com Catraca Soquete – Maleta Portátil – Ideal para Reparos Domésticos MN;ferramentas;27.9;;;;;;;;nao;nao;MANIA UTILIDADES E AFINS LTDA;1mil+;sim;2026-10-05
+BUHBqJokc;Ventilador com Luminária Bivolt com Controle Remoto;eletronicos;49.9;;;;;;;;nao;nao;QueroObra;8mil+;sim;2026-10-05
+1BMoNpPZfX;Kit Colcha Cobre Leito Luxo Matelado Casal Padrão,Queen,Solteiro,King MELHOR CUSTO BENEFÍCIO;casa-e-decoracao;37.48;;;;;;;;nao;nao;Filimar Confecções;20mil+;sim;2026-10-05
+7Ae1Wmr553;KIT 12 Peças de Utensílios Para Cozinha em Silicone e Bambu;casa-e-cozinha;29.99;;;;;;;;nao;nao;Isabela Top;60mil+;sim;2026-10-05
+6VOKjd5Gq3;Kit C/5 Calcinha Fio Dental Fio Duplo Calcinha Feminina Lingerie Sensual;moda-feminina;32.8;;;;;;;;nao;nao;Daffine.Oficial;50mil+;sim;2026-10-05
+9pemhdvLBZ;Balança Digital De Vidro até 180Kg Portátil Corporal;eletronicos;30.93;;;;;;;;nao;nao;SELLNEEDS;50mil+;sim;2026-10-05
+9zyCtuiNok;Camiseta Masculina Jesus Cristão Religiosa Igreja - Algodão Premium;moda-feminina;19.9;;;;;;;;nao;nao;Waves Oficial;3mil+;sim;2026-10-05
+8V9P7GlCGL;Quadro Decorativo Religioso Leão de Judá Salmos 91 Bíblia Fé Sala Quarto;casa-e-decoracao;19.98;;;;;;;;nao;nao;Fernandes_Decors;1mil+;sim;2026-10-05
+7ptiJy2xFV;Cozedor De Ovos Portátil Elétrico Cozinha A Vapor 110v/220v;eletrodomesticos;29.98;;;;;;;;nao;nao;PENGFA TECH LTDA;100mil+;sim;2026-10-05
+4B0PxC4ae3;Kit 2 Calça Alfaiataria PREMIUM Cintura Alta Com Bolso PROMOÇÃO;moda-feminina;34.9;;;;;;;;nao;nao;Prime Modas Variedades;3mil+;sim;2026-10-05
+3g49MM4PA9;Calça Pantalona Feminina Cintura Alta  Com Bolso Tecido Duna;moda-feminina;29.9;;;;;;;;nao;nao;ElisJeans;100mil+;sim;2026-10-05
+20vvNK9wSg;Kit 10 Petisqueira Barquinha Canoa Petiscos Churrasco Festa Frios Para Servir Amendoim Caldo Branca;casa-e-cozinha;19.94;;;;;;;;nao;nao;A T E N A S;100mil+;sim;2026-10-05
+20vvNIAkYU;Carregador de bateria automotivo inteligente 12 V - Display Digital Automático Energia Reparação Puls;automotivo;48.39;;;;;;;;nao;nao;JX VERDE;10mil+;sim;2026-10-05
+80D8WNzYnc;sandália ortopédica femenina com elástico calce fácil Antiderrapante;calcados;29.99;;;;;;;;nao;nao;CALÇADOS YONDO;5mil+;sim;2026-10-05
+70KbKY3MpK;Cafeteira Philco 15 Cafezinhos 600ml 550W PCFE01;eletrodomesticos;139.9;;;;;;;;nao;nao;Philco Oficial;40mil+;sim;2026-10-05
+4qG6kUzxoJ;Shorts de Exercício Sem Costura de Cintura Alta Cinza para Mulheres, Uso Diário;moda-feminina;45;;;;;;;;nao;nao;MAURICIO VARIEDADES;0;sim;2026-10-05
+5VVnXdzVxD;Aspirador De Pó Usb Portátil Completo Linha Premium Carro E Casa 6000PA;automotivo;30.99;;;;;;;;nao;nao;P&H  Oficial;1mil+;sim;2026-10-05
+3qNZYa5rK9;Balança Corporal Bioimpedância Profissional Bluetooth;eletronicos;29.06;;;;;;;;nao;nao;ZSZ_SHOP;10mil+;sim;2026-10-05
+4LJq9c13iu;Calça Legging Flare Flanelada Leg Boca De Sino Bailarina Grossa Zero Transparência;moda-masculina;34.99;;;;;;;;nao;nao;OxeanJeans;100mil+;sim;2026-10-05
+3B7slVHxcF;Grelha Para Carne Churrasco 32 Cm 27 Cm 22 Cm Pedra Sabão Com Rechaud Fogareiro;casa-e-cozinha;129.9;;;;;;;;nao;nao;Arte Pedra;2mil+;sim;2026-10-05
+9KiW6gkvAY;Camiseta Unissex Algodão Gospel Cristã Jesus Salva;moda-feminina;29.67;;;;;;;;nao;nao;Kams Oficial;1mil+;sim;2026-10-05
+4qG6kSENKB;Meia-Calça Térmica Feminina Peluciada Translúcida Alta Elasticidade Super Quente Para Inverno;casa-e-cozinha;26.99;;;;;;;;nao;nao;Conforto em Casa BR;80mil+;sim;2026-10-05
+2qV2Mp7Zs7;Mop Spray Com Reservatório Esfregão Vassoura Mágica;casa-e-cozinha;39.99;;;;;;;;nao;nao;SELLNEEDS;20mil+;sim;2026-10-05
+30oSZ3920u;I12s tws/ I13/ PRO 4 Fone de ouvido Sem Fio Portátil 5.0 FoneBbluetooth;eletronicos;19.99;;;;;;;;nao;nao;SUPER CHETO;50mil+;sim;2026-10-05
+8pmFVlmpBf;40 Peças / 46 Peças Jogo De Chave Catraca Caixa De Ferramentas para Reparo de Carros / Conjuntos de Chaves;ferramentas;28.99;;;;;;;;nao;nao;RISESHOP_brasil;400mil+;sim;2026-10-05
+8V9P7C0PtB;Árvore De Natal Pinheiro 210cm 600 Galhos Cheia Premium Verde;casa-e-decoracao;54.9;;;;;;;;nao;nao;U-Tensils2;9mil+;sim;2026-10-05
+gQXmnUEnV;Kit Skincare Vitamina C Clareador e Anti-idade - Dermachem;saude;48.3;;;;;;;;nao;nao;Lemmi Store;10mil+;sim;2026-10-05
+qjxzBENpb;Jogo de Lençol 400 Fios Extra Macio c/ Fronhas Ponto Palito Berço Solteiro Casal Queen King 02 e 03 Peças;casa-e-decoracao;12.5;;;;;;;;nao;nao;Nosso Lar Enxovais;1mi+;sim;2026-10-05
+2VsByANG3x;Kit de Calcinhas Fio Duplo Levanta Bumbum Fio Dental Confortável Forro em Algodão Sensual;moda-feminina;28.9;;;;;;;;nao;nao;Lumen Lingerie;30mil+;sim;2026-10-05
+9pemhbj18a;Utensílios Silicone Cozinha Antiaderente Fácil Limpeza Alta Resistência;casa-e-cozinha;18.61;;;;;;;;nao;nao;sprochow;3mil+;sim;2026-10-05
+gQXmnUEmU;Kit Body Splash Feminino Arabe 60ml Shakan Coroa Amber Sereia Rubi Ametysta Presente Bolsa Ambarados;moda-feminina;15.89;;;;;;;;nao;nao;Cosmetic.Plus;2mil+;sim;2026-10-05
+1gJ4ydQQki;Tapete Passadeira Vários Tamanhos Corredor Quarto Sala Beira de Cama Felpudo Peludo;casa-e-decoracao;12.9;;;;;;;;nao;nao;STYLLO CASA ENXOVAIS;80mil+;sim;2026-10-05
+qjxz4HHPr;Kit Calça Jeans Skinny Masculina Com Lycra Estica Muito Nf super promoção;moda-masculina;59.99;;;;;;;;nao;nao;DENIM&CO.;10mil+;sim;2026-10-05
+qjxz6TbSW;Kits de Meias Soquete Unissex Premium Masculina e Feminina;calcados;9.9;;;;;;;;nao;nao;SHERON OUTLET;10mil+;sim;2026-10-05
+20vvNFPA4s;Espelho Orgânico 120X50cm e 95x40cm Lapidado Moderno Grande Forms C/ SUPORTE ou LED TOUCH (FORM SUPORTE) OU LED;eletronicos;79.99;;;;;;;;nao;nao;AGUNBAGUM;10mil+;sim;2026-10-05
+6q1B886lGE;Fone Bluetooth Gamer Jogos E-sports Fone de ouvido sem fio Academia Corrida treino Dual Pro Tws;eletronicos;43.9;;;;;;;;nao;nao;HOME BLESS;1mil+;sim;2026-10-05
+2VsBxrr00m;INOVA fone sem fio bluetooth original fone iphone e Android sem fio headset gamer earpods microfone;eletronicos;56.9;;;;;;;;nao;nao;INOVA MALL.001;10mil+;sim;2026-10-05
+2BFLZYOWku;Suporte Suspenso de Parede para Monitor,Computador ou Notebook, com Gaveta para teclado e mouse;eletronicos;79.99;;;;;;;;nao;nao;Virtude Móveis;6mil+;sim;2026-10-05
+7Ae1Wmr540;Capa Para Colchão Impermeavel Matelado Com Elastico;casa-e-decoracao;13.9;;;;;;;;nao;nao;Icasa Ibitinga;900mil+;sim;2026-10-05
+6L4uXHtRg9;Kit 2 Shorts Alfaiataria Feminina Social Cintura Alta Disfarça Barriga;moda-feminina;34.8;;;;;;;;nao;nao;Ph Modas;40mil+;sim;2026-10-05
+9AP5uPxsXN;Arranjo c/ 3 Trepadeira Folha de HERA + Vaso Trançado Marrom;casa-e-decoracao;16.99;;;;;;;;nao;nao;SATO WORLD;80mil+;sim;2026-10-05
+70KbKOtnuK;Marmita Elétrica Térmica Bivolt Portátil 1,5L Ideal Para Trabalho e Viagem Quentinho Sempre;casa-e-cozinha;61.98;;;;;;;;nao;nao;Pava Universo;46;sim;2026-10-05
+4VdGLv0QNx;kit 21 potes para cozinha;casa-e-cozinha;39.98;;;;;;;;nao;nao;OLIPLAST DECOR;7mil+;sim;2026-10-05
+1VzemROIyk;Espelho Redondo Decorativo Adnet Alça Couro Suporte 60cm Sala Quarto Banheiro;casa-e-decoracao;22.9;;;;;;;;nao;nao;Eddias Home;200mil+;sim;2026-10-05
+8AWYia1gZ9;Escova secador Modeladora Taiff Oval Easy Pink Original;beleza;149;;;;;;;;nao;nao;Beleza Renovada Oficial;7mil+;sim;2026-10-05
+7KxRj34rGQ;Bolsa Sacola Feminina de Ombro Grande Dia a Dia espaçosa Elegante para Trabalho Praia;moda-feminina;23.45;;;;;;;;nao;nao;"D""MELLO BRASIL";40mil+;sim;2026-10-05
+5VVnXn94su;KIT 6 Toalhas Lyra (3 Banho + 3 Rosto) 100% Algodão - Majo Home.;casa-e-decoracao;54.8;;;;;;;;nao;nao;MaJo Home;4mil+;sim;2026-10-05
+7faI7crGYW;Filtro Coador Inox Reutilizável 103 Premium Dispensa Papel Café Mais Forte e Sustentável;casa-e-cozinha;27.9;;;;;;;;nao;nao;baruchcommerce;70mil+;sim;2026-10-05
+9AP5uUievQ;Mini Processador De Alimentos Elétrico Turbo Triturador Alho Cebola Legumes Compacto Prático - Kian;eletrodomesticos;99.9;;;;;;;;nao;nao;QueroObra;5mil+;sim;2026-10-05
+1gJ4ygC1DR;1 Afiador Amolador De Facas Em Aço Inox Com 3 Borda Profissional Base Emborrachado Promoção;casa-e-cozinha;13.99;;;;;;;;nao;nao;P&H  Oficial;60mil+;sim;2026-10-05
+4LJq9eDWFa;1/2/5 Suporte De Parede Multifuncional Caixa De Armazenamento Casa Para Carregar Remoto Um Slot Organizadores para Casa;casa-e-cozinha;9.8;;;;;;;;nao;nao;P&H  Oficial;100mil+;sim;2026-10-05
+7Ae1WhtAZN;Escova Anti-Pelo para Gatos e Cães – Remove Pelos Soltos + Massageia com Conforto - SHEFA;pet;14.9;;;;;;;;nao;nao;yofiecommerce;10mil+;sim;2026-10-05
+6fhkvmv4aI;QUEIMA DE ESTOQUE - Mesa de Jantar Quadrada Industrial – Design de Madeira p/ 4 Lugares;casa-e-decoracao;180.45;;;;;;;;nao;nao;decorexpress521;589;sim;2026-10-05
+7faI7hpB33;Bermuda Modeladora Anágua Cinta Short Feminino Modelador Alta Compressão Reduz Medidas pos parto;moda-feminina;20.96;;;;;;;;nao;nao;NM LINGERIE;100mil+;sim;2026-10-05
+BUHBqJolf;kit calças jeans masculina com lycra skinny confortavel para o dia dia  Original promoção;moda-masculina;69.99;;;;;;;;nao;nao;DENIM&CO.;3mil+;sim;2026-10-05
+9fLMVIjeUa;Cozedor De Ovos Elétrico 110V Para 7 Ovos Com Desligamento Automático Tampa Transparente Cozinha Saudável e Praticidade;eletrodomesticos;42.9;;;;;;;;nao;nao;Kluvon;1mil+;sim;2026-10-05
+LnhOISkLN;Cobertor Manta Casal Macio 2,00X1,80 Microfibra Liso Estampado Preço Baixo;casa-e-decoracao;29.9;;;;;;;;nao;nao;Lorena Decorações;1mil+;sim;2026-10-05
+9AP5uSjT0i;Espremedor Elétrico Laranja Limão Frutas Fazer Sucos Recarregável usb;eletronicos;61.98;;;;;;;;nao;nao;SZFG1.br;5mil+;sim;2026-10-05
+1LgEZzFNOk;Fatiador de cozinha multifuncional profissional em aço inoxidável 16 em 1/3 em 1  fatiador de vegetais/frutas/legumes;casa-e-cozinha;26.99;;;;;;;;nao;nao;TXB TECH LTDA;10mil+;sim;2026-10-05
+3LRIxf7lL4;Escova Pet Secadora Elétrica para Secar e Remover Pelos de Gato e Cachorro Envio Rápido 110V;pet;43.99;;;;;;;;nao;nao;JIMMY.STORE;4mil+;sim;2026-10-05
+7KxRj34rFP;Cozedor de Ovos Elétrico Portátil Cozinha à Vapor 110V/220V Cores disponíveis （Branco Azul Rosa Amarelo）;eletrodomesticos;29.98;;;;;;;;nao;nao;PENGFA TECH LTDA;50mil+;sim;2026-10-05
+1AqzXKS5b;Kit 2 Shorts Masculino Kong 2 em 1 com Compressão, Bolso para Celular e Tecido Dry Fit;moda-masculina;66.9;;;;;;;;nao;nao;VinitexStore;80mil+;sim;2026-10-05
+1VzemNCeYQ;Conjunto Short Duplo+Top Alcinha Com Bojo Para Treinos Esportivos No Geral;moda-feminina;98;;;;;;;;nao;nao;Tangerina Moda Fitness;1mil+;sim;2026-10-05
+9KiW6lipfj;Bolsa Térmica De Grande Capacidade De Alta Qualidade Adequada Para Viagens De Piquenique Na Praia;casa-e-cozinha;25.9;;;;;;;;nao;nao;Moda Monkey Store;90mil+;sim;2026-10-05
+3g49MM4PBA;Kit 10, 5 Cueca Masculina Box Adulto Microfibra Forro 100% Algodão Cores Variadas;moda-masculina;27.8;;;;;;;;nao;nao;WPM Moda Íntima;60mil+;sim;2026-10-05
+40gzkt5Dz0;Kit 4 Blusas Feminina Ribana Canelado Básica Casual Estilosa Tendência Verão;moda-feminina;68.4;;;;;;;;nao;nao;Sobody Oficial;841;sim;2026-10-05
+AKb3IWh78m;Branco/Azul/Rosa/Roxo/Verde Bomba Elétrica Filtro 20L Para Galão De Água Bebedor Eletrico De Agua Com Carregamento Usb;eletronicos;19.59;;;;;;;;nao;nao;INFINITY COMERCIO DE VARIEDADES;100mil+;sim;2026-10-05
+3g49MH6Uf6;Pipoqueira Elétrica Popcorn Maker 110V  Pipoca Sem Óleo;eletrodomesticos;66.82;;;;;;;;nao;nao;3XZ STORE;8mil+;sim;2026-10-05
+9zyCtwuhqg;Conjunto Feminino Luxo Calça e Blusa;moda-feminina;79.99;;;;;;;;nao;nao;Donatella Collection;10mil+;sim;2026-10-05
+5Asx96yh7I;Mop Giratório 360 Cabo 140cm Balde Centrífuga Cesto Inox 14L 2 Refis Microfibra Esfregão Spin;eletronicos;69.9;;;;;;;;nao;nao;baruchcommerce;20mil+;sim;2026-10-05
+9zyCtuiNnj;Shorts Saída de Praia Feminino  Tricot Cos Alto Cordão Transpassado Moda Verão;moda-feminina;28.9;;;;;;;;nao;nao;MALHAS IPANEMA;10mil+;sim;2026-10-05
+4B0PxLE9aX;Máquina Fazer Iogurte Natural Grego Iogurteira Elétrica 1Litro;eletrodomesticos;79.9;;;;;;;;nao;nao;Variedades Importss;670;sim;2026-10-05
+AUuTUpgTnp;Aspirador de Pó Doméstico 3 em 1 Sem Fio Limpeza Sucção USB;eletronicos;78.59;;;;;;;;nao;nao;SLX 123;9mil+;sim;2026-10-05
+9fLMVKvyWW;Conjunto Feminino Duna Areia Calça Pantalona e Cropped com Bojo Alça Regulável Alfaiataria;moda-feminina;60.84;;;;;;;;nao;nao;NAHELY STORE;10mil+;sim;2026-10-05
+W77aUUs8Q;Frigideira Antiaderente 4 Partes Ovo Hambúrguer;casa-e-cozinha;37.86;;;;;;;;nao;nao;JX VERDE;30mil+;sim;2026-10-05
+9AP5uNlYVh;Shorts Masculino Tactel Praia Academia Treino Corrida Verão Secagem Rápida;moda-feminina;35;;;;;;;;nao;nao;F&A MIX;66;sim;2026-10-05
+AKb3Ibf1dp;KIT 3 Camisetas Blusão Feminino Roupa de Academia Fitness Meninas Super Poderosas Camisa Treino;moda-feminina;27.96;;;;;;;;nao;nao;lecomfort;1mil+;sim;2026-10-05
+113OBSEYaO;Camisola Sexy Com Renda Sem Bojo Costa Nua Sensual Pijama Roupa De Dormi Costas Abertas;moda-feminina;28.9;;;;;;;;nao;nao;LW MODA INTIMA;100mil+;sim;2026-10-05
+30oSZA68Qm;Calça Jeans Feminina Cintura Alta Wide Leg Com Bolso;moda-feminina;69.99;;;;;;;;nao;nao;Joy Jeans;70mil+;sim;2026-10-05
+6q1B8CrXfC;Lavadora Alta Pressão Lav1600 Vonder;eletrodomesticos;341.98;;;;;;;;nao;nao;Deend;20mil+;sim;2026-10-05
+5Asx9BALXc;Short Cinta Modeladora Empina Bumbum Afina E Reduz Medidas Emagrecimento Efeito Lipo Anti Diástase;moda-feminina;19.99;;;;;;;;nao;nao;Max Premium Jeans;10mil+;sim;2026-10-05
+5fpDk68RXz;Kit 3 Body Feminino Suplex Com Forro Manga Curta Liso Basico Bori Roupa Feminina;moda-feminina;50.79;;;;;;;;nao;nao;leh variedades tem tudo aqui;1mil+;sim;2026-10-05
+60S48fuiL4;Vassoura Rodo Escova 3 em 1 Esfregão Ajustável 180º para Limpeza Completa;casa-e-cozinha;17.9;;;;;;;;nao;nao;M5 Company;200;sim;2026-10-05
+7faI7m0pTO;Escova De Limpeza 9 Em 1  Elétrica Giratória Com Cabo Alongador;eletronicos;73.9;;;;;;;;nao;nao;KOBAC SHOP;50mil+;sim;2026-10-05
+3B7slT5V5p;Jaqueta Feminina Corinho Impermeável Importada Forrada Telinha Estilo Motociclista Alpines;automotivo;178.99;;;;;;;;nao;nao;sc_store1;2mil+;sim;2026-10-05
+9AP5uUieuP;Torneira Gourmet Flexível Cozinha Parede Vertical Preto Prata ES;casa-e-cozinha;19;;;;;;;;nao;nao;ES Official Shop;10mil+;sim;2026-10-05
+5fpDjwyscC;Churrasqueira Portátil Desmontável A Carvão Com Grelha Galvanizada Camping Praia Pesca Viagem;camping-viagem;69.9;;;;;;;;nao;nao;COFERMINAS FERRAMENTAS E PARAFUSOS;1mil+;sim;2026-10-05
+5VVnXdzVwA;Espremedor Elétrico Laranja Limão Frutas Fazer Sucos Recarregável Usb Cozinha;eletronicos;61.69;;;;;;;;nao;nao;BIG MO;80mil+;sim;2026-10-05
+5q8dwP7oBz;Kit 3 Legging Feminina Cintura Alta Academia Yoga e Dia a Dia;moda-feminina;119.9;;;;;;;;nao;nao;LS FITNESS;32;sim;2026-10-05
+60S48i7Arx;Kit 2 Viseira Sol Praia Verão Esporte Vôlei Feminina;moda-feminina;42.99;;;;;;;;nao;nao;Y & Y  STORE;192;sim;2026-10-05
+70KbKTriOz;Kit Jornal Pet Higiênico 50/100/150/200 Folhas Biodegradável Atóxico Não Mancha;pet;17.4;;;;;;;;nao;nao;Print Park;60mil+;sim;2026-10-05
+W77aSIY5h;2 Calças Legging com Bolso Lateral Suplex Cós Alto Largo Academia Crossfit Verão Fitness;moda-feminina;35.99;;;;;;;;nao;nao;Saron Essencias do Campo;1mil+;sim;2026-10-05
+2LYllrNtOu;Cooler Multifuncional Super Térmica 32 Litros Casa Praia Camping Viagens Multiuso;casa-e-cozinha;149.9;;;;;;;;nao;nao;UP House Outlet;1mil+;sim;2026-10-05
+4fwgY9F0g9;Arranhador para Gatos Redondo com Bolinha Brinquedo Pet Interativo Relax Antiestress Cat;pet;9.99;;;;;;;;nao;nao;MANIAPLAST;10mil+;sim;2026-10-05
+60S48b9vy2;Calcinha de Emagrecimento / Cinta Modeladora / Roupa Íntima  / Afina a Barriga  Leggings Calça Feminina;moda-feminina;19;;;;;;;;nao;nao;Y&C Fashion;4;sim;2026-10-05
+LnhOBVVTP;400ML 6 Lâminas Espremedor Elétrico Mini Liquidificador Portátil De Suco De Alimentos Misturador Leite;eletrodomesticos;34.2;;;;;;;;nao;nao;zapshop2;20mil+;sim;2026-10-05
+9pemhig7YT;Árvore Natal Verde 150cm 220 Galhos Decoração Natalina Pinheiro Pinheirinho Premium;casa-e-decoracao;54.9;;;;;;;;nao;nao;U-Tensils2;9mil+;sim;2026-10-05
+BUHBsW8oK;Kit 05 Escova Raquete Flex Escova Mágica e Polvo Massageador de Silicone Touca de Cetim Beauty Flash;saude;24.9;;;;;;;;nao;nao;Trissé Acessórios;30mil+;sim;2026-10-05
+2gBcATMciY;"Torneira em Metal /abs Preta Cozinha parede Filtro Purificador 1/2""ou 3/4'' CORPO PRETO TPM";eletrodomesticos;78.99;;;;;;;;nao;nao;HOLLYWOOD METAIS;638;sim;2026-10-05
+7faI7crGXV;Kit 5 Lencois Microfibra Solteiro 90x200x25cm Avulso com Elástico na Borda Macio Confortavel Diario;casa-e-decoracao;65.68;;;;;;;;nao;nao;A.L Cama, Mesa e Banho;200;sim;2026-10-05
+2VsByF82Rl;Fone de Ouvido de Capacete Moto Bluetooth Controle De Voz microfone para moto intercomunicador;automotivo;38.99;;;;;;;;nao;nao;Booksy official Store;30mil+;sim;2026-10-05
+3VkjA54EPr;Kit 10/6 Brinquedos Mordedores Cachorro Filhote Anti-stress Pet Ranger os dentes Limpeza da boca;pet;23.91;;;;;;;;nao;nao;OtimoLegal;20mil+;sim;2026-10-05
+1BMoNgG0jt;Conjunto Academia Calça e Top Bicolor Fitness Academia Feminina Suplex Premium Zero Transparência;moda-feminina;74.9;;;;;;;;nao;nao;AB FIT MODA;10mil+;sim;2026-10-05
+1LgEa8OwJj;Conjunto Potes de Vidro com Tampa Bambu Cristal Porta Mantimentos Cozinha 3 Peças;casa-e-cozinha;77.7;;;;;;;;nao;nao;Oliveira e Lima;2mil+;sim;2026-10-05
+50ZWwsAyte;KIT 4 Calcinha cinta pala compressão pós parto prende barriga suplex cós;moda-feminina;33.9;;;;;;;;nao;nao;Dejuule Modas;10mil+;sim;2026-10-05
+20vvNIAkXT;Perfume Árabe Sabah Al Ward Original 100ml;beleza;239;;;;;;;;nao;nao;BK Perfumaria e Cosméticos;209;sim;2026-10-05
+3LRIxhK5Mk;Kit 2 Short Feminino Alfaiataria Social com dois Cinto Cintura Alta PROMOÇÃO;moda-feminina;36.9;;;;;;;;nao;nao;NFT MODAS;10mil+;sim;2026-10-05
+70KbKTriQ0;Caneta de Sobrancelha Fio a Fio 4 Pontas Microblading À Prova D'Água Preenche Falhas Natural;beleza;9.99;;;;;;;;nao;nao;Vallene Beauty Co.;70mil+;sim;2026-10-05
+8V9P79o5qS;Bicicleta Bike Ergometrica Spinning Academia Fitness Profissional 120kg;fitness;469.99;;;;;;;;nao;nao;SINBER OFICIAL;50mil+;sim;2026-10-05
+W77abS70O;Garrafa Inox Térmica Com Capinha Protetora De Silicone Antiderrapante;casa-e-cozinha;31.99;;;;;;;;nao;nao;XQW - ELETRÔNICOS E VARIEDADES;9mil+;sim;2026-10-05
+7VGrvOpoO2;Kit Placa Pix Personalizada Qr Code + Placa Campainha Identificação Balcão Acrílico Espelhado;casa-e-decoracao;29.9;;;;;;;;nao;nao;Laser JC;44;sim;2026-10-05
+8fSpJZkYwN;Kit 4 Body Splash victoria Lançamento Vanilla love speel pure seduction coconut;moda-feminina;27.9;;;;;;;;nao;nao;Cosmetic.Plus;2mil+;sim;2026-10-05
+20vvNDCq2w;Porta Retrato Família MDF De Parede 7 Fotos Galhos Decorativo;casa-e-decoracao;21.99;;;;;;;;nao;nao;STUDIO DECOR COMERCIO;379;sim;2026-10-05
+BUHBsW8nL;Kit 5 Calcinha Pala Dupla Premium Segura Barriga Confortável Reforçada Lingerie;moda-feminina;35.99;;;;;;;;nao;nao;Mowdarte Lingerie;3mil+;sim;2026-10-05
+2gBcAaJrd6;Body Sprayfeminino Desodorante 100ml Lyra Imensi Magnific La Victorie Eudora Roxo Original;casa-e-cozinha;69.99;;;;;;;;nao;nao;Noa Multimarcas;837;sim;2026-10-05
+1AqzcIMbH;Chinelo feminino confortável de dedo com correias detalhe nó de brilho strass Luxo bico quadrado;calcados;29.99;;;;;;;;nao;nao;Dona Cota GLOW;1mil+;sim;2026-10-05
+1gJ4ydQQln;Mangueira Jardim Reforçada Trançada Completa 05/10/15/20/25/30/35/50 Metros;casa-e-cozinha;16.9;;;;;;;;nao;nao;LK ECOM;100mil+;sim;2026-10-05
+3VkjA7GgvC;Kit 4 Cuecas Boxer Polostar Lisa Microfibra Masculina Sem Costura;moda-masculina;57.9;;;;;;;;nao;nao;UP UNDERWEAR;10mil+;sim;2026-10-05
+2VsBy8Aw21;Calça Pantalona Alfaiataria Premium Com Bolso PROMOÇÃO;moda-feminina;19.9;;;;;;;;nao;nao;Prime Modas Variedades;3mil+;sim;2026-10-05
+AKb3IYtRAi;Conjuntos Lingerie Feminino de Renda Sexy Caleçon e Sutiã Sem Bojo Conjunto Espera Marido;moda-feminina;15.9;;;;;;;;nao;nao;Mundo Intimo;20mil+;sim;2026-10-05
+9V1wJ6hOER;Eudora Siàge Nutri Rosé;beleza;64.99;;;;;;;;nao;nao;kellyperfumaria000;46;sim;2026-10-05
+50ZWwpyWMy;Piscina de plástico Borda Inflável 1000 Litros Pixlar;camping-viagem;147.8;;;;;;;;nao;nao;WoxxerBikes;571;sim;2026-10-05
+1BMoNiSKmc;Lixeira Banheiro Inox Pedal Cozinha + Escova Sanitária Inox Com Suporte Ou Opções Avulsos;casa-e-cozinha;29.9;;;;;;;;nao;nao;dkings;3mil+;sim;2026-10-05
+8pmFVlmpAc;Fritadeira Sem Óleo Elétrica Air Fryer Asus 3,5 Litros 1400w Airfryer;eletrodomesticos;199.99;;;;;;;;nao;nao;QueroObra;47;sim;2026-10-05
+1qcVAzBNtV;Jogo Lençol Casal e Queen Kit 3 Peças, Solteiro 2 Peças Lençol Com Elástico e Fronhas Estampa Sortidas Promoções !!;casa-e-decoracao;25.9;;;;;;;;nao;nao;Lorena Decorações;4mil+;sim;2026-10-05
+9V1wJ1wbrX;Kit Utensílios de Cozinha Silicone Cabo Madeira Resistente Calor Espátula Colher Antiaderente 4 5 ou 12 Peças;eletronicos;18.61;;;;;;;;nao;nao;baruchcommerce;3mil+;sim;2026-10-05
+7VGrvJrtsU;Kit 6 Forma de Silicone para Fritadeira Air Fryer com Alça Antiaderente Cozinha Forma de Airfryer Silicone 6 Tamanhos;casa-e-cozinha;14.9;;;;;;;;nao;nao;Rio Shop Bazar;9mil+;sim;2026-10-05
+2BFLZWCChz;KIT 3 Blusas Feminina Manga Longa Cacharrel Confortável Básico Gola Alta;moda-feminina;44.56;;;;;;;;nao;nao;WM FASHION;40mil+;sim;2026-10-05
+BUHBvHjHL;Trio de Vasos Cachepot com Suporte Para Cactos ou Suculentas;casa-e-decoracao;37.91;;;;;;;;nao;nao;Prismaa;20mil+;sim;2026-10-05
+5LCNLRxFi3;Kit 5 Peças Utensílios de Cozinha Silicone Colher Espátula Fue Espátula Pequena Pincel;casa-e-cozinha;21.5;;;;;;;;nao;nao;DeinShop;40mil+;sim;2026-10-05
+5Asx98xt32;Camiseta Street Wear Jesus Vive Manfinity Camisa 100% Algodão;moda-feminina;27.35;;;;;;;;nao;nao;OsloCloset;2mil+;sim;2026-10-05
+70KbKVquKD;Conjunto Suplex Feminino Top + Shorts de Cintura Alta Cor Cinza;moda-feminina;44.9;;;;;;;;nao;nao;LS FITNESS;43;sim;2026-10-05
+9V1wJ6hOFS;Percarbonato 100% Puro Tira Manchas Roupas Brancas e Coloridas;casa-e-cozinha;17.9;;;;;;;;nao;nao;Lojas Coisarada;400mil+;sim;2026-10-05
+8V9P79o5rV;Kit 2 Ou 1 Unidade Blusa Feminina Mula Manca Suplex com Forro – Moda Blogueira Conforto e Estilo;moda-feminina;20.5;;;;;;;;nao;nao;LOJA KP MODAS;10mil+;sim;2026-10-05
+4LJq9eDWEX;Kit Dupla Renovadores Faciais Kokeshi Pele Porcelana Olhos Gueixa;beleza;39.9;;;;;;;;nao;nao;KOKESHI OFICIAL;100mil+;sim;2026-10-05
+4B0PxLE9ZW;Calça Jeans Feminina Wide Leg Marmorizada Cintura Alta Empina Bumbum;moda-feminina;59.99;;;;;;;;nao;nao;Premium Jeans Goiania;80mil+;sim;2026-10-05
+2BFLZfLldp;Copo Garrafa Térmica Grande Em Aço Inox Com Alça E Canudo Metal 1200ML;casa-e-cozinha;52.99;;;;;;;;nao;nao;XQW - ELETRÔNICOS E VARIEDADES;4mil+;sim;2026-10-05
+2gBcATMcjZ;Kit Calça de Moletom Algodão unissex com Elástico e Punho Estilo e Conforto;moda-masculina;49.9;;;;;;;;nao;nao;Fox Wear;1mil+;sim;2026-10-05
+1VzemKR46i;Kit 5 Calcinha Box em Microfibra Cueca feminina– Shortinho Confortável, Respirável e com Cintura Média para Uso Diario;moda-feminina;40.27;;;;;;;;nao;nao;Shop N S;20mil+;sim;2026-10-05
+7KxRj0sXDT;Tênis De Placa De Carbono Masculino Feminino Correndo Maratona Leve Respirável 33 – 44;casa-e-decoracao;66.58;;;;;;;;nao;nao;MOISTMOIST;1mil+;sim;2026-10-05
+3LRIxk5fr8;ULTRA HIDRATAÇÃO EFEITO TEIA COM ÓLEOS MARROQUINOS - OURO MARROQUINO - FINA MARIA PROFISSIONAL;beleza;38.9;;;;;;;;nao;nao;Fina Maria Oficial;10mil+;sim;2026-10-05
+905fi4mBqe;Conjunto de Pijamas de Seda 4 Peças Feminino Sexy – Camisa, Regata, Shorts e Calça Longa;moda-feminina;28.99;;;;;;;;nao;nao;joyjoy01.br;216;sim;2026-10-05
+30oSZ5LM2a;Kit 2 Regata Top/cropped Femenina Canelada Forrada Basic Mod;moda-feminina;32;;;;;;;;nao;nao;LBO Confecções;112;sim;2026-10-05
+1VzemNCeZT;TEMI 7pcs Kids Beach Toys Jogo De Praia Balde Pá De Brinquedo;infantil;29;;;;;;;;nao;nao;temitoy.br;245;sim;2026-10-05
+5fpDk68RWw;ROMANTIC CROWN Copo Térmico Inox Portátil 1200ml/600ml/1.2L Garrafa Térmica Inoxidável com Tampa e Canudo;casa-e-cozinha;34.98;;;;;;;;nao;nao;Romantic.Crown.07;100mil+;sim;2026-10-05
+1VzemROIzl;Fio De Fada De 2M Com Luzes De Fadas Led Para Decoração De Casa E Festa De Natal;eletronicos;4.99;;;;;;;;nao;nao;SZFG1.br;3mil+;sim;2026-10-05
+9fLMVNhYzl;Lançamento De Smartwatch Relógio Inteligente Com Tela Infinita E Duas Alças , Estilo Tecnologia Para Homens Mulheres;eletronicos;42.99;;;;;;;;nao;nao;Cc conveniência;10mil+;sim;2026-10-05
+3qNZYf3lpA;Meia Esportiva Socks Antiderrapante Futebol Cano Medio Pro;calcados;18.05;;;;;;;;nao;nao;LBO Confecções;121;sim;2026-10-05
+3B7slOKiig;Novos Fones De Ouvido i12 TWS Sem Fio Bluetooth HiFi Estéreo Com Redução De Ruído ENC À Prova D'água De Longa Duração Ch;eletronicos;13.48;;;;;;;;nao;nao;Choice Oficial;200mil+;sim;2026-10-05
+5Asx94D6fG;Tábua De Corte 304 Aço Inoxidável Antibacteriana À Prova De Mofo 46 cm tábua de cozinha;casa-e-cozinha;24.79;;;;;;;;nao;nao;Zestify.br;80mil+;sim;2026-10-05
+9pemhbj19d;Modelador de Corpo Feminino para Emagrecimento, Cinturão para Treinamento de Cintura, Cinta Modeladora para o Abdômen e;moda-feminina;28.59;;;;;;;;nao;nao;Choice Oficial;20mil+;sim;2026-10-05
+30oSZCIaxC;KY2 Pro Sem Fio Bluetooth 5.3 Fone De Ouvido Único Tampões Ultra Longa Vida Útil Da Bateria Negócios Esportes Fones Com;automotivo;7.59;;;;;;;;nao;nao;Choice Oficial;70mil+;sim;2026-10-05
+AAHd6MrJP7;Kit 10 Marmitas Conjunto Potes 850ml com Travas Laterais Livre de BPA - Organizadores de Congelador;casa-e-cozinha;29.98;;;;;;;;nao;nao;A T E N A S;20mil+;sim;2026-10-05
+qjxz6TbRX;Abridor De Latas Manual Portátil , Acessórios De Cozinha Ajustáveis , Utensílios Antiderrapantes , Fácil Liberação De To;casa-e-cozinha;27.88;;;;;;;;nao;nao;TBS2024.br;88;sim;2026-10-05
+4fwgYDzn3z;Torneira De Cozinha Gourmet Alça Única Com Extensor De Spray Tubo De Água Flexível Superior Prateado Para Ajuste;casa-e-cozinha;64.99;;;;;;;;nao;nao;Muse.Mall;80mil+;sim;2026-10-05
+1BMoNlDvEO;E6S Cor Preta Fones De Ouvido Sem Fio TWS Bluetooth Com Microfone Estéreo Som Cancelamento Ruído LED Display Digital Fon;eletronicos;18.51;;;;;;;;nao;nao;Choice Oficial;100mil+;sim;2026-10-05
+6L4uXK5uC3;40 Peças / 46 Peças Jogo De Chave Catraca Caixa De Ferramentas Completa Reversível Soquetes Maleta;ferramentas;29.9;;;;;;;;nao;nao;HONG11.br;40mil+;sim;2026-10-05
+2BFLZFsGgk;Jogo Panelas Completo 6 Peças Antiaderente Cerâmica com Acessórios Silicone;casa-e-cozinha;249;;;;;;;;nao;nao;Led Tools Oficial;1mil+;sim;2026-10-05
+7Ae1WoqGzE;Squishy Dumpling Brinquedo Com Luz Squish Surpresa Antiestresse Bolinho Fofinho Macio Grande;infantil;37.95;;;;;;;;nao;nao;Jask Variedades;1mil+;sim;2026-10-05
+113OBPSy6W;kit Smartwatch Relógio Inteligente 2026 Novo X8 2.2 Polegadas Para iOS Android Completo 6 Em 1 i13 TWS/Carregador;eletronicos;74.99;;;;;;;;nao;nao;paico004.br;395;sim;2026-10-05
+7ptiK2njcH;Vonixx Monte seu Kit Vmol Vfloc Pretinho Restaurax Blend Glazy Makker Intense Hidratante Couro Removex Izer Sintra Delet;beleza;29.99;;;;;;;;nao;nao;Castelo Acessórios;19;sim;2026-10-05
+5Asx96yh8L;HQAi X55 Fones De Ouvido Para Dormir Bluetooth 5.3 Sem Fio HiFi Estéreo Com Cancelamento De Ruído À Prova D'água Fone Es;eletronicos;20.33;;;;;;;;nao;nao;Value Choice;2mil+;sim;2026-10-05
+8AWYiXpMXT;Air31 Sem Fio Bluetooth Fone De Ouvido Binaural Pequeno No Fones Esportes Estéreo Baixo Mais Novos Transparente;eletronicos;19.86;;;;;;;;nao;nao;Choice Oficial;100mil+;sim;2026-10-05
+905fiBjIGP;PARAFUSADEIRA E FURADEIRA A BATERIA PF21B2 21V COM DUAS BATERIAS F02 4979 - FALASCA;automotivo;129.9;;;;;;;;nao;nao;Falasca Ferramentas;4mil+;sim;2026-10-05
+AUuTUrsnpl;Lanterna de Cabeça Recarregável com Sensor, 8 LEDs, 5 Modos, Tipo-C, para Pesca, Camping e Trabalho;camping-viagem;32.9;;;;;;;;nao;nao;WAGNER ECOMMERCE;2mil+;sim;2026-10-05
+50ZWwnzKSH;Escrivaninha Computador X Estudo Home Office Mesa Branco;casa-e-decoracao;107.1;;;;;;;;nao;nao;STORE AJL;1mil+;sim;2026-10-05
+7faI7joMxE;Camisetas Femininas Cristãs Jesus Cura Fé Estampadas Algodão Premium Gospel Evangélica;moda-feminina;29.8;;;;;;;;nao;nao;J.E Confecções;255;sim;2026-10-05
+LnhOISkMQ;MEGA HIDRATAÇÃO OURO MARROQUINO EFEITO TEIA | ANTIFRIZZ | ÓLEOS MILAGROSOS | FINA MARIA PROFESSIONAL;beleza;39.9;;;;;;;;nao;nao;Fina Maria Oficial;20mil+;sim;2026-10-05
+6AlUKwut5u;Cama de túnel para gatos 2 em 1 com cama removível para gatos de até 4 kg-Casa confortável e divertida;pet;68.99;;;;;;;;nao;nao;Starking.br;2mil+;sim;2026-10-05
+40gzl2EmuV;Vestido Feminina Curta Babado em Saia Elegante;moda-feminina;53.72;;;;;;;;nao;nao;Yudis Modas;83;sim;2026-10-05
+3B7slR6JC9;Siàge Volume Imediato;beleza;59.99;;;;;;;;nao;nao;kellyperfumaria000;1;sim;2026-10-05
+qjxz9FBvP;Kit 4 Blusa Plus Size Camiseta Dry Fit Roupa de Academia Feminina Long Line Tapa Bumbum Curvy +;moda-feminina;74.9;;;;;;;;nao;nao;Mais Curvas Moda Feminina;4mil+;sim;2026-10-05
+7Ae1Wr2jUN;Cobre Leito Só Belle 400 Fios Toque Macio Aconchegante E Confortavel;casa-e-decoracao;37.99;;;;;;;;nao;nao;Essência Enxovais;2mil+;sim;2026-10-05
+4qG6kUzxnG;Tenis Masculino Escolar Academia Corrida Original FREEDOM Corrida Caminhada Lançamento EXCLUSIVO CINZA GRAVITE e LARANJA;calcados;44.99;;;;;;;;nao;nao;Cirandinha Shoes;10mil+;sim;2026-10-05
+7VGrvJrttX;Compre 1 E Ganhe 1 Fones De Ouvido D6/D5 Grátis Sem Fio Bluetooth Fone Único À Prova D'água Com Microfone Bateria De Lon;automotivo;18.45;;;;;;;;nao;nao;Choice Oficial;100mil+;sim;2026-10-05
+7faI7f3aaS;Meias Malucas 25 ao 40 Dos Desenhos Animados Longas Das Crianças Adulto De Meia Panturrilha;infantil;17.99;;;;;;;;nao;nao;GR MARKET EXPRESS;3mil+;sim;2026-10-05
+3LRIxk5fq7;3 Pares Tênis Feminino Macio Ultraleve Street Style Para Visuais Casuais e Modernos;calcados;99.9;;;;;;;;nao;nao;ZOVIC OUTLET;62;sim;2026-10-05
+LnhO9JBQe;LED Glitter Estrela Grânulo Unicórnio Bun Brinquedo Mole Completo Com Simulação Cesta De Vapor Bonito Brilhante Decoraçã;infantil;17.9;;;;;;;;nao;nao;Sanrio.br;1mil+;sim;2026-10-05
+1LgEa1RhRh;Siàge Ultra Bond Reset: Reconstrução Profunda;beleza;69.99;;;;;;;;nao;nao;kellyperfumaria000;0;sim;2026-10-05
+2qV2MtJEI9;Ração Úmida Friskies 85g - Caixa com 15 unidades;automotivo;40.9;;;;;;;;nao;nao;LeluPets;50mil+;sim;2026-10-05
+2BFLZbA7CU;Bicicleta Elétrica Scooter Mova Way 4.0 500w 48v Lítio;fitness;4000;;;;;;;;nao;nao;AVELAR SHOP;277;sim;2026-10-05
+AUuTUwdaDY;Conjunto de Cílios Postiços Longos Híbridos: Tipo D-Volume, 8-16mm, Natural e Fofinho, Reutilizável;beleza;9.72;;;;;;;;nao;nao;Choice Oficial;60mil+;sim;2026-10-05
+W77abS71T;Kit 10 Marmitas Potes 750ml Travas Laterais hermeticas - Livres de BPA Alimentos organiza congelador - KAZIVA;casa-e-cozinha;37.9;;;;;;;;nao;nao;Gaby Reborn;8mil+;sim;2026-10-05
+50ZWwj1PxE;MÁQUINA DE GELO TURBO ONISTEK ZB02 – 12 KG/DIA | 1,3 L | GELO EM ATÉ 6 MINUTOS | 110v PRETO CUBOS;eletrodomesticos;599.99;;;;;;;;nao;nao;DistBacana;55;sim;2026-10-05
+40gzkvHY0w;ROMANTIC CROWN Copo Térmico Inox Portátil 1200ml/600ml com Tampa e Canudo Garrafa Térmica Inoxidável;casa-e-cozinha;34.98;;;;;;;;nao;nao;Romantic.Crown.07;3mil+;sim;2026-10-05
+6L4uXHtRf6;Caixa de transporte Transportadora Pet do 1 ao 5 Cachorro e Gato;pet;22.2;;;;;;;;nao;nao;Pet Charm;8mil+;sim;2026-10-05
+AAHd6KeqsV;Nova Profissional Placa De Carbono Tênis De Corrida Maratona Moda Sapatos Para Homens E Mulheres 33-44;casa-e-decoracao;117.4;;;;;;;;nao;nao;MOISTMOIST;909;sim;2026-10-05
+1BMoNlDvFR;ABO Braet Montado Na Cabeça Ajustável Transmissão Ao Vivo Suporte Do Telefone Móvel Perspectiva De Primeira Pessoa Prese;automotivo;16.2;;;;;;;;nao;nao;AboveTranscendence12.br;21;sim;2026-10-05
+1VzemPBqTf;Kit 4 Potes Herméticos Tampa Bambu Organizador Mantimentos Cozinha;casa-e-cozinha;39.99;;;;;;;;nao;nao;SELLNEEDS;7mil+;sim;2026-10-05
+5fpDjzBCds;Espelho Flame Com Moldura Em Couro 100x35 90x40 70x30 50x25 Hall Sala Closet;casa-e-decoracao;39;;;;;;;;nao;nao;Home Estilo Casa e Decoração;2mil+;sim;2026-10-05
+7VGrvM4DvT;Óculos de Sol Espotivo Premium Edição Limitada Baixa Pace Ciclismo Corrida VerãoTendencia uv400;fitness;59.99;;;;;;;;nao;nao;Fortuna Sunglasses;610;sim;2026-10-05
+6q1B8AsLjy;Comedouro e Bebedouro Automático para Gatos e Cães Premium 1L Jelplast;pet;64.9;;;;;;;;nao;nao;Kiplife;243;sim;2026-10-05
+2gBcAW8DD4;Conjunto de 2 Peças de Camisola e Roupão de Cetim com Renda e Gaze, Elegante e Sexy para Mulheres IEBB;moda-feminina;89.97;;;;;;;;nao;nao;Loja de alta qualidade NO16;60;sim;2026-10-05
+9AP5uNlYUe;Regata Top/cropped  Femenina Canelada Moda Gringa Gym Lisa;moda-feminina;18.9;;;;;;;;nao;nao;LBO Confecções;9;sim;2026-10-05
+AAHd6DhkSk;Bola De Aperto De Pão De Ouro Colorida Fofa De 5.5 Cm , Brinquedo Mole De Alívio De Estresse Para Crianças E Adultos , C;infantil;9.5;;;;;;;;nao;nao;ggg2021.br;924;sim;2026-10-05
+5q8dwKw9ls;Carrinho de Praia Vira Mesa Com Avanço Caixa Térmica Mor, Azul Alumínio Leve SP;casa-e-cozinha;218;;;;;;;;nao;nao;Todas as coisas estão em ordem;100;sim;2026-10-05
+4VdGLv0QOy;Short Feminino Fitness Cintura Alta com Efeito Levanta Bumbum;moda-feminina;36.99;;;;;;;;nao;nao;Monte Sião Negocios;196;sim;2026-10-05
+8AWYiXpMWQ;Tênis De Corrida Profissional Para Maratona Flying Burn 3 , Palma Completa , Placa De Carbono , PB IZHC NOKS;casa-e-decoracao;76.59;;;;;;;;nao;nao;MOISTMOIST;5mil+;sim;2026-10-05
+6fhkvmv4ZH;Caixa Caixinha De Som Bluetooth Pendrive Fm Sd Portátil 50w Preto Ipx4;eletronicos;59.9;;;;;;;;nao;nao;MLTX GROUP;932;sim;2026-10-05
+5q8dwMvLh6;Pano Microfibra Toalha Grande Limpar Casa moveis Secar Carro Automotivo Lavagem Secagem Polimento;automotivo;10.9;;;;;;;;nao;nao;TMZ UTILIDADES;1mil+;sim;2026-10-05
+3B7slVHxbA;Short Fitness Feminino com Modelagem Anatômica que Valoriza o Corpo;moda-feminina;37;;;;;;;;nao;nao;Monte Sião Negocios;25;sim;2026-10-05
+4VdGLqFe14;Nova Placa De Carbono Profissional Tênis Moda Para Homem E Mulher33-44;casa-e-decoracao;94.98;;;;;;;;nao;nao;MOISTMOIST;145;sim;2026-10-05
+9zyCu3rwk4;Body modelador colombiano feminino com 9 peças de suporte. |             Cinta de Alta Compressão com Controle Abdominal;moda-feminina;115.67;;;;;;;;nao;nao;Loja de alta qualidade NO16;71;sim;2026-10-05
+1AqzgU11L;Descascador Automático De Alho , Elétrico , Adequado Para Uvas , Tomates , E Frutas (Manual);casa-e-cozinha;51.99;;;;;;;;nao;nao;YF_globa.br;3mil+;sim;2026-10-05
+70KbKOtntJ;Tênis de Corrida Ultraleves Profissionais com Placa de Carbono na Sola Completa para Maratona, Masculinos e Femininos SO;casa-e-decoracao;84.68;;;;;;;;nao;nao;Loja de alta qualidade NO16;2;sim;2026-10-05
+1LgEa1RhQg;"Tela Projetor 72"" (120x100cm) Premium Fosca + Cordão - Home Theater Datashow";eletronicos;119.92;;;;;;;;nao;nao;Rei das Telas e Impressões;236;sim;2026-10-05
+2gBcARAIgs;Siàge Eudora Nutri Óleos Poderosos;beleza;69.99;;;;;;;;nao;nao;kellyperfumaria000;0;sim;2026-10-05
+60S48fuiM7;Potes Herméticos Marmita de Vidro 640ml Vidro Microondas Geladeira Forno Fitness;eletrodomesticos;18.99;;;;;;;;nao;nao;UD4YOU;6mil+;sim;2026-10-05
+1gJ4ykNfdl;SACHÊ MÁSCARA FACIAL PEEL OFF LIMPEZA PROFUNDA E REVITALIZAÇÃO DA PELE 10G UNISSEX;beleza;3;;;;;;;;nao;nao;DOSE DE AMOR.;30mil+;sim;2026-10-05
+1qcVAzBNsS;Secador Esterelizador de Tenis Elétrico Seca Tenis Sapatos 110v ou 220v;beleza;59.9;;;;;;;;nao;nao;VG Hub Store;1mil+;sim;2026-10-05
+20vvNFPA5t;Kit 3 Sutiã Rendado Reforçado Com Bojo Veste P ao GG Promoção;moda-feminina;17;;;;;;;;nao;nao;Belissima ModaÌntima;10mil+;sim;2026-10-05
+1gJ4ygC1ES;Espelho Decorativo 120x40 cm com Suporte de Chão e Parede;casa-e-decoracao;153.88;;;;;;;;nao;nao;Global Shop21;687;sim;2026-10-05
+2qV2Mk9fLv;Meias Femininas Originais Para Homens E Mulheres-Pacote De 3 Pares | Algodão Respirável Com Padrões Delicados (Preto , B;calcados;14.44;;;;;;;;nao;nao;Choice Oficial;80mil+;sim;2026-10-05
+5q8dwFyFHF;Tênis de Corrida Masculino e Feminino Sapato de Moda Academia Caminhada Confortável do 33 ao 44;calcados;71.62;;;;;;;;nao;nao;HOKON.br;9mil+;sim;2026-10-05
+8AWYiemSwJ;Kit Casal 2 Camisetas Ele Nos Amou Primeiro Cristã Minimalista Algodão Premium Estilo Casual Gospel Streetwear Versátil;outros;69.9;;;;;;;;nao;nao;Auréa confecções;5;sim;2026-10-05
+905fi6yVsK;Mochila Pet de Transporte para Cachorro e Gato Astronauta com Visão Panorâmica Savana Pet;pet;64.9;;;;;;;;nao;nao;Pet Prime Br;2mil+;sim;2026-10-05
+113OBWQD0U;Kit 10 Marmitas Potes 800ml Travas Laterais hermeticas - Livres de BPA Alimentos organiza congelador - KAZIVA;casa-e-cozinha;29.9;;;;;;;;nao;nao;VR_METAL;2mil+;sim;2026-10-05
+6VOKjasoLA;Kit 10 Petisqueiras Barquinha Canoa Petiscos Churrasco Festa Frios Para Servir Amendoim Caldo Branca - Kaziva;casa-e-cozinha;14.9;;;;;;;;nao;nao;Gaby Reborn;506;sim;2026-10-05
+3B7slR6JB6;Carrinho Controle Remoto Infantil Led Solta Fumaça Bateria Recarregável Esportivo Rápido;infantil;77.9;;;;;;;;nao;nao;Atacarejo Utilidades;510;sim;2026-10-05
+20vvNMMOxn;10 Marmitas Potes 800ml Travas Laterais hermeticas - Livres de BPA Alimentos organiza congelador - KAZIVA;casa-e-cozinha;29.9;;;;;;;;nao;nao;Adora;6mil+;sim;2026-10-05
+1qcVAuDTNp;Kit 4 Blusas Feminina Ribana Canelado Básica Casual Estilosa Tendência Verão;moda-feminina;67.62;;;;;;;;nao;nao;BOTIQUE TH;3mil+;sim;2026-10-05
+7faI7hpB44;Fones de Ouvido Intra-Auriculares Bluetooth Mini TWS, Cancelamento de Ruído, Esportivos, Microfone Embutido, Sem Fio;eletronicos;9.09;;;;;;;;nao;nao;Choice Oficial;93;sim;2026-10-05
+5fpDjwysbB;Macacão Roupas Para Cachorro Pequenos Médios Moletom Com Capuz Chihuahua Casaco De Inverno;pet;22.99;;;;;;;;nao;nao;Belapet.br;36;sim;2026-10-05
+1AqzgU12K;Toalha Banhão Gigante E Rosto 100% Algodão Alta Absorção Toque Macio Aveludada Enxuga Bem Wave Habitat;casa-e-decoracao;19.9;;;;;;;;nao;nao;Fonte Boa Casa;1mil+;sim;2026-10-05
+7VGrvM4DuQ;Fones de Ouvido X55 Bluetooth Sem Fio 5.4, Display LED, Estéreo Hi-fi, À Prova D'Água, Cancelamento de Ruído, Graves;eletronicos;22.59;;;;;;;;nao;nao;Choice Oficial;100mil+;sim;2026-10-05
+1AqzeHYWU;Kit 10 Marmitas Potes 750ml Travas Laterais hermeticas Livres de BPA Alimentos organiza congelador - KAZIVA;casa-e-cozinha;29.9;;;;;;;;nao;nao;Gaby Reborn;919;sim;2026-10-05
+1VzemKR45j;Camisola Sexy Feminina Feita de Malha Transparente com Renda Bordada 2CTG;moda-feminina;34.51;;;;;;;;nao;nao;Loja de alta qualidade NO16;6;sim;2026-10-05
+W77aXGSaK;Parafusadeira Sem Fio 4.8V Kit 45 Peças Nakasaki Bateria Recarregável Portátil;automotivo;35.99;;;;;;;;nao;nao;MAQ TOOLS;280;sim;2026-10-05
+3qNZYf3lqD;Hibisco + Cavalinha Suplemento Diurético Retenção de Líquido e Queima de Gordura;beleza;24.9;;;;;;;;nao;nao;Wellness Hub;10mil+;sim;2026-10-05
+2gBcAaJrc7;Kit Potes Herméticos Organizador de Mantimentos Transparente Com Trava BPA Free;casa-e-cozinha;39.9;;;;;;;;nao;nao;COMPRE TUDO_JA;10mil+;sim;2026-10-05
+1AqzXKS6c;Kit Estética Automotiva Vonixx V-Floc Tok Final Intense 240ml Pneu Pretinho Pano Pincel E Aplicador;automotivo;113.58;;;;;;;;nao;nao;Yamase Loja Oficial;2mil+;sim;2026-10-05
+5Asx920mcH;Revitalizador de farol remove amarelado e aspecto fosco;automotivo;16.14;;;;;;;;nao;nao;RC PEÇAS AUTOMOTIVAS;70mil+;sim;2026-10-05
+8AWYigyvSf;Porta Ovos 4 Andares Rolante em Plástico para Geladeira Organizador 30 Ovos;eletrodomesticos;14.96;;;;;;;;nao;nao;A T E N A S;10mil+;sim;2026-10-05
+7KxRj5qRk2;Short Jeans Feminino Cintura Alta Marmorizado Mom Sem Lycra;moda-feminina;39.99;;;;;;;;nao;nao;BUNNY ATACADO 2;1mil+;sim;2026-10-05
+50ZWwpyWO1;Kit 5 Calcinhas Sem Costura Fio Dental Modeladora Canelada Alta Compressão Não Marca Conforto Premium;moda-feminina;48.95;;;;;;;;nao;nao;BellaFlorOficial;10mil+;sim;2026-10-05
+AKb3IWh77l;Running shoesRunning shoesProfessional Shoes for Flying Burn 3, Full Palm, Carbon Plate, PB IZHC NOKSrunning sho;calcados;50.44;;;;;;;;nao;nao;CHENJUNN.br;281;sim;2026-10-05
+8AWYiemSxK;Pano De Prato Copa Estampado Grande Kit Com 1, 5 e 10 Peças;casa-e-cozinha;5.88;;;;;;;;nao;nao;Rubber Store;40mil+;sim;2026-10-05
+5VVnXgBpyt;Lâmpada LED 60W Camping KIT4 KIT2 KIT1 Unidades USB Recarregáveis De Longo Prazo À Prova D'água Para Pesca De Emergência;eletronicos;27.55;;;;;;;;nao;nao;Ama Zonia Mall-;2mil+;sim;2026-10-05
+4LJq9c13jx;Zip Clean Espuma Limpa Gordura Remove Gordura 300Ml - My Place;casa-e-cozinha;18.97;;;;;;;;nao;nao;Best Amora Distribuidora;4mil+;sim;2026-10-05
+6L4uXK5uB0;Fogareiro a Álcool Portátil - Ideal para Camping e Pesca;casa-e-cozinha;29.8;;;;;;;;nao;nao;W4G Casa;823;sim;2026-10-05
+3g49MQG3aD;Bomba de Ar Calibrador Digital Portátil Recarregável com Powerbank Compressor Elétrico para carro, moto, bicicleta;automotivo;72.75;;;;;;;;nao;nao;Invention Hunters;5mil+;sim;2026-10-05
+6fhkvtsB0B;Organizador de Pia 3 em 1 em Aço Inox com Dispensador de Detergente e Suporte para Esponja;casa-e-cozinha;28;;;;;;;;nao;nao;webhomevariedades;7mil+;sim;2026-10-05
+5Asx9BALYh;Fatiador Profissional Multifuncional 16 em 1 de Aço Inoxidável - Ideal para Vegetais, Frutas e Legumes;casa-e-cozinha;36.99;;;;;;;;nao;nao;TXB TECH LTDA;20mil+;sim;2026-10-05
+3VkjA0JS1n;Robô Aspirador 3 em 1 Varre, Aspira e limpar  - Limpeza Automática Inteligente e Silenciosa;eletrodomesticos;51.99;;;;;;;;nao;nao;Y&C SHOP;8mil+;sim;2026-10-05
+8Kpyut13E8;Fone Bluetooth Sem Fio De Ouvido  TWS Macaron Headphone Fone de Ouvido Envio Imediato;eletronicos;42.18;;;;;;;;nao;nao;ModajdFeminina;1mil+;sim;2026-10-05
+5LCNLL09H9;Fone Bluetooth Sem Fio De Ouvido  BT-760 TWS Macaron Headphone Fone de Ouvido Envio Imediato;eletronicos;40.99;;;;;;;;nao;nao;ModajdFeminina;1mil+;sim;2026-10-05
+AKb3Ifqg4A;Barraca Camping 2 Lugares Monta Acampar;camping-viagem;73.99;;;;;;;;nao;nao;MAXMULTI;1mil+;sim;2026-10-05
+9KiW6ni1ZO;Porta Frios Duplo Preto para Presunto e Queijo Com Fundo Removível Para Conservar e Organizar a Geladeira Hermetico;eletrodomesticos;17.89;;;;;;;;nao;nao;Vip  Todo Dia;50mil+;sim;2026-10-05
+4fwgYDzn2w;Cinta Modeladora Feminina Moda Short Reduz 2 Medidas Empina Bumbum Alta Compressão Não Enrola;moda-feminina;35.99;;;;;;;;nao;nao;AKAPE FASHION;30mil+;sim;2026-10-05
+6fhkvtsAz8;Escova de Silicone 2 em 1 para Vaso Sanitário - Base de Banheiro Privada, Alta Eficiênci;casa-e-decoracao;14.99;;;;;;;;nao;nao;DUSKS STORE;30mil+;sim;2026-10-05
+3VkjA0JS2m;Garrafa 1200ml Térmica Estampa Floral Capinha Silicone Na Base + Tampa Para Canudo;casa-e-cozinha;45.99;;;;;;;;nao;nao;SHR STORE;670;sim;2026-10-05
+4B0PxH2V9C;Kit Cuecas Boxer Men Sem Costura 04 ou 01 Microfibra Casual Premium Toque Macio Masculino PROMOÇÃO;moda-masculina;12.39;;;;;;;;nao;nao;LUEGA MODA ÍNTIMA;3mil+;sim;2026-10-05
+1AqzH0W5H;Fechadura Eletronica Digital Senha Biometria Cartao Preto ASUS;casa-e-decoracao;295;;;;;;;;nao;nao;Acabay;297;sim;2026-10-05
+5q8dwMvLg5;Forma de Gelo Dispenser 48 Cubos com Gaveta Botão Solta Gelo Pegador Caixa de Gelo Grande Capacidade;casa-e-cozinha;47.9;;;;;;;;nao;nao;Rio Shop Bazar;128;sim;2026-10-05
+113OBNGe3p;Caixa Caixinha De Som Bluetooth Potente Pendrive Fm Sd Portátil Ipx6;eletronicos;64.9;;;;;;;;nao;nao;MLTX GROUP;2mil+;sim;2026-10-05
+50ZWwlDk0F;Ferro de Passar Roupas Portátil Dobrável Pequeno Bivolt para Casa Viagem Dormitório e Escritório;camping-viagem;32.99;;;;;;;;nao;nao;ANJGG Brazil;4mil+;sim;2026-10-05
+7KxRjA269I;Potes Plásticos BPA Free Kit 20 Peças Para Mantimentos;casa-e-cozinha;47;;;;;;;;nao;nao;OLIPLAST FULL;5mil+;sim;2026-10-05
+4qG6kZBcDa;Par Botas De Borracha Galocha Vonder Impermeável forro Motoboy Bota Antiderrapante Limpeza Faxina Bota Para Roça léguas;automotivo;59.9;;;;;;;;nao;nao;Ludiê Comércio Eletrônico;162;sim;2026-10-05
+6VOKjYtcPw;Kit 8 Toalhas Lyra (4 Banho + 4 Rosto) - 100% Algodão - Majo Home;casa-e-decoracao;69.9;;;;;;;;nao;nao;MaJo Home;1mil+;sim;2026-10-05
+113OBPSy7b;Protetor De Carenagem Motor Titan Fan Start 150 160 Compativel 2015 até 2026;automotivo;184.13;;;;;;;;nao;nao;EL MOTO PARTS;990;sim;2026-10-05
+1qcVAwPnPl;UNIDADE ou KIT 2 Calças leg com 2 bolsos (1 calça R$ 35,00 / 2 Calças R$70,00);moda-masculina;35;;;;;;;;nao;nao;PRMC Fitness e Praia atacad0;1mil+;sim;2026-10-05
+8AWYicnH2c;Conjunto Short Duplo Tactel Poliamida Fitness Academia Treino;moda-feminina;120;;;;;;;;nao;nao;Tangerina Moda Fitness;98;sim;2026-10-05
+8KpyuqojBR;Guarda Roupas Casal Grande 8 Portas 4 Gav. Com Pés Moderno Marrom;casa-e-decoracao;757.2;;;;;;;;nao;nao;Babus;85;sim;2026-10-05
+7VGrvT1SoL;Kit de 1/2 unidade Fone de Ouvido Bluetooth 5.1 TWS Sem Fio E6S Esportivo Earbuds Base de Carga LED ANJGG BRASIL;eletronicos;16.88;;;;;;;;nao;nao;ANJGG Brazil;121;sim;2026-10-05
+80D8WEpzrP;Kit 10 Potes com Trava Hermética Tampa para Mantimentos Organizador Cozinha BPA Free;casa-e-cozinha;24;;;;;;;;nao;nao;SP SilvaPlast BR;137;sim;2026-10-05
+AUuTUueOIq;Descascador Elétrico Multifuncional Recarregável para Frutas Legumes Uvas Alho e Tomate;casa-e-cozinha;59.99;;;;;;;;nao;nao;RightNow Shop;2mil+;sim;2026-10-05
+9V1wJ4iCKk;Kit Colcha Cobre Leito Casal Queen Dupla Face 3 Peças Matelado Estampado;casa-e-decoracao;74.99;;;;;;;;nao;nao;CAMA & CORES;623;sim;2026-10-05
+9KiW6ni1aR;Kit Até 6 Canecas de Vidro Natal 320 ml Estampas Sortidas Festa;casa-e-cozinha;22.99;;;;;;;;nao;nao;VITRINE PLUS;476;sim;2026-10-05
+2LYllw8fmi;Bota Coturno Masculino Adventure De Qualidade e Barato Mega Oferta;calcados;52.99;;;;;;;;nao;nao;HF_LOJA_3;1mil+;sim;2026-10-05
+6q1B85uREI;Fogão Elétrico Cooktop Portátil 1 Boca 1000W com Controle de Temperatura para Cozinha e Camping;eletrodomesticos;42.9;;;;;;;;nao;nao;pdbxbwrknr;87;sim;2026-10-05
+6L4uXAwLFN;Cabelo Maluco Kit Acessórios Infantil Criativo para Escola Festa Penteado Menino Menina;infantil;28.99;;;;;;;;nao;nao;DeskoladosShop;2mil+;sim;2026-10-05
+2BFLZYOWjv;kit 4 capas de almofadas Decorativas Natal;casa-e-decoracao;9.9;;;;;;;;nao;nao;Kalltex;159;sim;2026-10-05
+7Ae1WoqGyD;Dumpling Squishy com Luz LED 8.5cm Bolinho Fofo Cor Surpresa;eletronicos;28.99;;;;;;;;nao;nao;SHR STORE;666;sim;2026-10-05
+7ptiK0oXi4;Caneca Misturadora Automática Elétrica USB Bateria Recarregável Mixer Café 380ml;automotivo;32.49;;;;;;;;nao;nao;RunXin;95;sim;2026-10-05
+qjxz4HHOo;Parafusadeira Furadeira 25V Nakasaki Sem Fio a Bateria Profissional Kit Completo com Maleta;automotivo;99.99;;;;;;;;nao;nao;MAQ TOOLS;438;sim;2026-10-05
+6fhkvp7OcE;Kit Revelação Bastão Rosa e Azul Chá de babê;casa-e-cozinha;32.9;;;;;;;;nao;nao;Save acessório Festas Utilidades;1;sim;2026-10-05
+9fLMVPgkuT;Alaxe5 Geração Alto Falante Original Envio Imediato Melhor Preço;eletronicos;49.99;;;;;;;;nao;nao;PENGFA TECH LTDA;70mil+;sim;2026-10-05
+70KbKVquJA;Sapateira com Portas Basculantes Vertical Armário para Quarto Sapato Sala Tênis Hall Entrada;calcados;176.99;;;;;;;;nao;nao;Tutti Per La Casa;8mil+;sim;2026-10-05
+6VOKjd5Gr4;Perfume Natura Homem Coragio Masculino 100ml Deo Parfum Original Lacrado Envio Rápido;beleza;199.99;;;;;;;;nao;nao;Nativa Perfumaria;1mil+;sim;2026-10-05
+80D8WJnuNb;Kit Limpeza Automotiva Propek– Shampoo com Silicone + Cera Líquida 500ml + 3 Panos Microfibra 38x58 + Esponja(BRINDE);automotivo;67;;;;;;;;nao;nao;CAR STORERS;0;sim;2026-10-05
+1AqzZWm8I;Câmera De Segurança Lente Dupla IP66 Wi-Fi 360° Sensor Movimento Visão Noturna+MICROSD 16GB;eletronicos;149.59;;;;;;;;nao;nao;Arara.store;3mil+;sim;2026-10-05
+5q8dwIAZIv;Mop Spray Fit Esfregao Para Limpeza da Casa Com Gatilho e Reservatorio Dispenser Para Agua Desinfetante;casa-e-cozinha;76.5;;;;;;;;nao;nao;Pleno Mobli;3;sim;2026-10-05
+AKb3IdeDYX;Varal De Chão Com Abas Reforçado Dobrável Aço Secalux 12kg Varal de Apartamento Retratil;casa-e-decoracao;59.9;;;;;;;;nao;nao;Big_ecommerce;30mil+;sim;2026-10-05
+2gBcAY7P6k;Conjunto Gringa Renda Lingerie Soutien Meia Taça Em Aro Arco e Calcinha Fio Sexy Feminino Sensual;casa-e-cozinha;24.9;;;;;;;;nao;nao;Donna Sexy Lingerie;3mil+;sim;2026-10-05
+8fSpJUzmYI;Y10 Motocicleta Sem Fio Bluetooth 5.3 Fone de Ouvido Capacete Kit de Chamadas Mãos Livres À Prova D'Água Interco;automotivo;38.99;;;;;;;;nao;nao;ANXIN TECH LTDA;20mil+;sim;2026-10-05
+6q1B886lHH;KIT 2 Bermuda Shorts Tactel com Elastano Academia Corrida CASUAL;moda-feminina;32;;;;;;;;nao;nao;F&A MIX;289;sim;2026-10-05
+5LCNLPy3mp;Shorts Masculino Tactel Praia Academia Treino Corrida E CASUAL SECAGEM RAPIDA;moda-feminina;35;;;;;;;;nao;nao;F&A MIX;48;sim;2026-10-05
+6fhkvp7ObD;Chaleira Elétrica Inox 1,8L ou 2L 127V ou 220V Ferve Água Rápido com Desligamento Automático;eletrodomesticos;39.99;;;;;;;;nao;nao;Pava Universo;65;sim;2026-10-05
+4VdGLt1ETE;Camiseta Streetwear Minimalista Gothic Cross Cruz Gótica Fé católica Religiosa Uso Diário 100% Algodão Blusa Confortável;moda-feminina;29.9;;;;;;;;nao;nao;Essencial Wear T-Shirts;1mil+;sim;2026-10-05
+905fiDvklm;Panela De Arroz Elétrica Riso PA6X Branco 127v ou  220v - Agratto;casa-e-cozinha;144.99;;;;;;;;nao;nao;Acabay;588;sim;2026-10-05
+7VGrvQp0JG;PERFUMES ÁRABES SABAH AL WARD 100ML;beleza;150;;;;;;;;nao;nao;xin de perfune;290;sim;2026-10-05
+4LJq9XGHM3;Kit 4 Toalha de Banho Grande Felpuda Macia Premium 100% Algodão 70x130cm;casa-e-decoracao;69.9;;;;;;;;nao;nao;MB.COMERCIO;5mil+;sim;2026-10-05
+3g49MO3b4q;Percarbonato 100% Puro Tira Manchas Roupas Brancas e Coloridas;casa-e-cozinha;16.49;;;;;;;;nao;nao;Papel fotografico e Papelaria;200mil+;sim;2026-10-05
+4qG6kQ23IF;Patins Infantil 4 Rodas Com Luz De Led Com Kit Proteção ou Sem Proteção Envia Todo Brasil Rapido;infantil;160.43;;;;;;;;nao;nao;MGT STORE.;3mil+;sim;2026-10-05
+gQXmlHujn;Omeleteira Agratto Mr Cheff Inox Redonda 127v / 220v;eletrodomesticos;115.9;;;;;;;;nao;nao;Acabay;1mil+;sim;2026-10-05
+3LRIxoHKGB;Porta Temperos Giratório Profissional 9 Potes de Vidro com Tampa Dosadora Condimentos;casa-e-cozinha;37.79;;;;;;;;nao;nao;RD ECOM;10mil+;sim;2026-10-05
+2BFLZfLlco;[Fone de Ouvido Sem Fio Bluetooth 5.3 Alta Qualidade Compatível com Android e iPhone Estojo de Recarga;eletronicos;19.99;;;;;;;;nao;nao;YYYNN;10mil+;sim;2026-10-05
+4fwgYGCFZY;Kit 3 Bolsa feminina Assimétrica com regulagem nas alças de ombro para alça curta, versatil  e elegante para o dia a dia;moda-feminina;59.9;;;;;;;;nao;nao;LBTRENDS;81;sim;2026-10-05
+3qNZYjFQFE;Alvejante Percarbonato de Sódio Calisul 99% Puro Sem Cloro Limpeza Roupa Branca Colorida Clareador Tira Mancha;casa-e-cozinha;25.9;;;;;;;;nao;nao;Loja Tio Chico;7mil+;sim;2026-10-05
+3VkjA352V8;Sofá-Cama Inflável Portátil para Preguiçosos Ideal para Acampamento, Praia, Sesta e Uso Interno;casa-e-decoracao;67.98;;;;;;;;nao;nao;VIDCOR VARIEDADES;201;sim;2026-10-05
+4VdGLxCsud;KIT FITNESS COMPLETO COLCHONETE ROSA + PAR 1KG HALTER BOLA + PAR 1KG CANELEIRA ROSA | TREINO EM CASA OU ACADEMIA TL;fitness;75.45;;;;;;;;nao;nao;thilufitness;744;sim;2026-10-05
+2LYllpBZMy;Garrafa Térmica Inox 1L com Display LED para Chá e Café;eletronicos;49.9;;;;;;;;nao;nao;AINY ECOMMERCE;1mil+;sim;2026-10-05
+1BMoNnD79d;Cafeteira Elétrica Cadence Single Up;eletrodomesticos;89.9;;;;;;;;nao;nao;Cadence Oficial;1mil+;sim;2026-10-05
+gQXmsF1AY;Quadro Porta Retrato Família MDF 7 Fotos Decorativo Parede;casa-e-decoracao;21.99;;;;;;;;nao;nao;FGVITALFARMA;356;sim;2026-10-05
+6q1B8CrXeB;🔥Frete Grátis Perfume Árabe Asad Elixir importado - 100 ml 100%Original;beleza;149;;;;;;;;nao;nao;VELOURA PERFUMES;586;sim;2026-10-05
+40gzl02KOs;Seringa Insulina 0,5ml Fixa Agulha Fina Ultrafina 0,30mm x 8mm Graduada Estéril Descartável 50ui;outros;27.92;;;;;;;;nao;nao;TRE-MAX E COMMERCE SOLUTION;2mil+;sim;2026-10-05
+gQXmlHuko;Fone de Ouvido Bluetooth Sem Fio J760- Cancelamento de Ruído Conforto;eletronicos;40.98;;;;;;;;nao;nao;𝙨𝙝𝙤𝙥𝙚 𝙨𝙩𝙮𝙡𝙚;8mil+;sim;2026-10-05
+8fSpJSnSVb;Massageador de Pescoço e Ombros Portátil 3D Com Calor Relaxante Massagem Profunda;saude;102.99;;;;;;;;nao;nao;XQW - ELETRÔNICOS E VARIEDADES;1mil+;sim;2026-10-05
+40gzkvHY1x;Kit Limpa Vidro Magnético Prático Dupla Face Rodo Mágico Janelas;casa-e-cozinha;24.99;;;;;;;;nao;nao;JX VERDE;8mil+;sim;2026-10-05
+8pmFVsjvbO;Pijama Infantil Peluciado Soft Fleece Longo Inverno menino menina estampado;infantil;48;;;;;;;;nao;nao;Katbelle Comésticos;709;sim;2026-10-05
+8V9P7Ixeml;Kit 4 Cadeiras Junco + Mesinha Sintético para Jardim Piscina Área Externa Sacada Varanda Gourmet;camping-viagem;476;;;;;;;;nao;nao;DelaMix;434;sim;2026-10-05
+9V1wIzkHoY;Jaqueta Corta Vento Impermeável Masculina Premium com Capuz 100% Poliéster Leve Motorsports Edition;automotivo;74.95;;;;;;;;nao;nao;SuperMixBrStore;1mil+;sim;2026-10-05
+8pmFVsjvaN;Kit Hidratante Corporal + Body Splash Feminino | Fragrância Doce Frutal | Hidratação Prolongada | Pele Macia;beleza;75;;;;;;;;nao;nao;MagazziniShop;207;sim;2026-10-05
+5LCNLL09IA;Chaleira Elétrica Inox 1.8 Litros Desligamento Automático Aquecimento Rápido;eletrodomesticos;41.98;;;;;;;;nao;nao;RAPPIDO;5mil+;sim;2026-10-05
+905fi4mBpd;Kit 10 Panos de Prato Pé de Galinha 100% Algodão 38x69cm Estampado Alta Absorção Cozinha - Envio Imediato !!!;casa-e-cozinha;16.8;;;;;;;;nao;nao;THHOUSEHT;182;sim;2026-10-05
+gQXmqFpFL;Kit 5 Bacias Multiuso 3,2L Plásticas Caneladas Redondas Reforçadas Para Cozinha Lavanderia Casa Jardim;casa-e-cozinha;16.9;;;;;;;;nao;nao;B&B Organiza;575;sim;2026-10-05
+7Ae1WhtAYK;Restaurax Vonixx -Restaurador Plásticos Automotivo Renova Protege e Dá Brilho para Para-choques Painéis e Borrachas;automotivo;42.47;;;;;;;;nao;nao;VIXX CAR PRODUTOS AUTOMOTIVOS;35;sim;2026-10-05
+6VOKjTvhuO;Psyllium + Chá Verde | 60 Cápsulas | Envio Rápido | Fórmula Premium;casa-e-cozinha;24.79;;;;;;;;nao;nao;Brava Nutra;384;sim;2026-10-05
+2VsByD8qXZ;Kit Hidrabene Clareador Skincare Clareador Facial: Sabonete, Protetor 70 FPS e Sérum Multicorretivo;casa-e-cozinha;79.9;;;;;;;;nao;nao;Hidrabene;20mil+;sim;2026-10-05
+AAHd6Ifeyo;Bobojaco Importado Forrado Peluciado Confortável Alpines;moda-feminina;229.99;;;;;;;;nao;nao;sc_store1;115;sim;2026-10-05
+113OBNGe4q;Kit 2 Conjuntos Fitness Feminino Top e Short Academia Bicolor;moda-feminina;164.9;;;;;;;;nao;nao;MM.movere;109;sim;2026-10-05
+4B0PxH2VAF;Varal De Roupa Dobrável Torre 3 Andares Com Rodas Aço Inox Vertical Azul Umbrella;casa-e-decoracao;77.9;;;;;;;;nao;nao;UmbrellaShop;378;sim;2026-10-05
+5fpDk3vz12;Lâmpada LED Recarregável 80W para Camping e Pesca USB 3 Modos 6-8H com Gancho Portátil;eletronicos;27.9;;;;;;;;nao;nao;BR.TON;659;sim;2026-10-05
+qjxz9FBuM;Kit Completo para Estética Automotiva Vonixx;automotivo;131.39;;;;;;;;nao;nao;Segue o Lider - Produtos Automotivo;27;sim;2026-10-05
+6AlUKu9Id5;Guarda-chuva automático dobrável com proteção UV, cabo com argola, preto KL-301;eletronicos;23.99;;;;;;;;nao;nao;Caixa Mágica BR;231;sim;2026-10-05
+9KiW6gkv9X;Fogão a Lenha Portátil COMPACTA em Aço 1,2mm com Chaminé REMOVIVEL  Pés Reforçados.;eletrodomesticos;299.8;;;;;;;;nao;nao;Brasa Prime Store;4;sim;2026-10-05

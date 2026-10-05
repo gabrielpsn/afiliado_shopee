@@ -131,7 +131,10 @@ describe('avaliarLinha', () => {
   it('lista exatamente o que falta', () => {
     const info = avaliarLinha({ nome: 'Fone', preco: '99,90' }, hoje)
     expect(info.pendente).toBe(true)
-    expect(info.faltando).toEqual(['categoria', 'imagens'])
+    // Foto não entra em `faltando`: sem imagem o produto entra no ar com
+    // placeholder e o validador reporta a conta. Ver `semFoto`.
+    expect(info.faltando).toEqual(['categoria'])
+    expect(info.semFoto).toBe(true)
   })
 
   it('usa a data de hoje quando atualizadoEm está vazio', () => {
@@ -257,8 +260,10 @@ describe('buildProducts', () => {
       hoje,
     })
 
-    expect(produtos[0].slug).toBe('fone-bluetooth-anc')
-    expect(produtos[1].slug).toBe('fone-bluetooth-anc-2')
+    // Desempate pelo itemId, e não por contador: um `-2` depende da ordem de
+    // leitura do CSV e mudaria o link de um produto que nada teve a ver.
+    expect(produtos[0].slug).toBe('fone-bluetooth-anc-111')
+    expect(produtos[1].slug).toBe('fone-bluetooth-anc-111-2')
     expect(avisos.some((a) => a.motivo.includes('slug duplicado'))).toBe(true)
   })
 

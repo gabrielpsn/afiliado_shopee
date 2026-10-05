@@ -1,8 +1,8 @@
 <script setup>
 // Aviso de afiliado obrigatório (CONAR, Anexo H): a identificação do caráter
-// publicitário precisa estar visível, não escondida em rodapé. Na Fase 3 este
-// componente vira a barra fixa do mobile, o selo do header e o texto ao lado
-// do CTA de cada produto.
+// publicitário precisa estar visível onde a decisão acontece, não escondida no
+// rodapé. Aparece como barra fixa no mobile, selo no header e texto ao lado do
+// CTA de cada card.
 defineProps({
   compact: { type: Boolean, default: false },
 })
