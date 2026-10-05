@@ -656,8 +656,8 @@ export const PRODUCTS = [
     atualizadoEm: "2026-10-05",
   },
   {
-    slug: "conjunto-feminino-casual-sofisticado-de-blusa-calca-em-linho-de-algodao-cores-verao-2023-roupa-feminina-festa-uniforme-barata-promocao-oferta-exclusiva",
-    nome: "Conjunto Feminino Casual Sofisticado De Blusa Calça em Linho De Algodão Cores Verão 2023 Roupa Feminina Festa Uniforme Barata Promoção Oferta Exclusiva",
+    slug: "conjunto-feminino-casual-de-blusa-e-calca-em-linho-de-algodao",
+    nome: "Conjunto Feminino Casual de Blusa e Calça em Linho de Algodão",
     descricao: "",
     preco: 61.72,
     precoAntes: null,
