@@ -13,12 +13,15 @@ import { computed, ref } from 'vue'
 import ProductGrid from '../components/ProductGrid.vue'
 import { SITE } from '../data/site.js'
 import { getActiveProducts } from '../engine/catalog.js'
-import { DIAS_NOVIDADE, contarNovidades, getNovidades } from '../engine/novidades.js'
+import { DIAS_NOVIDADE, getNovidades } from '../engine/novidades.js'
 
 const produtos = getActiveProducts()
 
-const novidades = computed(() => getNovidades(produtos))
-const total = computed(() => contarNovidades(produtos))
+// O limite padrão de 30 existe para o RSS. A página não pode herdar esse teto: o
+// grid já pagina com "carregar mais", e truncando aqui ela anunciaria "501
+// entraram" para mostrar 30 e nunca revelaria o resto.
+const novidades = computed(() => getNovidades(produtos, { limite: Number.MAX_SAFE_INTEGER }))
+const total = computed(() => novidades.value.length)
 
 // ProductGrid começa em zero e cresce com o botão. Sem isto a página abriria
 // vazia, porque o grid não tem valor inicial próprio.

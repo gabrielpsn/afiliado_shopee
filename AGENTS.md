@@ -23,6 +23,7 @@ módulos estáticos em `src/data/` e a lógica pura mora em `src/engine/`.
 | `src/components/` | peças reutilizáveis |
 | `scripts/` | ferramenta de linha de comando, roda fora do Vite |
 | `data/batch/` | exportação bruta da Shopee, só entrada do importador |
+| `data/produtos-manuais.csv` | produto adicionado fora do painel; entra no catálogo via importador |
 | `data/*.csv` | entrada editorial humana; `src/data/products.js` é gerado |
 
 `engine/` nunca importa de `views/` nem de `components/`. Se um cálculo precisa
@@ -40,7 +41,7 @@ O CSV, por sua vez, é gerado por `scripts/importar-batch.js` a partir de
 novo:
 
 ```bash
-npm run catalog:import   # data/batch/*.csv → data/produtos.csv + links-resolvidos.csv
+npm run catalog:import   # data/batch/*.csv + produtos-manuais.csv → data/produtos.csv
 npm run catalog:sync     # data/produtos.csv → src/data/products.js
 npm run verify
 ```
@@ -49,6 +50,49 @@ O importador deduplica por `itemId`: quando o mesmo produto aparece em dois
 lotes, vence a **maior comissão** e, no empate, o `Offer Link` em ordem
 alfabética. Sem esse desempate o catálogo mudaria conforme a ordem de leitura dos
 arquivos e o `git diff` viraria ruído.
+
+## Duas datas que não podem se misturar
+
+| Coluna | Pergunta que responde | Quem escreve |
+|---|---|---|
+| `adicionadoEm` | desde quando isto está na vitrine | `produto:add`, uma vez; preservada pelo importador |
+| `atualizadoEm` | quando o preço foi conferido pela última vez | o importador, a cada `catalog:import` |
+
+Notificar novidade por `atualizadoEm` faria a próxima reimportação marcar os 501
+produtos como novos, e a página /novidades viraria cópia da home — sem aviso e
+sem erro. Já o contrário também quebra: um produto que já vem no lote continua com a
+data original, então o aviso não se move sozinho com o tempo.
+
+`adicionadoEm` só é preenchida uma vez. O importador lê o valor já gravado no
+catálogo e reescreve; produto que ainda não tem data recebe a de hoje, que é
+verdadeira na primeira importação. O backfill dos produtos anteriores ao campo
+usou a data real de entrada (02/10/2026, dia dos lotes), não a data em que a
+coluna foi criada.
+
+## Produto fora da exportação do painel
+
+```bash
+npm run produto:add -- --link https://s.shopee.com.br/abc123 --nome "Fone Bluetooth" --preco 42,89
+npm run catalog:import     # mescla o produto manual no catálogo
+npm run verify
+```
+
+O comando resolve o link por redirect (301) para tirar `itemId`, `shopId` e
+`urlPublica` — não é API, é o mesmo caminho de `resolve-links.js`. Não busca foto:
+a Shopee bloqueia leitura automatizada e não libera API sem App ID, então o
+produto entra com `semFoto: true` e o placeholder honesto.
+
+O produto vai para `data/produtos-manuais.csv`, **não** para `data/produtos.csv`.
+O importador reconstrói o catálogo do zero; gravar direto faria o produto sumir no
+próximo `catalog:import` com o build ainda verde. Mesmo motivo do arquivo existir
+separado para `ajustes-editoriais.csv`.
+
+O `catalog:sync` sozinho **não** pega produto novo: ele lê `data/produtos.csv`.
+Depois do `produto:add`, é `catalog:import` que reconstrói.
+
+A url resolvida fica gravada no arquivo de manuais porque o importador reescreve
+`links-resolvidos.csv` do zero. Perder a url faria o produto reprovar o build com
+"urlPublica vazia" — sintoma, não causa.
 
 ## Regra do produto pendente
 

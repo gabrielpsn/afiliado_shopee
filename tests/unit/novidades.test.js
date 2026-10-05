@@ -68,6 +68,30 @@ describe('NovidadesView', () => {
       expect(w.findAll('[data-testid="grade-produtos"] > li').length).toBeGreaterThan(0)
     }
   })
+
+  // O padrão de getNovidades corta em 30 para o RSS. A página não pode herdar esse
+  // limite: ela anunciaria "N entraram" e o "carregar mais" não revelaria o resto,
+  // porque a lista já viria truncada. O "Exibindo X de Y" do grid denuncia isso.
+  it('a página não trunca a lista no limite do feed', () => {
+    const w = mount(NovidadesView, { global })
+    const esperado = contarNovidades(PRODUCTS.filter((p) => p.ativo))
+    const status = w.find('[role="status"]').text()
+
+    expect(esperado).toBeGreaterThan(24)
+    expect(status).toContain(`de ${esperado} produtos`)
+  })
+
+  it('o botão de carregar mais cresce até o total, sem parar antes', async () => {
+    const w = mount(NovidadesView, { global })
+    const esperado = contarNovidades(PRODUCTS.filter((p) => p.ativo))
+
+    while (w.find('[data-testid="carregar-mais"]').exists()) {
+      await w.find('[data-testid="carregar-mais"]').trigger('click')
+    }
+
+expect(w.findAll('[data-testid="grade-produtos"] > li')).toHaveLength(esperado)
+    expect(w.find('[data-testid="grade-produtos"]').exists()).toBe(true)
+  })
 })
 
 describe('SiteHeader com badge de novidades', () => {
