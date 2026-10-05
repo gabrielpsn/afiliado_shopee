@@ -1,0 +1,32 @@
+{
+  "name": "loja-afiliado-shopee",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:visual": "playwright test",
+    "links:resolve": "node scripts/resolve-links.js",
+    "catalog:sync": "node scripts/from-csv.js",
+    "validate:catalog": "node scripts/check-links.js",
+    "verify": "npm run test && npm run validate:catalog && npm run build"
+  },
+  "dependencies": {
+    "vue": "^3.5.42",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "@vue/test-utils": "^2.5.1",
+    "happy-dom": "^20.14.5",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.0",
+    "vitest": "^3.2.7"
+  }
+}

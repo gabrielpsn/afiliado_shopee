@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Páginas sem produto não têm valor de busca e diluteiam o rastreamento.
+Disallow: /*?q=
+Disallow: /busca

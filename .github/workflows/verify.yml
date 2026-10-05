@@ -1,0 +1,42 @@
+name: Verificar
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Evita duas execuções concorrentes quando pushes chegam em sequência rápida.
+concurrency:
+  group: verificar-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    name: Testes, catálogo e build
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Testes unitários
+        run: npm run test
+
+      # Reprova a publicação enquanto houver produto pendente. Publicar a vitrine
+      # com nome ou preço inventado é problema de consumidor, não de estilo.
+      - name: Validar catálogo
+        run: npm run validate:catalog
+
+      - name: Build
+        run: npm run build
+
+# O deploy automático entra na Fase 7, junto com o registro do Worker no
+# Cloudflare. Publicar antes disso exigiria um token que ainda não existe.
