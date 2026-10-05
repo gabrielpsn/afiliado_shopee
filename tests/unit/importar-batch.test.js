@@ -8,6 +8,8 @@ import {
   normalizarLinha,
   escolherMelhorOferta,
   formatarLinhaCsv,
+  aplicarAjustesEditorial,
+  lerAjustesEditorial,
 } from '../../scripts/importar-batch.js'
 import { parseCsv } from '../../scripts/from-csv.js'
 
@@ -179,5 +181,89 @@ describe('formatarLinhaCsv', () => {
 
   it('não põe aspas no que não precisa delas', () => {
     expect(formatarLinhaCsv({ nome: 'Fone', loja: 'x' }, ['nome', 'loja'], ';')).toBe('Fone;x')
+  })
+})
+describe('aplicarAjustesEditorial', () => {
+  const catalogo = [
+    { linkCurto: 'aaa111', nome: 'Fone Bluetooth TWS', categoria: 'eletronicos' },
+    { linkCurto: 'bbb222', nome: 'Conjunto Feminino Sofisticado De Blusa', categoria: 'moda-feminina' },
+  ]
+
+  it('substitui o nome pelo ajuste e devolve registro novo', () => {
+    const r = aplicarAjustesEditorial(catalogo, [
+      { linkCurto: 'bbb222', nome: 'Conjunto Feminino de Blusa e Calça', categoria: '' },
+    ])
+
+    expect(r.erros).toEqual([])
+    expect(r.aplicados).toEqual(['bbb222'])
+    expect(r.registros[1].nome).toBe('Conjunto Feminino de Blusa e Calça')
+    expect(catalogo[1].nome).toBe('Conjunto Feminino Sofisticado De Blusa')
+  })
+
+  it('corrige a categoria quando o classificador errar', () => {
+    const r = aplicarAjustesEditorial(catalogo, [{ linkCurto: 'aaa111', nome: '', categoria: 'pet' }])
+    expect(r.registros[0].categoria).toBe('pet')
+  })
+
+  it('não mexe no campo que o ajuste não menciona', () => {
+    const r = aplicarAjustesEditorial(catalogo, [{ linkCurto: 'aaa111', nome: 'Fone TWS Barato', categoria: '' }])
+    expect(r.registros[0].categoria).toBe('eletronicos')
+    expect(r.registros[0].nome).toBe('Fone TWS Barato')
+  })
+
+  it('recusa linkCurto que não existe: ajuste órfão é erro, não no-op', () => {
+    const r = aplicarAjustesEditorial(catalogo, [{ linkCurto: 'zzz999', nome: 'Qualquer', categoria: '' }])
+    expect(r.semCorrespondencia).toEqual(['zzz999'])
+    expect(r.registros).toBe(catalogo)
+  })
+
+  it('recusa categoria fora da taxonomia', () => {
+    const r = aplicarAjustesEditorial(catalogo, [{ linkCurto: 'aaa111', nome: '', categoria: 'inventada' }])
+    expect(r.erros[0]).toContain('categoria')
+    expect(r.erros[0]).toContain('inventada')
+  })
+
+  it('recusa coluna desconhecida em vez de ignorá-la em silêncio', () => {
+    const r = aplicarAjustesEditorial(catalogo, [{ linkCurto: 'aaa111', preco: '1,00' }], [
+      'linkCurto',
+      'preco',
+    ])
+    expect(r.erros[0]).toContain('preco')
+  })
+
+  it('recusa ajuste sem linkCurto e ajuste vazio', () => {
+    const r = aplicarAjustesEditorial(catalogo, [
+      { linkCurto: '', nome: 'X', categoria: '' },
+      { linkCurto: 'aaa111', nome: '', categoria: '' },
+    ])
+    expect(r.erros).toHaveLength(2)
+    expect(r.aplicados).toEqual([])
+  })
+
+  it('com lista vazia devolve o catálogo intacto', () => {
+    const r = aplicarAjustesEditorial(catalogo, [])
+    expect(r.registros).toEqual(catalogo)
+    expect(r.aplicados).toEqual([])
+    expect(r.erros).toEqual([])
+  })
+
+  it('nomes longos do catálogo real têm ajuste correspondente', async () => {
+    const { linhas } = await lerAjustesEditorial()
+    const ajustes = new Set(linhas.map((l) => l.linkCurto))
+    const semAjuste = catalogo.filter((r) => r.nome.length > 120 && !ajustes.has(r.linkCurto))
+    expect(semAjuste).toEqual([])
+  })
+})
+
+describe('lerAjustesEditorial', () => {
+  it('lê o arquivo real do repositório', async () => {
+    const { linhas } = await lerAjustesEditorial()
+    expect(linhas.length).toBeGreaterThan(0)
+    for (const l of linhas) expect(l.linkCurto).toBeTruthy()
+  })
+
+  it('arquivo ausente vira lista vazia, não exceção', async () => {
+    const r = await lerAjustesEditorial('/tmp/nao-existe-ajustes.csv')
+    expect(r.linhas).toEqual([])
   })
 })

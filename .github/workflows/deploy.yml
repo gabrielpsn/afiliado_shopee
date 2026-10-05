@@ -1,0 +1,75 @@
+name: Publicar
+
+on:
+  push:
+    branches: [main]
+  # Publicar sob demanda, para reprovar rápido sem esperar um push.
+  workflow_dispatch:
+
+concurrency:
+  group: publicar-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    name: Verify, build e publicação no Worker
+
+    # Sem token o job nem começa, e o motivo fica escrito no log em vez de
+    # parecer um build que passou. Publicar pela metade é pior que não publicar.
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Conferir credenciais
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::Falta CF_API_TOKEN ou CF_ACCOUNT_ID nos secrets do repositório."
+            echo "Token em Settings > Secrets and variables > Actions, com permissão Edit Workers."
+            exit 1
+          fi
+
+      - run: npm ci
+
+      # Mesmo gate do CI: testes, catálogo e build. Produto pendente ou nome longo
+      # reprovam a publicação. Aqui não é estilo, é problema de consumidor.
+      - name: Verify completo
+        run: npm run verify
+
+      - name: Publicar no Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: deploy
+          # Sobe o conteúdo de dist/ como estático. Um Worker que só serve
+          # arquivos não precisa de código próprio: o wrangler detecta o
+          # diretório estático e monta o asset binding sozinho.
+          args: dist --name=afiliado-shopee --assets=dist --compatibility-date=2026-01-01
+
+      # O domínio já é público em src/data/site.js e no repositório, então
+      # escrevê-lo aqui não expõe nada. Um secret só para ele custaria um
+      # segundo lugar onde a URL pode divergir da real.
+      - name: Conferir a vitrine no ar
+        run: |
+          site="https://afiliado-shopee.gabrielpsn.workers.dev"
+          echo "checando $site"
+          codigo=$(curl -s -o /tmp/pagina.html -w '%{http_code}' "$site/")
+          if [ "$codigo" != "200" ]; then
+            echo "::error::A vitrine respondeu $codigo depois da publicação."
+            exit 1
+          fi
+          grep -q 'id="app"' /tmp/pagina.html || {
+            echo "::error::A página subiu sem o mount do Vue."
+            exit 1
+          }

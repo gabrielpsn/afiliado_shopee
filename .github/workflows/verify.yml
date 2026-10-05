@@ -38,5 +38,5 @@ jobs:
       - name: Build
         run: npm run build
 
-# O deploy automático entra na Fase 7, junto com o registro do Worker no
-# Cloudflare. Publicar antes disso exigiria um token que ainda não existe.
+# A publicação vive em deploy.yml, no mesmo push. Este workflow continua sendo
+# o gate de leitura: ele roda também em pull_request, onde o deploy não roda.

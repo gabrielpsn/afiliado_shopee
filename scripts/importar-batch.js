@@ -18,8 +18,9 @@
 //     `Product Link` entram como vieram.
 //
 // A categorização é derivada do nome por `src/engine/categorizar.js` e gravada no
-// CSV. Editar a categoria à mão no `data/produtos.csv` continua valendo — o
-// classificador só roda na importação.
+// CSV. O que o classificador errou, ou o nome que precisa ser encurtado, é
+// corrigido em `data/ajustes-editoriais.csv` — porque editar `data/produtos.csv`
+// direto funciona só até a próxima reimportação, e aí o ajuste some sem aviso.
 
 import { readdir, readFile, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
@@ -40,6 +41,7 @@ const RAIZ = dirname(dirname(fileURLToPath(import.meta.url)))
 const DIR_BATCH = join(RAIZ, 'data/batch')
 const CSV_CATALOGO = join(RAIZ, 'data/produtos.csv')
 const CSV_LINKS = join(RAIZ, 'data/links-resolvidos.csv')
+const CSV_AJUSTES = join(RAIZ, 'data/ajustes-editoriais.csv')
 
 const PREFIXO_PRODUTOS = 'BatchProductLinks'
 const PREFIXO_OFERTAS = 'BatchShopeeLinks'
@@ -214,6 +216,104 @@ function linhaCsv(registro, atualizadoEm) {
   return formatarLinhaCsv(valores, COLUNAS_CATALOGO, ';')
 }
 
+/** Colunas aceitas em `data/ajustes-editoriais.csv`. */
+export const COLUNAS_AJUSTE = ['linkCurto', 'nome', 'categoria']
+
+/**
+ * Aplica os ajustes humanos depois de montar o catálogo.
+ *
+ * O ajuste serve para duas coisas que o importador não pode adivinhar: encurtar
+ * um nome que o Google corta, e corrigir a categoria quando o classificador erra.
+ * Não serve para escrever preço — preço que não veio do painel não vai para a
+ * vitrine, e por isso `preco` nem é uma coluna aceita aqui.
+ *
+ * Devolve os três desfechos em vez de só a lista: um `linkCurto` digitado errado
+ * não dá erro nenhum e o ajuste vira no-op silencioso, que é a falha que só se
+ * percebe na próxima reimportação.
+ */
+export function aplicarAjustesEditorial(registros, linhas, colunas = COLUNAS_AJUSTE) {
+  const porLink = new Map(registros.map((r) => [r.linkCurto, r]))
+  const idsCategorias = new Set(CATEGORIAS.map((c) => c.id))
+
+  const aplicados = []
+  const semCorrespondencia = []
+  const erros = []
+
+  for (const coluna of colunas) {
+    if (!COLUNAS_AJUSTE.includes(coluna)) {
+      erros.push(`coluna "${coluna}" não existe em ajustes-editoriais.csv`)
+    }
+  }
+  if (erros.length) return { registros, aplicados, semCorrespondencia, erros }
+
+  for (const linha of linhas) {
+    const linkCurto = String(linha.linkCurto ?? '').trim()
+    const nome = String(linha.nome ?? '').trim()
+    const categoria = String(linha.categoria ?? '').trim()
+
+    if (!linkCurto) {
+      erros.push('linha de ajuste sem linkCurto')
+      continue
+    }
+
+    if (!porLink.has(linkCurto)) {
+      semCorrespondencia.push(linkCurto)
+      continue
+    }
+
+    if (!nome && !categoria) {
+      erros.push(`${linkCurto}: ajuste sem nome e sem categoria, não faz nada`)
+      continue
+    }
+
+    if (categoria && !idsCategorias.has(categoria)) {
+      erros.push(`${linkCurto}: categoria "${categoria}" não existe em categories.js`)
+      continue
+    }
+
+    aplicados.push(linkCurto)
+  }
+
+  if (erros.length || semCorrespondencia.length) {
+    return { registros, aplicados, semCorrespondencia, erros }
+  }
+
+  const mapa = new Map(
+    linhas.map((linha) => {
+      const nome = String(linha.nome ?? '').trim()
+      const categoria = String(linha.categoria ?? '').trim()
+      return [String(linha.linkCurto ?? '').trim(), { nome, categoria }]
+    })
+  )
+
+  const registrosAjustados = registros.map((r) => {
+    const ajuste = mapa.get(r.linkCurto)
+    if (!ajuste) return r
+
+    return {
+      ...r,
+      nome: ajuste.nome || r.nome,
+      categoria: ajuste.categoria || r.categoria,
+    }
+  })
+
+  return { registros: registrosAjustados, aplicados, semCorrespondencia, erros }
+}
+
+/**
+ * Lê `data/ajustes-editoriais.csv`. Arquivo ausente é o normal — quase sempre
+ * não há ajuste nenhum — então devolve lista vazia em vez de estourar.
+ */
+export async function lerAjustesEditorial(caminho = CSV_AJUSTES) {
+  try {
+    const texto = await readFile(caminho, 'utf8')
+    return parseCsv(texto)
+  } catch (erro) {
+    if (erro.code === 'ENOENT') return { colunas: COLUNAS_AJUSTE, linhas: [] }
+    throw erro
+  }
+}
+
 async function main() {
   const arquivos = await readdir(DIR_BATCH)
   const deProdutos = arquivos.filter((f) => f.startsWith(PREFIXO_PRODUTOS)).sort()
@@ -237,7 +337,12 @@ async function main() {
 
   const hoje = new Date().toISOString().slice(0, 10)
   const idsCategorias = new Set(CATEGORIAS.map((c) => c.id))
-  const foraDaTaxonomia = unicos.filter((r) => !idsCategorias.has(r.categoria))
+
+  const { colunas: colunasAjuste, linhas: linhasAjuste } = await lerAjustesEditorial()
+  const ajuste = aplicarAjustesEditorial(unicos, linhasAjuste, colunasAjuste)
+  const finais = ajuste.registros
+
+  const foraDaTaxonomia = finais.filter((r) => !idsCategorias.has(r.categoria))
 
   // links-resolvidos.csv: o script de resolução de link continua sendo quem
   // valida o domínio, mas aqui o painel já entregou o par completo.
@@ -255,8 +360,33 @@ async function main() {
     ].join(',')
   )
 
+  // Ajustes e taxonomia são validados ANTES de gravar: o CSV é a fonte de verdade
+  // do catálogo, então uma importação que falha no fim não pode ter deixado o
+  // arquivo pela metade — o próximo `catalog:sync` leria catálogo quebrado sem
+  // nenhum sinal de onde veio o problema.
+  if (ajuste.erros.length) {
+    console.error(`\ndata/ajustes-editoriais.csv: ${ajuste.erros.length} ajuste(s) inválido(s):`)
+    for (const e of ajuste.erros.slice(0, 20)) console.error(`  x ${e}`)
+    console.error('Corrija o arquivo e rode de novo. Nada foi gravado.')
+    return 1
+  }
+
+  if (ajuste.semCorrespondencia.length) {
+    console.error(`\n${ajuste.semCorrespondencia.length} ajuste(s) sem produto correspondente:`)
+    for (const link of ajuste.semCorrespondencia.slice(0, 20)) console.error(`  x ${link}`)
+    console.error('O linkCurto não existe em data/batch/. Um ajuste órfão é um no-op')
+    console.error('silencioso: o produto sairia com o dado errado e o build não acusa nada.')
+    console.error('Nada foi gravado. Remova a linha ou corrija o linkCurto.')
+    return 1
+  }
+
+  if (foraDaTaxonomia.length) {
+    console.error(`\n${foraDaTaxonomia.length} produto(s) com categoria fora de categories.js`)
+    return 1
+  }
+
   const cabecalhoCatalogo = COLUNAS_CATALOGO.join(';')
-  const linhasCatalogo = unicos.map((r) => linhaCsv(r, hoje))
+  const linhasCatalogo = finais.map((r) => linhaCsv(r, hoje))
 
   await writeFile(CSV_LINKS, [cabecalhoLinks, ...linhasLinks].join('\n') + '\n', 'utf8')
   await writeFile(CSV_CATALOGO, [cabecalhoCatalogo, ...linhasCatalogo].join('\n') + '\n', 'utf8')
@@ -267,6 +397,7 @@ async function main() {
   console.log(`  lojas distintas: ${new Set(unicos.map((r) => r.loja)).size}`)
   console.log(`  sem foto (placeholder na vitrine): ${unicos.length}`)
   console.log(`  preço de referência em: ${hoje}`)
+  console.log(`  ajustes editoriais: ${ajuste.aplicados.length} aplicado(s)`)
 
   if (deOfertas.length) {
     console.log(`\nofertas de categoria (${deOfertas.length} arquivo(s)) em data/batch/:`)
@@ -278,7 +409,7 @@ async function main() {
   }
 
   const porCategoria = new Map()
-  for (const r of unicos) porCategoria.set(r.categoria, (porCategoria.get(r.categoria) ?? 0) + 1)
+  for (const r of finais) porCategoria.set(r.categoria, (porCategoria.get(r.categoria) ?? 0) + 1)
 
   console.log('\npor categoria:')
   for (const c of [...CATEGORIAS].sort((a, b) => b.ordem - a.ordem)) {
@@ -287,11 +418,6 @@ async function main() {
   }
   const semCategoria = (porCategoria.get('outros') ?? 0)
   if (semCategoria) console.log(`  ${String(semCategoria).padStart(4)}  em "outros" — revisar`)
-
-  if (foraDaTaxonomia.length) {
-    console.error(`\n${foraDaTaxonomia.length} produto(s) com categoria fora de categories.js`)
-    return 1
-  }
 
   if (comErro.length) {
     console.error(`\n${comErro.length} linha(s) ignorada(s):`)
