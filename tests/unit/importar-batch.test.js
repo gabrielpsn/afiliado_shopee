@@ -10,6 +10,8 @@ import {
   formatarLinhaCsv,
   aplicarAjustesEditorial,
   lerAjustesEditorial,
+  mesclarManuais,
+  carregarAdicionados,
 } from '../../scripts/importar-batch.js'
 import { parseCsv } from '../../scripts/from-csv.js'
 
@@ -265,5 +267,103 @@ describe('lerAjustesEditorial', () => {
   it('arquivo ausente vira lista vazia, não exceção', async () => {
     const r = await lerAjustesEditorial('/tmp/nao-existe-ajustes.csv')
     expect(r.linhas).toEqual([])
+  })
+})
+
+describe('mesclarManuais', () => {
+  const doLote = [
+    { linkCurto: 'aaa111', itemId: '1', nome: 'Do Lote', comissaoPct: '0.15', erros: [] },
+  ]
+
+  const manual = (over = {}) => ({
+    linkCurto: 'manual1',
+    itemId: '900',
+    nome: 'Produto Manual',
+    categoria: 'pet',
+    preco: 10,
+    loja: 'Loja Manual',
+    vendas: '',
+    shopId: '1603816379',
+    urlPublica: 'https://shopee.com.br/minha-loja/1603816379/900',
+    adicionadoEm: '2026-10-05',
+    atualizadoEm: '2026-10-05',
+    ...over,
+  })
+
+  it('soma o produto manual ao catálogo do lote', () => {
+    const r = mesclarManuais(doLote, [manual()])
+    expect(r.registros).toHaveLength(2)
+    expect(r.adicionados).toBe(1)
+    expect(r.erros).toEqual([])
+  })
+
+  // O motivo do arquivo separado: sem a mesclagem o produto sumiria no
+  // próximo catalog:import e o build continuaria verde com um produto a menos.
+  it('preserva o adicionadoEm do manual, sem trocar pela data de hoje', () => {
+    const r = mesclarManuais(doLote, [manual({ adicionadoEm: '2026-01-01'})], { hoje: '2026-10-05' })
+    expect(r.registros[1].adicionadoEm).toBe('2026-01-01')
+  })
+
+  it('marca hoje quando o manual não tem data', () => {
+    const r = mesclarManuais(doLote, [manual({ adicionadoEm: '' })], { hoje: '2026-10-05' })
+    expect(r.registros[1].adicionadoEm).toBe('2026-10-05')
+  })
+
+  it('monta o link de afiliado a partir do código curto', () => {
+    const r = mesclarManuais(doLote, [manual()])
+    expect(r.registros[1].linkAfiliado).toBe('https://s.shopee.com.br/manual1')
+  })
+
+  // A oferta do painel tem a comissão real. Deixar o manual ganhar faria o
+  // produto perder comissão sem ninguém perceber.
+  it('quando o linkCurto já vem do lote, o lote ganha', () => {
+    const r = mesclarManuais(doLote, [manual({ linkCurto: 'aaa111', nome: 'Versão Manual' })])
+    expect(r.registros).toHaveLength(1)
+    expect(r.registros[0].nome).toBe('Do Lote')
+    expect(r.registros[0].comissaoPct).toBe('0.15')
+    expect(r.repetidos).toBe(1)
+  })
+
+  it('reprova manual sem linkCurto, nome, preço ou urlPublica', () => {
+    const r = mesclarManuais(doLote, [
+      manual({ linkCurto: '' }),
+      manual({ linkCurto: 'm2', nome: '' }),
+      manual({ linkCurto: 'm3', preco: null }),
+      // A url vem do redirect do produto:add. Sem ela o build reprovaria
+      // depois com "urlPublica vazia", que é sintoma, não causa.
+      manual({ linkCurto: 'm4', urlPublica: '' }),
+    ])
+    expect(r.erros).toHaveLength(4)
+    expect(r.registros).toHaveLength(1)
+  })
+
+  it('a mensagem de urlPublica vazia aponta o comando que resolve', () => {
+    const r = mesclarManuais(doLote, [manual({ linkCurto: 'm4', urlPublica: '' })])
+    expect(r.erros[0]).toMatch(/produto:add/)
+  })
+
+  it('lista vazia não muda nada', () => {
+    const r = mesclarManuais(doLote, [])
+    expect(r.registros).toEqual(doLote)
+    expect(r.adicionados).toBe(0)
+    expect(r.erros).toEqual([])
+  })
+
+  it('o lote não é mutado', () => {
+    mesclarManuais(doLote, [manual()])
+    expect(doLote).toHaveLength(1)
+  })
+})
+
+describe('carregarAdicionados', () => {
+  it('lê o CSV real e devolve data por linkCurto', async () => {
+    const m = await carregarAdicionados()
+    expect(m.size).toBeGreaterThan(0)
+    for (const data of m.values()) expect(data).toMatch(/^\d{4}-\d{2}-\d{2}$/)
+  })
+
+  it('arquivo ausente vira mapa vazio, não exceção', async () => {
+    const m = await carregarAdicionados('/tmp/nao-existe-produtos.csv')
+    expect(m.size).toBe(0)
   })
 })

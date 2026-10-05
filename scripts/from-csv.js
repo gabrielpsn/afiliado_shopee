@@ -191,6 +191,11 @@ export function avaliarLinha(linha, hoje) {
     semFoto: imagens.length === 0,
     pendente: faltando.length > 0,
     atualizadoEm: linha.atualizadoEm || hoje,
+    // `adicionadoEm` responde "quando isto entrou na vitrine" e, diferente de
+    // `atualizadoEm`, o importador nunca sobrescreve: reimportar o painel não
+    // pode transformar o catálogo inteiro em novidade. Vazio só quando o produto
+    // entrou antes do campo existir, e o chamador decide o que fazer com isso.
+    adicionadoEm: linha.adicionadoEm || '',
   }
 }
 
@@ -212,6 +217,9 @@ export const COLUNAS_CATALOGO = [
   'vendas',
   'ativo',
   'atualizadoEm',
+  // Última coluna de propósito: quem abrir o CSV para editar à mão lê as
+  // antigas na mesma ordem, e as duas datas no fim ficam lado a lado.
+  'adicionadoEm',
 ]
 
 /**
@@ -282,6 +290,7 @@ function gerarJs(produtos) {
         'ativo',
         'pendente',
         'atualizadoEm',
+        'adicionadoEm',
       ]
 
       const linhas = chaves
@@ -384,6 +393,7 @@ export function buildProducts({
       ativo: parseBooleano(linha.ativo, !info.pendente),
       pendente: info.pendente,
       atualizadoEm: info.atualizadoEm,
+      adicionadoEm: info.adicionadoEm || null,
     }
 
     if (info.pendente) {

@@ -21,6 +21,12 @@
 // CSV. O que o classificador errou, ou o nome que precisa ser encurtado, é
 // corrigido em `data/ajustes-editoriais.csv` — porque editar `data/produtos.csv`
 // direto funciona só até a próxima reimportação, e aí o ajuste some sem aviso.
+//
+// Produto adicionado fora da exportação (`npm run produto:add`) vive em
+// `data/produtos-manuais.csv` e é mesclado aqui. Ele também precisa sobreviver à
+// reimportação: gravar direto no `data/produtos.csv` faria o produto sumir no
+// próximo `catalog:import`, sem aviso e sem erro — o build continuaria verde com
+// um produto a menos.
 
 import { readdir, readFile, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
@@ -42,6 +48,7 @@ const DIR_BATCH = join(RAIZ, 'data/batch')
 const CSV_CATALOGO = join(RAIZ, 'data/produtos.csv')
 const CSV_LINKS = join(RAIZ, 'data/links-resolvidos.csv')
 const CSV_AJUSTES = join(RAIZ, 'data/ajustes-editoriais.csv')
+const CSV_MANUAIS = join(RAIZ, 'data/produtos-manuais.csv')
 
 const PREFIXO_PRODUTOS = 'BatchProductLinks'
 const PREFIXO_OFERTAS = 'BatchShopeeLinks'
@@ -155,6 +162,100 @@ export function normalizarLinha(linha) {
 }
 
 /**
+ * Lê `data/produtos-manuais.csv` no mesmo formato do catálogo editorial.
+ *
+ * O arquivo é escrito por `scripts/produto-add.js` e tem as mesmas colunas de
+ * `data/produtos.csv`, então a mesclagem é uma leitura e nada mais. Arquivo
+ * ausente é o normal: a maioria das pessoas nunca adds produto à mão.
+ */
+export async function lerManuais(caminho = CSV_MANUAIS) {
+  try {
+    const { linhas } = parseCsv(await readFile(caminho, 'utf8'))
+    return linhas.map((linha) => ({
+      linkCurto: String(linha.linkCurto ?? '').trim(),
+      itemId: String(linha.itemId ?? '').trim(),
+      nome: String(linha.nome ?? '').trim(),
+      categoria: String(linha.categoria ?? '').trim(),
+      preco: parseNumero(linha.preco),
+      loja: String(linha.loja ?? '').trim(),
+      vendas: String(linha.vendas ?? '').trim(),
+      // `urlPublica` e `shopId` vêm gravados no arquivo, não são adivinhados:
+      // o importador reescreve `links-resolvidos.csv` do zero e perderia a url
+      // que o `produto:add` resolveu por redirect.
+      shopId: String(linha.shopId ?? '').trim(),
+      urlPublica: String(linha.urlPublica ?? '').trim(),
+      atualizadoEm: String(linha.atualizadoEm ?? '').trim(),
+      adicionadoEm: String(linha.adicionadoEm ?? '').trim(),
+    }))
+  } catch (erro) {
+    if (erro.code === 'ENOENT') return []
+    throw erro
+  }
+}
+
+/**
+ * Junta produto manual ao catálogo do lote.
+ *
+ * O produto do lote ganha a preferência quando o `linkCurto` é o mesmo: a
+ * exportação do painel tem comissão e é a fonte de verdade da offer. Se virasse
+ * ao contrário, um produto reexportado perderia a comissão silenciosamente.
+ *
+ * Manual sem `itemId` ou sem `nome` é erro: ele entraria no catálogo como
+ * pendente e reprovaria o build, e é melhor a importação dizer o que falta do
+ * que o validador accuse 40 linhas adiante.
+ */
+export function mesclarManuais(doLote, manuais, { hoje } = {}) {
+  const porLink = new Map(doLote.map((r) => [r.linkCurto, r]))
+  const erros = []
+  let adicionados = 0
+  let repetidos = 0
+
+  for (const m of manuais) {
+    if (!m.linkCurto) {
+      erros.push('produto manual sem linkCurto')
+      continue
+    }
+    if (!m.nome) {
+      erros.push(`${m.linkCurto}: produto manual sem nome`)
+      continue
+    }
+    if (m.preco === null) {
+      erros.push(`${m.linkCurto}: preço ilegível no produto manual`)
+      continue
+    }
+    if (!m.urlPublica) {
+      // A url vem do redirect do `produto:add`. Sem ela o produto entra
+      // pendente e reprova o build accusing "urlPublica vazia" — mas a causa é
+      // que a linha manual perdeu o campo, e dizer isso aqui poupa a investigação.
+      erros.push(`${m.linkCurto}: urlPublica vazia no produto manual — rode \`npm run produto:add\` de novo`)
+      continue
+    }
+
+    if (porLink.has(m.linkCurto)) {
+      repetidos++
+      continue
+    }
+
+    porLink.set(m.linkCurto, {
+      ...m,
+      erros: [],
+      comissaoPct: null,
+      comissao: null,
+      urlPublica: m.urlPublica ?? '',
+      linkAfiliado: `https://s.shopee.com.br/${m.linkCurto}`,
+      manual: true,
+      // Sem `adicionadoEm`, o produto entrou hoje. Preencher com a data da
+      // primeira leitura do arquivo, e não do produto, faz o aviso de novidade
+      // não se mover sozinho com o tempo.
+      adicionadoEm: m.adicionadoEm || hoje,
+    })
+    adicionados++
+  }
+
+  return { registros: [...porLink.values()], adicionados, repetidos, erros }
+}
+
+/**
  * Escolhe um registro por itemId quando o mesmo produto aparece em vários lotes.
  *
  * A mesma peça foi exportada duas vezes com dois `Offer Link` diferentes. Ambos
@@ -211,9 +312,37 @@ function linhaCsv(registro, atualizadoEm) {
     vendas: registro.vendas,
     ativo: 'sim',
     atualizadoEm,
+    adicionadoEm: registro.adicionadoEm ?? '',
   }
 
   return formatarLinhaCsv(valores, COLUNAS_CATALOGO, ';')
+}
+
+/**
+ * Carrega o `adicionadoEm` já gravado no `data/produtos.csv`.
+ *
+ * O `atualizadoEm` é reescrito a cada importação de propósito — é a data da
+ * última conferência de preço. Já o `adicionadoEm` responde "desde quando isto
+ * está na vitrine", e perdê-lo faria toda reimportação marcar os 500 produtos
+ * como novidade,transformando a página /novidades numa cópia da home. Por isso
+ * ele é lido do CSV atual antes de sobrescrever o arquivo.
+ *
+ * Quando o produto ainda não existe no CSV, recebe a data da importação — é a
+ * primeira vez que ele entra, então a data é verdadeira.
+ */
+export async function carregarAdicionados(caminho = CSV_CATALOGO) {
+  try {
+    const { linhas } = parseCsv(await readFile(caminho, 'utf8'))
+    const mapa = new Map()
+    for (const linha of linhas) {
+      const linkCurto = String(linha.linkCurto ?? '').trim()
+      if (linkCurto) mapa.set(linkCurto, String(linha.adicionadoEm ?? '').trim())
+    }
+    return mapa
+  } catch (erro) {
+    if (erro.code === 'ENOENT') return new Map()
+    throw erro
+  }
 }
 
 /** Colunas aceitas em `data/ajustes-editoriais.csv`. */
@@ -338,9 +467,38 @@ async function main() {
   const hoje = new Date().toISOString().slice(0, 10)
   const idsCategorias = new Set(CATEGORIAS.map((c) => c.id))
 
+  // Produto added à mão entra antes dos ajustes editoriais, para que o ajuste
+  // aplique nele também. Sem isso, corrigir o nome de um produto manual exigiria
+  // uma segunda passada e a ordem viraria surpresa.
+  const manuais = await lerManuais()
+  const mesclagem = mesclarManuais(unicos, manuais, { hoje })
+
+  if (mesclagem.erros.length) {
+    console.error(`\ndata/produtos-manuais.csv: ${mesclagem.erros.length} problema(s):`)
+    for (const e of mesclagem.erros.slice(0, 20)) console.error(`  x ${e}`)
+    console.error('Nada foi gravado. Corrija o arquivo e rode de novo.')
+    return 1
+  }
+
+  const comManuais = ordenar(mesclagem.registros)
+
   const { colunas: colunasAjuste, linhas: linhasAjuste } = await lerAjustesEditorial()
-  const ajuste = aplicarAjustesEditorial(unicos, linhasAjuste, colunasAjuste)
+  const ajuste = aplicarAjustesEditorial(comManuais, linhasAjuste, colunasAjuste)
   const finais = ajuste.registros
+
+  // `adicionadoEm` é lido do catálogo atual, não do lote: preservá-lo é o que
+  // impede toda reimportação de virar "novidade".
+  const adicionados = await carregarAdicionados()
+  let novosNaImportacao = 0
+  for (const r of finais) {
+    const anterior = adicionados.get(r.linkCurto)
+    if (anterior) {
+      r.adicionadoEm = anterior
+    } else {
+      r.adicionadoEm = hoje
+      novosNaImportacao++
+    }
+  }
 
   const foraDaTaxonomia = finais.filter((r) => !idsCategorias.has(r.categoria))
 
@@ -349,7 +507,7 @@ async function main() {
   const cabecalhoLinks = 'linkCurto,status,itemId,shopId,loja,urlPublica'
   // Nome de loja tem vírgula ("FOX SHOP, CONFIGS"), então o campo precisa de
   // escape: sem aspas o nome invade a coluna seguinte e o itemId some.
-  const linhasLinks = unicos.map((r) =>
+  const linhasLinks = finais.map((r) =>
     [
       r.linkCurto,
       'OK',
@@ -392,12 +550,17 @@ async function main() {
   await writeFile(CSV_CATALOGO, [cabecalhoCatalogo, ...linhasCatalogo].join('\n') + '\n', 'utf8')
 
   console.log(`lote: ${deProdutos.length} arquivo(s), ${registros.length} linha(s)`)
-  console.log(`  produtos únicos: ${unicos.length}`)
+  console.log(`  produtos únicos: ${finais.length}`)
   console.log(`  duplicados entre lotes: ${duplicados}`)
-  console.log(`  lojas distintas: ${new Set(unicos.map((r) => r.loja)).size}`)
-  console.log(`  sem foto (placeholder na vitrine): ${unicos.length}`)
+  console.log(`  lojas distintas: ${new Set(finais.map((r) => r.loja)).size}`)
+  console.log(`  sem foto (placeholder na vitrine): ${finais.length}`)
   console.log(`  preço de referência em: ${hoje}`)
   console.log(`  ajustes editoriais: ${ajuste.aplicados.length} aplicado(s)`)
+  console.log(`  produtos manuais: ${mesclagem.adicionados} mesclado(s)`)
+  if (mesclagem.repetidos) {
+    console.log(`    ${mesclagem.repetidos} já vinham do lote e mantiveram a oferta do painel`)
+  }
+  console.log(`  entrou na vitrine agora: ${novosNaImportacao}`)
 
   if (deOfertas.length) {
     console.log(`\nofertas de categoria (${deOfertas.length} arquivo(s)) em data/batch/:`)

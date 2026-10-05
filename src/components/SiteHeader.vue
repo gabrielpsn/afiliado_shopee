@@ -9,9 +9,13 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 import { SITE } from '../data/site.js'
+import { getActiveProducts } from '../engine/catalog.js'
+import { contarNovidades } from '../engine/novidades.js'
 
 const termo = ref('')
 const router = useRouter()
+
+const novidades = contarNovidades(getActiveProducts())
 
 function buscar() {
   const q = termo.value.trim()
@@ -32,6 +36,20 @@ function buscar() {
         >
           Afiliado
         </span>
+      </RouterLink>
+
+      <!-- O selo só aparece com produto novo dentro da janela. Contagem alta
+           significa catálogo recém-publicado, não novelty: o cap em 99 evita
+           o header gritar "500 novos" quando é o site inteiro. -->
+      <RouterLink
+        v-if="novidades"
+        :to="{ name: 'novidades' }"
+        class="flex min-h-11 shrink-0 items-center gap-1 rounded-xl border border-emerald-500/40 px-3 text-sm font-bold text-emerald-300 transition hover:bg-emerald-500/10"
+        :aria-label="`Novidades: ${novidades} produto(s) novo(s)`"
+        data-testid="badge-novidades"
+      >
+        <span aria-hidden="true">✨</span>
+        <span>{{ novidades > 99 ? '99+' : novidades }}</span>
       </RouterLink>
 
       <form class="ml-auto flex min-w-0 flex-1 items-center gap-2" role="search" @submit.prevent="buscar">
