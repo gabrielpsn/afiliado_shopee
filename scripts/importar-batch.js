@@ -49,6 +49,7 @@ const CSV_CATALOGO = join(RAIZ, 'data/produtos.csv')
 const CSV_LINKS = join(RAIZ, 'data/links-resolvidos.csv')
 const CSV_AJUSTES = join(RAIZ, 'data/ajustes-editoriais.csv')
 const CSV_MANUAIS = join(RAIZ, 'data/produtos-manuais.csv')
+const CSV_CACHE_IMAGENS = join(RAIZ, 'data/imagens-shopee.csv')
 
 const PREFIXO_PRODUTOS = 'BatchProductLinks'
 const PREFIXO_OFERTAS = 'BatchShopeeLinks'
@@ -194,6 +195,29 @@ export async function lerManuais(caminho = CSV_MANUAIS) {
 }
 
 /**
+ * Mapa `itemId → imageUrl` gravado por `npm run imagens:buscar`.
+ *
+ * Existe à parte porque o `catalog:import` reescreve `data/produtos.csv` inteiro
+ * a partir dos lotes. Guardar a foto só no catálogo faria a próxima importação
+ * apagar as 500 imagens — e o build continuaria verde com placeholder em tudo.
+ */
+export async function lerImagens(caminho = CSV_CACHE_IMAGENS) {
+  try {
+    const { linhas } = parseCsv(await readFile(caminho, 'utf8'))
+    const mapa = new Map()
+    for (const linha of linhas) {
+      const itemId = String(linha.itemId ?? '').trim()
+      const imageUrl = String(linha.imageUrl ?? '').trim()
+      if (itemId && imageUrl.startsWith('https://')) mapa.set(itemId, imageUrl)
+    }
+    return mapa
+  } catch (erro) {
+    if (erro.code === 'ENOENT') return new Map()
+    throw erro
+  }
+}
+
+/**
  * Junta produto manual ao catálogo do lote.
  *
  * O produto do lote ganha a preferência quando o `linkCurto` é o mesmo: a
@@ -293,7 +317,7 @@ function ordenar(registros) {
   return [...registros].sort((a, b) => Number(a.itemId) - Number(b.itemId))
 }
 
-function linhaCsv(registro, atualizadoEm) {
+function linhaCsv(registro, atualizadoEm, imagens) {
   const valores = {
     linkCurto: registro.linkCurto,
     nome: registro.nome,
@@ -301,7 +325,7 @@ function linhaCsv(registro, atualizadoEm) {
     preco: registro.preco,
     precoAntes: '',
     tags: '',
-    imagens: '',
+    imagens: imagens.get(String(registro.itemId)) ?? '',
     destaques: '',
     descricao: '',
     avaliacao: '',
@@ -544,7 +568,8 @@ async function main() {
   }
 
   const cabecalhoCatalogo = COLUNAS_CATALOGO.join(';')
-  const linhasCatalogo = finais.map((r) => linhaCsv(r, hoje))
+  const imagens = await lerImagens()
+  const linhasCatalogo = finais.map((r) => linhaCsv(r, hoje, imagens))
 
   await writeFile(CSV_LINKS, [cabecalhoLinks, ...linhasLinks].join('\n') + '\n', 'utf8')
   await writeFile(CSV_CATALOGO, [cabecalhoCatalogo, ...linhasCatalogo].join('\n') + '\n', 'utf8')
@@ -553,7 +578,10 @@ async function main() {
   console.log(`  produtos únicos: ${finais.length}`)
   console.log(`  duplicados entre lotes: ${duplicados}`)
   console.log(`  lojas distintas: ${new Set(finais.map((r) => r.loja)).size}`)
-  console.log(`  sem foto (placeholder na vitrine): ${finais.length}`)
+  // Sem este contador a linha dizia "500 sem foto" antes e depois de existir
+  // cache de imagens — o número era o total, não o que faltava.
+  const semFoto = finais.filter((r) => !imagens.get(String(r.itemId))).length
+  console.log(`  sem foto (placeholder na vitrine): ${semFoto}`)
   console.log(`  preço de referência em: ${hoje}`)
   console.log(`  ajustes editoriais: ${ajuste.aplicados.length} aplicado(s)`)
   console.log(`  produtos manuais: ${mesclagem.adicionados} mesclado(s)`)

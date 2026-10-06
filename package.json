@@ -13,6 +13,7 @@
     "links:resolve": "node scripts/resolve-links.js",
     "catalog:sync": "node scripts/from-csv.js",
     "produto:add": "node scripts/produto-add.js",
+    "imagens:buscar": "node --env-file-if-exists=.env scripts/buscar-imagens.js",
     "feed:gerar": "node scripts/gerar-feed.js",
     "validate:catalog": "node scripts/check-links.js",
     "verify": "npm run test && npm run validate:catalog && npm run feed:gerar && npm run build",

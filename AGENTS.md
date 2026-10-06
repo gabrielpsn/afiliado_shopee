@@ -23,6 +23,7 @@ módulos estáticos em `src/data/` e a lógica pura mora em `src/engine/`.
 | `src/components/` | peças reutilizáveis |
 | `scripts/` | ferramenta de linha de comando, roda fora do Vite |
 | `data/batch/` | exportação bruta da Shopee, só entrada do importador |
+| `data/imagens-shopee.csv` | foto oficial por `itemId`, gravado por `imagens:buscar`; o importador lê |
 | `data/produtos-manuais.csv` | produto adicionado fora do painel; entra no catálogo via importador |
 | `data/*.csv` | entrada editorial humana; `src/data/products.js` é gerado |
 
@@ -78,9 +79,10 @@ npm run verify
 ```
 
 O comando resolve o link por redirect (301) para tirar `itemId`, `shopId` e
-`urlPublica` — não é API, é o mesmo caminho de `resolve-links.js`. Não busca foto:
-a Shopee bloqueia leitura automatizada e não libera API sem App ID, então o
-produto entra com `semFoto: true` e o placeholder honesto.
+`urlPublica` — não é API, é o mesmo caminho de `resolve-links.js`.
+
+Depois de adicionar, rode `npm run imagens:buscar`: a foto do produto novo vem
+da API oficial de afiliado e entra no catálogo, como as dos demais produtos.
 
 O produto vai para `data/produtos-manuais.csv`, **não** para `data/produtos.csv`.
 O importador reconstrói o catálogo do zero; gravar direto faria o produto sumir no
@@ -94,32 +96,64 @@ A url resolvida fica gravada no arquivo de manuais porque o importador reescreve
 `links-resolvidos.csv` do zero. Perder a url faria o produto reprovar o build com
 "urlPublica vazia" — sintoma, não causa.
 
+## Foto pela API oficial (App ID liberado)
+
+As credenciais (`SHOPEE_APP_ID` e `SHOPEE_APP_SECRET`) ficam em `.env`, que é
+ignorado pelo git — `.env.example` mostra os nomes. No CI elas entram por
+secrets com os mesmos nomes; o script é chamado como `node --env-file-if-exists=.env`.
+
+```bash
+npm run imagens:buscar                 # tudo que faltar
+npm run imagens:buscar -- --limite 20  # rodada parcial
+```
+
+Fluxo da foto: `scripts/buscar-imagens.js` pega o `itemId` de
+`data/links-resolvidos.csv` (o CSV do catálogo **não** tem `itemId`: ele é
+editável e o id é ruído), consulta `productOfferV2` no GraphQL da Shopee e grava
+a url em `data/imagens-shopee.csv`.
+
+O cache existe porque o `catalog:import` reescreve `data/produtos.csv` inteiro a
+partir dos lotes; guardar só a foto no catálogo apagaria as 496 imagens na
+próxima importação e o build continuaria verde com placeholder em tudo. O
+importador lê o cache e preenche a coluna `imagens`.
+
+A API **não** enche nome/preço/imagem de tudo: produto fora da oferta de afiliado
+volta `nodes: []` e fica no placeholder. Não se inventa nome, preço ou categoria
+com dados da API — são fontes diferentes, e misturá-las faria o card dizer uma
+coisa e a página de produto outra.
+
+Assinatura: cada corpo GraphQL vai assinado no header `Authorization` como
+`SHA256 Credential=…, Timestamp=…, Signature=…`, onde `Signature = SHA256(appId +
+timestamp + corpoExato + secret)`. Assinar um corpo reformatado devolve 10020
+sem dizer o motivo — a montagem mora em `src/engine/shopee-api.js`, testada sem
+rede.
+
 ## Regra do produto pendente
 
 Um produto só pode aparecer na loja com `nome`, `categoria`, `preco` e
 `linkAfiliado`. Enquanto faltar algum, `pendente` fica `true`,
 `getActiveProducts()` o esconde e `scripts/check-links.js` **reprova o build**.
 
-Isso não é burocracia. A Shopee bloqueia leitura automatizada (captcha no HTML,
-403 na API), então nome, preço e imagem não podem ser preenchidos
-automaticamente. Deduzir nome ou preço levaria o visitante a clicar achando que
-compra o produto X e receber o Y, além de exibir preço diferente do real — o que
-é problema de consumidor (CDC, art. 6º III), não só de UX.
+Isso não é burocracia. A Shopee bloqueia leitura automatizada por scraping
+(captcha no HTML, 403 na API), então nome, preço e categoria não podem ser
+preenchidos automaticamente. Deduzir nome ou preço levaria o visitante a clicar
+achando que compra o produto X e receber o Y, além de exibir preço diferente do
+real — o que é problema de consumidor (CDC, art. 6º III), não só de UX.
 
 **Se faltar dado de um produto, o produto fica de fora. Não se inventa o dado.**
 
 ### Foto ausente é aviso, não bloqueio
 
-`imagens` vazio **não** reprova o build. A exportação de afiliado não traz foto e
-não há como obtê-la sem furar os termos da Shopee; exigir foto deixaria a
-vitrine inteira fora do ar. O produto entra com `semFoto: true`, o card e a
-página de produto mostram "Foto na Shopee" com o ícone da categoria, e
-`check-links.js` reporta o total como aviso.
+`imagens` vazio **não** reprova o build. O Open API não garante o produto: quem
+saiu da oferta de afiliado volta `nodes: []` e a foto continua de fora; exigir
+foto de tudo deixaria a vitrine inteira fora do ar. O produto entra com
+`semFoto: true`, o card e a página de produto mostram "Foto na Shopee" com o
+ícone da categoria, e `check-links.js` reporta o total como aviso.
 
 A distinção é deliberada: **nome, preço e categoria inventados são problema de
 consumidor; foto faltando é imprecisão visual.** Um é proibido, o outro é
-sinalizado. Quando vier foto, ela entra pelo CSV editorial e o placeholder some
-sozinho.
+sinalizado. Quando a foto aparecer, `npm run imagens:buscar` a preenche pelo
+cache e o placeholder some sozinho.
 
 ## Categoria é derivada, não digitada
 

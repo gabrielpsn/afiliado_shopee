@@ -10,11 +10,10 @@
 //   - Recusa qualquer coisa que deixaria o produto pendente: nome vazio, preço
 //     zero, categoria que não existe.
 //
-// O que ele não faz, por decisão: não busca foto. A Shopee bloqueia leitura
-// automatizada e não libera API sem App ID, então o produto entra com
-// `semFoto: true` e o card mostra o placeholder honesto. Preço e nome são
-// argumentos do usuário — o script não deduz nenhum dos dois, porque nome e
-// preço errados são problema de consumidor.
+// O que ele não faz, por decisão: não busca foto. A foto do produto novo vem
+// do Open API oficial na rodada seguinte de `imagens:buscar`, como a de
+// qualquer outro produto. Preço e nome são argumentos do usuário — o script não
+// deduz nenhum dos dois, porque nome e preço errados são problema de consumidor.
 
 import { readFile, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
@@ -296,9 +295,9 @@ async function main() {
 
   console.log('')
   console.log(`gravado em data/produtos-manuais.csv (${jaExiste ? 'substituindo' : 'novo'})`)
-  console.log('Sem foto: o card vai mostrar o placeholder até a imagem entrar pelo CSV.')
   console.log('')
-  console.log('Rode `npm run catalog:import` e depois `npm run verify`.')
+  console.log(`Rode \`npm run catalog:import\`, \`npm run catalog:sync\` e \`npm run verify\`.`)
+  console.log('Depois, `npm run imagens:buscar` traz a foto oficial para o produto novo.')
   console.log('O `catalog:sync` sozinho não pega produto novo.')
   return 0
 }
