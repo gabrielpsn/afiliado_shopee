@@ -2,7 +2,7 @@ name: Publicar
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   # Publicar sob demanda, para reprovar rápido sem esperar um push.
   workflow_dispatch:
 

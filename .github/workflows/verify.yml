@@ -2,9 +2,9 @@ name: Verificar
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 # Evita duas execuções concorrentes quando pushes chegam em sequência rápida.
 concurrency:
