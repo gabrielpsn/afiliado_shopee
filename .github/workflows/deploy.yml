@@ -52,10 +52,13 @@ jobs:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           command: deploy
-          # Sobe o conteúdo de dist/ como estático. Um Worker que só serve
-          # arquivos não precisa de código próprio: o wrangler detecta o
-          # diretório estático e monta o asset binding sozinho.
-          args: dist --name=afiliado-shopee --assets=dist --compatibility-date=2026-01-01
+          # Sem entry-point posicional: `dist` é diretório, e passá-lo como
+          # script faz o wrangler abortar com "entry-point file not found"
+          # antes de publicar. O diretório estático vai só em --assets.
+          args: >-
+            --name=afiliado-shopee
+            --assets=dist
+            --compatibility-date=2026-01-01
 
       # O domínio já é público em src/data/site.js e no repositório, então
       # escrevê-lo aqui não expõe nada. Um secret só para ele custaria um
