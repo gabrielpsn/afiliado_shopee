@@ -351,7 +351,11 @@ describe('catálogo real e novidade', () => {
 
   it('a data mais recente do catálogo é única por janela de importação', () => {
     const datas = new Set(PRODUCTS.map((p) => p.adicionadoEm))
-    expect(datas.size).toBeLessThanOrEqual(2)
+    // Uma data por janela real de importação (02/10 do backfill, 05/10 do
+    // produto manual, 07/10 desta). O limite largo existe para caçar o drift:
+    // se o importador passasse a reescrever `adicionadoEm` a cada sync, o
+    // conjunto empilharia dezenas de datas ao longo das reimportações.
+    expect(datas.size).toBeLessThanOrEqual(6)
   })
 
   it('isNovo é coerente com a contagem do badge', () => {
