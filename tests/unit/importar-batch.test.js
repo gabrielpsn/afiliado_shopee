@@ -12,6 +12,8 @@ import {
   lerAjustesEditorial,
   mesclarManuais,
   carregarAdicionados,
+  dataDoArquivo,
+  aplicarPrecoMaisRecente,
 } from '../../scripts/importar-batch.js'
 import { parseCsv } from '../../scripts/from-csv.js'
 
@@ -365,5 +367,72 @@ describe('carregarAdicionados', () => {
   it('arquivo ausente vira mapa vazio, não exceção', async () => {
     const m = await carregarAdicionados('/tmp/nao-existe-produtos.csv')
     expect(m.size).toBe(0)
+  })
+})
+
+describe('exportação em português (nov/2026)', () => {
+  it('lê o cabeçalho novo do painel igual ao antigo', () => {
+    const r = normalizarLinha({
+      'ID do Item': '55260497129',
+      'Nome do Item': 'Kit Estética Automotiva',
+      Preço: '93,58',
+      Vendas: '6mil+',
+      'Nome da Loja': 'Yamase Loja Oficial',
+      'Taxa de Comissão': '14%',
+      Comissão: 'R$13,10',
+      'Link do produto': 'https://shopee.com.br/product/316945044/55260497129',
+      'Link de Oferta': 'https://s.shopee.com.br/4B1dri05aO',
+    })
+    expect(r.erros).toEqual([])
+    expect(r).toMatchObject({ itemId: '55260497129', preco: 93.58, comissaoPct: 14, loja: 'Yamase Loja Oficial' })
+  })
+
+  it('tira a data da exportação do nome do arquivo', () => {
+    expect(dataDoArquivo('Links de produtos em lote20261119100440-aebaacf5.csv')).toBe('2026-11-19')
+    expect(dataDoArquivo('BatchProductLinks20261002194644-bb4a.csv')).toBe('2026-10-02')
+    expect(dataDoArquivo('sem-data.csv')).toBe('')
+  })
+})
+
+describe('aplicarPrecoMaisRecente', () => {
+  const reg = (extra) => ({ itemId: '1', preco: 113.58, dataLote: '2026-10-02', linkCurto: 'antigo', ...extra })
+
+  it('o preço segue a exportação mais recente, mesmo que o link escolhido seja de outra', () => {
+    // Caso real: o lote de outubro tinha comissão maior e ficou com o link,
+    // mas o preço de novembro é o que vale.
+    const escolhido = reg()
+    const observacoes = [escolhido, reg({ preco: 93.58, dataLote: '2026-11-19', linkCurto: 'novo' })]
+    const [r] = aplicarPrecoMaisRecente([escolhido], observacoes)
+    expect(r).toMatchObject({ linkCurto: 'antigo', preco: 93.58, atualizadoEm: '2026-11-19', fontePreco: 'lote' })
+  })
+
+  it('conferência da API mais nova vence o lote', () => {
+    const api = new Map([['1', { preco: 99.9, situacao: 'ok', conferidoEm: '2026-11-20' }]])
+    const [r] = aplicarPrecoMaisRecente([reg()], [reg()], api)
+    expect(r).toMatchObject({ preco: 99.9, atualizadoEm: '2026-11-20', fontePreco: 'api' })
+  })
+
+  it('no empate de data a API vence', () => {
+    const api = new Map([['1', { preco: 99.9, situacao: 'ok', conferidoEm: '2026-10-02' }]])
+    expect(aplicarPrecoMaisRecente([reg()], [reg()], api)[0].preco).toBe(99.9)
+  })
+
+  it('fora da oferta não mexe no preço nem finge conferência', () => {
+    const api = new Map([['1', { preco: null, situacao: 'fora-da-oferta', conferidoEm: '2026-11-20' }]])
+    const [r] = aplicarPrecoMaisRecente([reg()], [reg()], api)
+    expect(r).toMatchObject({ preco: 113.58, atualizadoEm: '2026-10-02' })
+  })
+
+  it('a importação não declara "conferido hoje" um preço do lote antigo', () => {
+    const [r] = aplicarPrecoMaisRecente([reg()], [reg()], new Map(), { hoje: '2026-11-19' })
+    expect(r.atualizadoEm).toBe('2026-10-02')
+  })
+
+  it('produto manual mantém a data própria', () => {
+    const manual = { itemId: '9', preco: 10, atualizadoEm: '2026-11-01', manual: true }
+    expect(aplicarPrecoMaisRecente([manual], [], new Map(), { hoje: '2026-11-19' })[0]).toMatchObject({
+      atualizadoEm: '2026-11-01',
+      fontePreco: 'manual',
+    })
   })
 })

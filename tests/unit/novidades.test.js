@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 
 import NovidadesView from '../../src/views/NovidadesView.vue'
@@ -47,6 +47,19 @@ describe('NovidadesView', () => {
     mocks: { $route: { query: {} } },
   }
 
+  // O catálogo real é estático e o relógio anda: sem fixar o "hoje" um dia depois
+  // da última entrada, a janela de 7 dias esvazia sozinha e o CI fica vermelho
+  // sem que nenhum código tenha mudado.
+  beforeAll(() => {
+    const [a, m, d] = dataMaisRecente(PRODUCTS).split('-').map(Number)
+    vi.useFakeTimers({ toFake: ['Date'] })
+    vi.setSystemTime(new Date(a, m - 1, d + 1, 12))
+  })
+
+  afterAll(() => {
+    vi.useRealTimers()
+  })
+
   it('mostra um h1 só', () => {
     const w = mount(NovidadesView, { global })
     expect(w.findAll('h1')).toHaveLength(1)
@@ -91,6 +104,19 @@ describe('NovidadesView', () => {
 
 expect(w.findAll('[data-testid="grade-produtos"] > li')).toHaveLength(esperado)
     expect(w.find('[data-testid="grade-produtos"]').exists()).toBe(true)
+  })
+
+  it('sem novidade na janela, aponta para a home e não monta grade vazia', () => {
+    vi.setSystemTime(new Date(2099, 0, 1))
+    try {
+      const w = mount(NovidadesView, { global })
+      expect(w.text()).toContain('Nada novo')
+      expect(w.find('[data-testid="grade-produtos"]').exists()).toBe(false)
+      expect(w.find('[data-testid="link-feed"]').exists()).toBe(false)
+    } finally {
+      const [a, m, d] = dataMaisRecente(PRODUCTS).split('-').map(Number)
+      vi.setSystemTime(new Date(a, m - 1, d + 1, 12))
+    }
   })
 })
 

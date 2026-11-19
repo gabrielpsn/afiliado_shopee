@@ -50,8 +50,12 @@ const CSV_LINKS = join(RAIZ, 'data/links-resolvidos.csv')
 const CSV_AJUSTES = join(RAIZ, 'data/ajustes-editoriais.csv')
 const CSV_MANUAIS = join(RAIZ, 'data/produtos-manuais.csv')
 const CSV_CACHE_IMAGENS = join(RAIZ, 'data/imagens-shopee.csv')
+const CSV_PRECOS = join(RAIZ, 'data/precos-shopee.csv')
 
-const PREFIXO_PRODUTOS = 'BatchProductLinks'
+// O painel trocou o nome do arquivo e o cabeçalho para português em nov/2026.
+// Os dois formatos continuam valendo: os lotes antigos seguem em data/batch/.
+const PREFIXOS_PRODUTOS = ['BatchProductLinks', 'Links de produtos em lote']
+const PREFIXO_PRODUTOS = PREFIXOS_PRODUTOS[0]
 const PREFIXO_OFERTAS = 'BatchShopeeLinks'
 
 const SUFIXO_MILHAR = {
@@ -91,6 +95,39 @@ export function parsePrecoShopee(valor) {
   return numero === null ? null : numero * multiplicador
 }
 
+/** Coluna do formato antigo → nome da mesma coluna na exportação em português. */
+const SINONIMOS = {
+  'Item Id': ['ID do Item'],
+  'Item Name': ['Nome do Item'],
+  Price: ['Preço'],
+  Sales: ['Vendas'],
+  'Nome da loja': ['Nome da Loja'],
+  'Commission Rate': ['Taxa de Comissão'],
+  Commission: ['Comissão'],
+  'Product Link': ['Link do produto'],
+  'Offer Link': ['Link de Oferta'],
+}
+
+function campo(linha, nome) {
+  if (linha[nome] !== undefined) return linha[nome]
+  for (const sinonimo of SINONIMOS[nome] ?? []) {
+    if (linha[sinonimo] !== undefined) return linha[sinonimo]
+  }
+  return undefined
+}
+
+/**
+ * Data da exportação pelo nome do arquivo: ...Lote20261119100440-... → 2026-11-19.
+ *
+ * É a data em que o painel afirmou aquele preço. Usar a data da importação no
+ * lugar dela faria todo `catalog:import` declarar "preço conferido hoje" num
+ * valor de semanas atrás — e o aviso de preço velho nunca apareceria.
+ */
+export function dataDoArquivo(nomeArquivo) {
+  const m = String(nomeArquivo ?? '').match(/(20\d{2})(\d{2})(\d{2})/)
+  return m ? `${m[1]}-${m[2]}-${m[3]}` : ''
+}
+
 /** "15%" → 15. Null quando não é porcentagem. */
 export function parsePercentual(valor) {
   const n = parseNumero(String(valor ?? '').replace('%', ''))
@@ -124,23 +161,23 @@ function ehLinkPublico(url) {
  * Devolve `erros` em vez de lançar: uma linha ruim de 520 não pode derrubar o
  * lote inteiro, mas precisa aparecer no relatório.
  */
-export function normalizarLinha(linha) {
+export function normalizarLinha(linha, { dataLote = '' } = {}) {
   const erros = []
 
-  const itemId = String(linha['Item Id'] ?? '').trim()
-  const nome = String(linha['Item Name'] ?? '').trim()
-  const loja = String(linha['Nome da loja'] ?? '').trim()
-  const preco = parsePrecoShopee(linha.Price)
-  const vendas = String(linha.Sales ?? '').trim()
-  const comissaoPct = parsePercentual(linha['Commission Rate'])
-  const comissao = parsePrecoShopee(linha.Commission)
-  const urlPublica = String(linha['Product Link'] ?? '').trim()
-  const linkAfiliado = String(linha['Offer Link'] ?? '').trim()
+  const itemId = String(campo(linha, 'Item Id') ?? '').trim()
+  const nome = String(campo(linha, 'Item Name') ?? '').trim()
+  const loja = String(campo(linha, 'Nome da loja') ?? '').trim()
+  const preco = parsePrecoShopee(campo(linha, 'Price'))
+  const vendas = String(campo(linha, 'Sales') ?? '').trim()
+  const comissaoPct = parsePercentual(campo(linha, 'Commission Rate'))
+  const comissao = parsePrecoShopee(campo(linha, 'Commission'))
+  const urlPublica = String(campo(linha, 'Product Link') ?? '').trim()
+  const linkAfiliado = String(campo(linha, 'Offer Link') ?? '').trim()
   const linkCurto = extrairLinkCurto(linkAfiliado)
 
   if (!itemId) erros.push('Item Id vazio')
   if (!nome) erros.push('Item Name vazio')
-  if (preco === null) erros.push(`Price ilegível ("${linha.Price}")`)
+  if (preco === null) erros.push(`Price ilegível ("${campo(linha, 'Price')}")`)
   if (!ehLinkDeAfiliado(linkAfiliado)) erros.push(`Offer Link inválido ("${linkAfiliado}")`)
   if (!ehLinkPublico(urlPublica)) erros.push(`Product Link inválido ("${urlPublica}")`)
   if (linkCurto && !ehLinkDeAfiliado(linkAfiliado)) erros.push('linkCurto não extraído')
@@ -158,8 +195,71 @@ export function normalizarLinha(linha) {
     linkCurto,
     shopId: extrairShopId(urlPublica),
     categoria: categorizar(nome),
+    dataLote,
     erros,
   }
+}
+
+/**
+ * `itemId → { preco, situacao, conferidoEm }` gravado por `npm run precos:atualizar`.
+ * Arquivo ausente é o normal até a primeira conferência pela API.
+ */
+export async function lerPrecosApi(caminho = CSV_PRECOS) {
+  try {
+    const { linhas } = parseCsv(await readFile(caminho, 'utf8'))
+    const mapa = new Map()
+    for (const l of linhas) {
+      const itemId = String(l.itemId ?? '').trim()
+      if (!itemId) continue
+      mapa.set(itemId, {
+        preco: parseNumero(l.preco),
+        situacao: String(l.situacao ?? '').trim(),
+        conferidoEm: String(l.conferidoEm ?? '').trim(),
+      })
+    }
+    return mapa
+  } catch (erro) {
+    if (erro.code === 'ENOENT') return new Map()
+    throw erro
+  }
+}
+
+/**
+ * Preço e `atualizadoEm` de cada produto pela observação mais recente.
+ *
+ * A oferta escolhida por `escolherMelhorOferta` decide o link (maior comissão),
+ * mas não o preço: o mesmo item exportado em outubro com R$ 113,58 e em novembro
+ * com R$ 93,58 tem de mostrar o de novembro, mesmo que o link de outubro pague
+ * mais. Preço é do produto, não do link.
+ *
+ * Concorrem os lotes (data no nome do arquivo) e a conferência pela API
+ * (`precos-shopee.csv`). No empate de data vence a API, que é a leitura mais
+ * próxima do momento. Item "fora-da-oferta" na API não muda nada: sem preço
+ * lido, a data antiga continua, e o aviso de preço velho aparece quando deve.
+ */
+export function aplicarPrecoMaisRecente(registros, observacoes, precosApi = new Map(), { hoje } = {}) {
+  const porItem = new Map()
+  const considerar = (itemId, preco, data, fonte) => {
+    if (!itemId || preco === null || preco === undefined || !data) return
+    const atual = porItem.get(itemId)
+    if (!atual || data > atual.data || (data === atual.data && fonte === 'api' && atual.fonte !== 'api')) {
+      porItem.set(itemId, { preco, data, fonte })
+    }
+  }
+
+  for (const o of observacoes) considerar(String(o.itemId), o.preco, o.dataLote, 'lote')
+  for (const [itemId, p] of precosApi) {
+    if (p.situacao === 'ok') considerar(itemId, p.preco, p.conferidoEm, 'api')
+  }
+
+  return registros.map((r) => {
+    const propria = r.atualizadoEm || r.dataLote || hoje
+    const melhor = porItem.get(String(r.itemId))
+    if (melhor && melhor.data >= propria) {
+      return { ...r, preco: melhor.preco, atualizadoEm: melhor.data, fontePreco: melhor.fonte }
+    }
+    return { ...r, atualizadoEm: propria, fontePreco: r.manual ? 'manual' : 'lote' }
+  })
 }
 
 /**
@@ -317,7 +417,7 @@ function ordenar(registros) {
   return [...registros].sort((a, b) => Number(a.itemId) - Number(b.itemId))
 }
 
-function linhaCsv(registro, atualizadoEm, imagens) {
+function linhaCsv(registro, imagens) {
   const valores = {
     linkCurto: registro.linkCurto,
     nome: registro.nome,
@@ -335,7 +435,7 @@ function linhaCsv(registro, atualizadoEm, imagens) {
     loja: registro.loja,
     vendas: registro.vendas,
     ativo: 'sim',
-    atualizadoEm,
+    atualizadoEm: registro.atualizadoEm,
     adicionadoEm: registro.adicionadoEm ?? '',
   }
 
@@ -469,7 +569,7 @@ export async function lerAjustesEditorial(caminho = CSV_AJUSTES) {
 
 async function main() {
   const arquivos = await readdir(DIR_BATCH)
-  const deProdutos = arquivos.filter((f) => f.startsWith(PREFIXO_PRODUTOS)).sort()
+  const deProdutos = arquivos.filter((f) => PREFIXOS_PRODUTOS.some((p) => f.startsWith(p))).sort()
   const deOfertas = arquivos.filter((f) => f.startsWith(PREFIXO_OFERTAS)).sort()
 
   if (!deProdutos.length) {
@@ -480,7 +580,8 @@ async function main() {
   const registros = []
   for (const arquivo of deProdutos) {
     const { linhas } = parseCsv(await readFile(join(DIR_BATCH, arquivo), 'utf8'))
-    for (const linha of linhas) registros.push(normalizarLinha(linha))
+    const dataLote = dataDoArquivo(arquivo)
+    for (const linha of linhas) registros.push(normalizarLinha(linha, { dataLote }))
   }
 
   const comErro = registros.filter((r) => r.erros.length)
@@ -508,7 +609,8 @@ async function main() {
 
   const { colunas: colunasAjuste, linhas: linhasAjuste } = await lerAjustesEditorial()
   const ajuste = aplicarAjustesEditorial(comManuais, linhasAjuste, colunasAjuste)
-  const finais = ajuste.registros
+  const precosApi = await lerPrecosApi()
+  const finais = aplicarPrecoMaisRecente(ajuste.registros, uteis, precosApi, { hoje })
 
   // `adicionadoEm` é lido do catálogo atual, não do lote: preservá-lo é o que
   // impede toda reimportação de virar "novidade".
@@ -569,7 +671,7 @@ async function main() {
 
   const cabecalhoCatalogo = COLUNAS_CATALOGO.join(';')
   const imagens = await lerImagens()
-  const linhasCatalogo = finais.map((r) => linhaCsv(r, hoje, imagens))
+  const linhasCatalogo = finais.map((r) => linhaCsv(r, imagens))
 
   await writeFile(CSV_LINKS, [cabecalhoLinks, ...linhasLinks].join('\n') + '\n', 'utf8')
   await writeFile(CSV_CATALOGO, [cabecalhoCatalogo, ...linhasCatalogo].join('\n') + '\n', 'utf8')
@@ -582,7 +684,11 @@ async function main() {
   // cache de imagens — o número era o total, não o que faltava.
   const semFoto = finais.filter((r) => !imagens.get(String(r.itemId))).length
   console.log(`  sem foto (placeholder na vitrine): ${semFoto}`)
-  console.log(`  preço de referência em: ${hoje}`)
+  const porFonte = { api: 0, lote: 0, manual: 0 }
+  for (const r of finais) porFonte[r.fontePreco] = (porFonte[r.fontePreco] ?? 0) + 1
+  const maisAntigo = finais.map((r) => r.atualizadoEm).sort()[0]
+  console.log(`  preço conferido pela API: ${porFonte.api}, pelo lote: ${porFonte.lote}, manual: ${porFonte.manual}`)
+  console.log(`  preço mais antigo: ${maisAntigo}${porFonte.api ? '' : ' — rode `npm run precos:atualizar` para reconferir'}`)
   console.log(`  ajustes editoriais: ${ajuste.aplicados.length} aplicado(s)`)
   console.log(`  produtos manuais: ${mesclagem.adicionados} mesclado(s)`)
   if (mesclagem.repetidos) {

@@ -48,7 +48,7 @@ npm run verify
 ```
 
 O importador deduplica por `itemId`: quando o mesmo produto aparece em dois
-lotes, vence a **maior comissão** e, no empate, o `Offer Link` em ordem
+lotes, o **link** é o de maior comissão (o preço é o mais recente, ver abaixo) e, no empate, o `Offer Link` em ordem
 alfabética. Sem esse desempate o catálogo mudaria conforme a ordem de leitura dos
 arquivos e o `git diff` viraria ruído.
 
@@ -127,6 +127,31 @@ Assinatura: cada corpo GraphQL vai assinado no header `Authorization` como
 timestamp + corpoExato + secret)`. Assinar um corpo reformatado devolve 10020
 sem dizer o motivo — a montagem mora em `src/engine/shopee-api.js`, testada sem
 rede.
+
+## Catálogo pela API (sem baixar planilha)
+
+```bash
+npm run precos:atualizar   # reconfere o preço de cada item → data/precos-shopee.csv
+npm run catalog:api        # buscas de data/buscas-api.csv → data/batch/BatchProductLinksApi*.csv
+npm run catalog:import && npm run catalog:sync && npm run verify
+```
+
+`.github/workflows/catalogo-api.yml` roda isso toda segunda e publica se mudou.
+
+- A busca escreve um **lote no formato do painel**; o importador continua sendo
+  o único caminho para o catálogo. Item que já está no catálogo é pulado: um
+  segundo `linkCurto` para o mesmo produto quebraria `adicionadoEm` e os ajustes.
+- Oferta com faixa de preço (`priceMin ≠ priceMax`) fica de fora da busca por
+  padrão (`--aceitar-faixa` inclui pelo menor). O card mostra um preço só.
+- **Preço segue a observação mais recente** do item (data no nome do lote ou
+  `conferidoEm` da API), não a oferta de maior comissão. O link continua sendo o
+  de maior comissão; preço é do produto, não do link.
+- `atualizadoEm` é a data dessa observação, **não** a data do `catalog:import`.
+  Importar não é conferir preço.
+- A API às vezes devolve `nodes: []` para item que está na oferta; a conferência
+  faz uma segunda passada lenta antes de marcar `fora-da-oferta`.
+- A exportação do painel em português ("Links de produtos em lote…", cabeçalho
+  "ID do Item"…) é lida igual à antiga — basta pôr o arquivo em `data/batch/`.
 
 ## Regra do produto pendente
 

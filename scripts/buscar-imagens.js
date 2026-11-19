@@ -18,16 +18,8 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
 import { parseCsv, formatarLinhaCsv, COLUNAS_CATALOGO } from './from-csv.js'
-import {
-  ENDPOINT_GRAFQL,
-  assinar,
-  corpoImagem,
-  extrairImagem,
-  erroDaApi,
-  CREDENCIAL_INVALIDA,
-  TENTAR_DE_NOVO,
-  dormir,
-} from '../src/engine/shopee-api.js'
+import { corpoImagem, extrairImagem } from '../src/engine/shopee-api.js'
+import { consultarApi, comLimitador, credenciais } from './shopee-cliente.js'
 
 const RAIZ = dirname(dirname(fileURLToPath(import.meta.url)))
 const CSV_CATALOGO = join(RAIZ, 'data/produtos.csv')
@@ -97,6 +89,17 @@ function linhasCache(cache, capturadoEm) {
 }
 
 /**
+ * Grava só o cache. Usado pelo `catalogo-api.js`, que recebe a foto junto com a
+ * oferta e não precisa de uma segunda rodada de chamadas.
+ */
+export async function gravarCacheImagens(cache, capturadoEm, caminho = CSV_CACHE) {
+  const linhas = linhasCache(cache, capturadoEm)
+  const corpo = [CABECALHO_CACHE.join(';'), ...linhas.map((c) => formatarLinhaCsv(c, CABECALHO_CACHE, ';'))].join('\n')
+  await writeFile(caminho, corpo + '\n', 'utf8')
+  return linhas.length
+}
+
+/**
  * Grava as duas saídas, nesta ordem: o cache primeiro.
  *
  * Se a escrita do catálogo falhar no meio, o cache já está inteiro e a próxima
@@ -112,75 +115,19 @@ export async function gravar({ produtos, cache, capturadoEm, caminhoCatalogo = C
   return { cache: doCache.length, produtos: produtos.length }
 }
 
-/** Enfileira tudo e limita quantas chamadas estão em voo por vez. */
-async function comLimitador(itens, concorrencia, trabalhar) {
-  const proximo = { i: 0 }
-  const resultado = new Array(itens.length)
-  const fileiras = Array.from({ length: Math.max(1, concorrencia) }, async () => {
-    for (;;) {
-      const i = proximo.i++
-      if (i >= itens.length) return
-      resultado[i] = await trabalhar(itens[i])
-    }
-  })
-  await Promise.all(fileiras)
-  return resultado
-}
-
-async function chamarApi({ appId, segredo, itemId, tentativas = 3 }) {
-  const payload = corpoImagem(itemId)
-  let espera = 500
-
-  // O retorno distingue os dois finais possíveis:
-  //   ok          → achou a foto, grava no cache
-  //   ausente     → resposta válida sem o item (saiu da oferta), não vale reclamar
-  //   transitorio → a rede ou o limite respondeu mal até o fim; sai da rodada e
-  //                 volta na próxima execução, que é o que faz justiça
-  for (let tentativa = 1; tentativa <= tentativas; tentativa++) {
-    const { timestamp, authorization } = assinar({ appId, segredo, payload, timestamp: Math.floor(Date.now() / 1000) })
-
-    let resposta
-    try {
-      resposta = await fetch(ENDPOINT_GRAFQL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: authorization },
-        body: payload,
-      })
-    } catch {
-      if (tentativa === tentativas) return { tipo: 'transitorio' }
-      await dormir(espera)
-      espera *= 2
-      continue
-    }
-
-    const corpo = await resposta.json().catch(() => null)
-    const codigo = erroDaApi(corpo)
-
-    if (CREDENCIAL_INVALIDA.has(codigo)) {
-      throw new Error(
-        'Credencial reprovada (erro ' + codigo + '). Confira SHOPEE_APP_ID e SHOPEE_APP_SECRET em .env — ' +
-        'tentar de novo 500 vezes só transforma o erro em espera.'
-      )
-    }
-
-    if (resposta.ok && !codigo) {
-      const url = extrairImagem(corpo, itemId)
-      // HTTP 200 com `nodes` vazio é o item fora da oferta. Classificar como
-      // 'ok' sem url faria a rodada inteira contar como falha transitória um
-      // produto que simplesmente saiu de campanha — e reconsultar sempre.
-      return url ? { tipo: 'ok', url } : { tipo: 'ausente' }
-    }
-
-    if ((TENTAR_DE_NOVO.has(resposta.status) || codigo !== null) && tentativa < tentativas) {
-      await dormir(espera)
-      espera *= 2
-      continue
-    }
-
-    return { tipo: 'ausente' }
-  }
-
-  return { tipo: 'transitorio' }
+// O que distingue os três finais:
+//   ok          → achou a foto, grava no cache
+//   ausente     → resposta válida sem o item (saiu da oferta), não vale reclamar
+//   transitorio → a rede ou o limite responderam mal até o fim; sai da rodada e
+//                 volta na próxima execução
+async function chamarApi({ appId, segredo, itemId }) {
+  const r = await consultarApi({ appId, segredo, payload: corpoImagem(itemId) })
+  if (r.tipo === 'transitorio') return r
+  if (r.tipo === 'erro') return { tipo: 'ausente' }
+  // HTTP 200 com `nodes` vazio é o item fora da oferta. Contar como falha
+  // transitória faria reconsultar sempre um produto que só saiu de campanha.
+  const url = extrairImagem(r.corpo, itemId)
+  return url ? { tipo: 'ok', url } : { tipo: 'ausente' }
 }
 
 function lerArgumentos(argv) {
@@ -196,16 +143,9 @@ function lerArgumentos(argv) {
 
 export async function main(argv = process.argv.slice(2)) {
   const opcoes = lerArgumentos(argv)
-  const appId = process.env.SHOPEE_APP_ID
-  const segredo = process.env.SHOPEE_APP_SECRET
-
-  if (!appId || !segredo) {
-    console.error(
-      'Falta SHOPEE_APP_ID ou SHOPEE_APP_SECRET no ambiente.\n' +
-      'Copie .env.example para .env e preencha com as credenciais do painel de afiliado.'
-    )
-    return 1
-  }
+  const cred = credenciais()
+  if (!cred) return 1
+  const { appId, segredo } = cred
 
   const { linhas } = parseCsv(await readFile(CSV_CATALOGO, 'utf8'))
   const [cache, itemIds] = await Promise.all([lerCache(), lerItemIds()])

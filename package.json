@@ -14,6 +14,8 @@
     "catalog:sync": "node scripts/from-csv.js",
     "produto:add": "node scripts/produto-add.js",
     "imagens:buscar": "node --env-file-if-exists=.env scripts/buscar-imagens.js",
+    "catalog:api": "node --env-file-if-exists=.env scripts/catalogo-api.js buscar",
+    "precos:atualizar": "node --env-file-if-exists=.env scripts/catalogo-api.js precos",
     "feed:gerar": "node scripts/gerar-feed.js",
     "validate:catalog": "node scripts/check-links.js",
     "verify": "npm run test && npm run validate:catalog && npm run feed:gerar && npm run build",

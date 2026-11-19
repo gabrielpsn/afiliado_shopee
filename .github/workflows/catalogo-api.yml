@@ -1,0 +1,78 @@
+name: Atualizar catálogo pela API
+
+# Toda segunda às 9h (Brasília): reconfere preço, busca produto novo, importa,
+# valida e publica. Sem a rodada semanal o preço passa de 30 dias e a vitrine
+# inteira acende o aviso de "preço antigo".
+on:
+  schedule:
+    - cron: '0 12 * * 1'
+  workflow_dispatch:
+
+concurrency:
+  group: catalogo-api
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      # Push feito com GITHUB_TOKEN não dispara outro workflow; o deploy é
+      # chamado à mão no fim, e isso precisa desta permissão.
+      actions: write
+    env:
+      SHOPEE_APP_ID: ${{ secrets.SHOPEE_APP_ID }}
+      SHOPEE_APP_SECRET: ${{ secrets.SHOPEE_APP_SECRET }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Conferir credenciais
+        run: |
+          if [ -z "$SHOPEE_APP_ID" ] || [ -z "$SHOPEE_APP_SECRET" ]; then
+            echo "::error::Falta SHOPEE_APP_ID ou SHOPEE_APP_SECRET nos secrets do repositório."
+            exit 1
+          fi
+
+      - run: npm ci
+
+      - name: Reconferir preços
+        run: npm run precos:atualizar
+
+      - name: Buscar produtos novos
+        run: npm run catalog:api
+
+      - name: Importar e gerar catálogo
+        run: |
+          npm run catalog:import
+          npm run catalog:sync
+
+      # Mesmo gate do push manual. Se reprovar, nada é commitado.
+      - name: Verify completo
+        run: npm run verify
+
+      - name: Commitar se mudou
+        id: commit
+        run: |
+          git add data src/data public/feed.xml
+          if git diff --cached --quiet; then
+            echo "Nada mudou no catálogo."
+            echo "mudou=nao" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "catálogo: atualização semanal pela API ($(date -u +%Y-%m-%d))"
+          git push
+          echo "mudou=sim" >> "$GITHUB_OUTPUT"
+
+      - name: Publicar
+        if: steps.commit.outputs.mudou == 'sim'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref master
